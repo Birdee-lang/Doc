@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>3. Flow Control - Birdee Language</title>
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+
+                <!-- Collapsed navigation -->
+                <div class="navbar-header">
+                    <!-- Expander button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="../..">Birdee Language</a>
+                </div>
+
+                <!-- Expanded navigation -->
+                <div class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li >
+                                <a href="../..">Welcome</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Birdee Language Mannual <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li >
+    <a href="../0010HelloWorld/">1. Hello world!</a>
+</li>
+                                    
+<li >
+    <a href="../0020Basics/">2. Language Basics</a>
+</li>
+                                    
+<li class="active">
+    <a href="./">3. Flow Control</a>
+</li>
+                                    
+<li >
+    <a href="../0040ScopeAndName/">4. Scope and names</a>
+</li>
+                                    
+<li >
+    <a href="../0050Array/">5. Array</a>
+</li>
+                                    
+<li >
+    <a href="../0060Class/">6. Class</a>
+</li>
+                                    
+<li >
+    <a href="../0070Import/">7. Modules and Imports</a>
+</li>
+                                    
+<li >
+    <a href="../0080Template/">8. Templates</a>
+</li>
+                                    
+<li >
+    <a href="../0090Script/">9. Compile-time scripts</a>
+</li>
+                                    
+<li >
+    <a href="../0100Cpp/">10. Interoperability with C/C++</a>
+</li>
+                                    
+<li >
+    <a href="../0110Functional/">11. Functional Programming</a>
+</li>
+                                    
+<li >
+    <a href="../0120Exception/">12. Exception handling</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tools <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li >
+    <a href="../../Tools/Birdee-playground-(REPL)/">Birdee playground</a>
+</li>
+                                    
+<li >
+    <a href="../../Tools/Compiler-command-line-mannual/">Command line arguments for compiler (birdeec)</a>
+</li>
+                                    
+<li >
+    <a href="../../Tools/bbuild/">The automatic building tool for Birdee - bbuild</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li >
+                                <a rel="next" href="../0020Basics/">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li >
+                                <a rel="prev" href="../0040ScopeAndName/">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#3-flow-control">3. Flow Control</a></li>
+            <li><a href="#31-conditional-branches">3.1 Conditional Branches</a></li>
+            <li><a href="#32-loop">3.2 Loop</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="3-flow-control">3. Flow Control</h1>
+<p>The syntax introduced till now allows programs to be executed sequentially. But how to let different parts of the program be executed under different conditions? How to execute some blocks of code for multiple times? The answer is by flow control!</p>
+<h2 id="31-conditional-branches">3.1 Conditional Branches</h2>
+<h3 id="311-if">3.1.1 If</h3>
+<p>The "if" syntax is used to execute a block of code when the condition is true. The basic syntax is:</p>
+<pre><code class="vb">if {condition} then
+    ...
+end [if]
+</code></pre>
+
+<p>The "{condition}" should be an boolean expression (could be true or false), such as "a&gt;0", "a!=b &amp;&amp; b&gt;32" and so on. The code within an "if" block will be executed if the condition is true. To mark the end of the block of code, use "end" or "end if". No matter the condition is true or not, the program will continue at the line after "end" or "end if", after the "if" block is executed. The following example checks if the value of "a" is larger than 100. If so, it prints a line "a is larger than 100". The program will always print the value of "a" no matter what value "a" is.</p>
+<pre><code class="vb">if a&gt;100 then
+    println(&quot;a is larger than 100&quot;)
+end
+println(&quot;a is &quot; + int2str(a))
+</code></pre>
+
+<p>You may want to wirte a program like this: if a condition is true, execute block A; otherwise, execute block B. You can achieve this by the "if...else..." syntax. For example, we could change the above program a little bit: if a is not larger than 100, we also want to print a line "a is no larger than 100":</p>
+<pre><code class="vb">if a&gt;100 then
+    println(&quot;a is larger than 100&quot;)
+else
+    println(&quot;a is no larger than 100&quot;)
+end
+println(&quot;a is &quot; + int2str(a))
+</code></pre>
+
+<p>The "else" key word will mark the end of the block to be executed if true, and mark the start of the block to be executed if false.</p>
+<p>In many cases, multiple conditions should be considered. For example, a teacher may want to find the grade from a score. The grades are given according to the following table (assume the scores are integers):</p>
+<table>
+<thead>
+<tr>
+<th>Grade</th>
+<th>Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>90-100</td>
+</tr>
+<tr>
+<td>B</td>
+<td>75-89</td>
+</tr>
+<tr>
+<td>C</td>
+<td>60-74</td>
+</tr>
+<tr>
+<td>F</td>
+<td>0-59</td>
+</tr>
+</tbody>
+</table>
+<p>We can write a Birdee program to solve the problem:</p>
+<pre><code class="vb">function find_grade(score as int) as string
+    if score&lt;=59 then
+        return &quot;F&quot;
+    else
+        if score&lt;=74 then
+            return &quot;C&quot;
+        else
+            if score&lt;=89 then
+                return &quot;B&quot;
+            else
+                return &quot;A&quot;
+            end
+        end
+    end
+end
+</code></pre>
+
+<p>Yes, "if" blocks can be nested, but the above program is not an elegant way to solve this program. The nested "if...else..." blocks can be simplified by "else if" blocks:</p>
+<pre><code class="vb">function find_grade(score as int) as string
+    if score&lt;=59 then
+        return &quot;F&quot;
+    else if score&lt;=74 then
+        return &quot;C&quot;
+    else if score&lt;=89 then
+        return &quot;B&quot;
+    else
+        return &quot;A&quot;
+    end
+end
+</code></pre>
+
+<p>The "else if" syntax saves some "end"s and make nested "if" blocks looks better.</p>
+<h2 id="32-loop">3.2 Loop</h2>
+<h3 id="321-for-loop">3.2.1 For Loop</h3>
+<p>To execute a block of code for a specific times, "for loop" can be used. The basic syntax is:</p>
+<pre><code class="vb">for {variable} = {start} to {end}
+    ...
+end [for]
+</code></pre>
+
+<p>The "{variable}" should be any Lvalue in integer type. {start} and {end} are any valid integer expressions. The {variable} will increment from {start} to {end} and the block of code in the loop will be executed for ({end} - {start} + 1) times. If {end} &lt; {start}, the loop stop executing. The following code will print "hi! From i=1", "hi! From i=2", "hi! From i=3".</p>
+<pre><code class="vb">dim i as int
+for i=1 to 3
+    println(&quot;hi! From i=&quot; + int2str(i))
+end
+</code></pre>
+
+<p>The variable "i" is called loop variable, which is modified by Birdee language every time the body of the loop is executed. Note that internally, Birdee will generate code to increment the loop variable at the end of the loop body and compare the variable against the {end} expression to decide whether to run the loop body again.</p>
+<p>You can combine the definition of loop variable with the for loop. For example, you can simply modify the above example to:</p>
+<pre><code class="vb">for dim i=1 to 3
+    println(&quot;hi! From i=&quot; + int2str(i))
+end
+</code></pre>
+
+<p>However, the loop variables are defined in different scopes in the previous two examples. (What is "scope"? We will explain later.) Keep in mind that if you define a variable in a for loop (in the for ... to ..., or in the body of the loop), the variable can only be used within this particular for loop and is not available outside of it. For example, we add a line in the above example:</p>
+<pre><code class="vb">for dim i=1 to 3
+    println(&quot;hi! From i=&quot; + int2str(i))
+end
+println(i+1)  # Compiler will complain here!
+</code></pre>
+
+<p>Birdee compiler will recognize an error in the last line because variable "i" is only defined within the for loop.</p>
+<p>Also note that {start} and {end} are not necessarily constants, they can be variables, function calls or whatever valid integer expressions.</p>
+<p>If you do not want to include the {end} value in the for loop, you can use "till" key word instead of "to" key word:</p>
+<pre><code class="vb">for dim i=1 till 3
+    println(&quot;hi! From i=&quot; + int2str(i))
+end
+</code></pre>
+
+<p>The above for loop will be executed twice, with i=1 and then i=2.</p>
+<p>You may want to jump out of the loop in some cases, where you can use the "break" keyword to jump to the next line of the end of the loop:</p>
+<pre><code class="vb">for dim i=1 to 1000
+    println(&quot;hi! From i=&quot; + int2str(i))
+    if i==2 then
+        break
+    end
+end
+println(&quot;End of the loop&quot;)
+</code></pre>
+
+<p>The "break" keyword in the above program will let it jump to the line "println("End of the loop")". Then you will see two lines with i=1 and i=2 printed in console and a line "End of the loop", after the program is executed.</p>
+<p>You can use "continue" keyword to skip the rest of the loop body in the current iteration, and continue at the next iteration:</p>
+<pre><code class="vb">for dim i=1 to 3
+    if i==2 then
+        continue
+    end
+    println(&quot;hi! From i=&quot; + int2str(i))
+end
+</code></pre>
+
+<p>The above example will print 2 lines with i=1 and i=3. Because when i=2, the loop is skipped.</p>
+<p>You cannot use "break" and "continue" outside of loops.</p>
+<h3 id="322-while-loop">3.2.2 While Loop</h3>
+<p>The "while" loop will execute a block of code repeatedly until the given condition becomes "false". The syntax of it is:</p>
+<pre><code class="vb">while {condition}
+   ...
+end [while]
+</code></pre>
+
+<p>The "condition" should be a boolean-typed expression. Here we present an example for printing strings from a "black box". Assume that the "black box" contains some strings and you can call "get" function to fetch a string from the box, and you can call "has_next" function (which returns a boolean value) to find whether there are any strings in the black box. </p>
+<pre><code class="vb">while has_next()
+    println(get())
+end
+</code></pre></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"search": 83, "next": 78, "help": 191, "previous": 80};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

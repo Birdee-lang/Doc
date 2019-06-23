@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>9. Compile-time scripts - Birdee Language</title>
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+
+                <!-- Collapsed navigation -->
+                <div class="navbar-header">
+                    <!-- Expander button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="../..">Birdee Language</a>
+                </div>
+
+                <!-- Expanded navigation -->
+                <div class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li >
+                                <a href="../..">Welcome</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Birdee Language Mannual <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li >
+    <a href="../0010HelloWorld/">1. Hello world!</a>
+</li>
+                                    
+<li >
+    <a href="../0020Basics/">2. Language Basics</a>
+</li>
+                                    
+<li >
+    <a href="../0030FlowControl/">3. Flow Control</a>
+</li>
+                                    
+<li >
+    <a href="../0040ScopeAndName/">4. Scope and names</a>
+</li>
+                                    
+<li >
+    <a href="../0050Array/">5. Array</a>
+</li>
+                                    
+<li >
+    <a href="../0060Class/">6. Class</a>
+</li>
+                                    
+<li >
+    <a href="../0070Import/">7. Modules and Imports</a>
+</li>
+                                    
+<li >
+    <a href="../0080Template/">8. Templates</a>
+</li>
+                                    
+<li class="active">
+    <a href="./">9. Compile-time scripts</a>
+</li>
+                                    
+<li >
+    <a href="../0100Cpp/">10. Interoperability with C/C++</a>
+</li>
+                                    
+<li >
+    <a href="../0110Functional/">11. Functional Programming</a>
+</li>
+                                    
+<li >
+    <a href="../0120Exception/">12. Exception handling</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tools <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li >
+    <a href="../../Tools/Birdee-playground-(REPL)/">Birdee playground</a>
+</li>
+                                    
+<li >
+    <a href="../../Tools/Compiler-command-line-mannual/">Command line arguments for compiler (birdeec)</a>
+</li>
+                                    
+<li >
+    <a href="../../Tools/bbuild/">The automatic building tool for Birdee - bbuild</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li >
+                                <a rel="next" href="../0080Template/">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li >
+                                <a rel="prev" href="../0100Cpp/">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#9-compile-time-scripts">9. Compile-time scripts</a></li>
+            <li><a href="#91-script-basics">9.1 Script basics</a></li>
+            <li><a href="#92-scopes-of-the-scripts">9.2 Scopes of the scripts</a></li>
+            <li><a href="#93-annotations">9.3 Annotations</a></li>
+            <li><a href="#94-init-scripts-and-importing-as-modules">9.4 Init scripts and importing as modules</a></li>
+            <li><a href="#95-generative-script">9.5 Generative script</a></li>
+            <li><a href="#94-error-handling">9.4 Error handling</a></li>
+            <li><a href="#95-memory-management-and-pointer-ownership">9.5 Memory management and pointer ownership</a></li>
+            <li><a href="#96-detailed-api-specification">9.6 Detailed API specification</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="9-compile-time-scripts">9. Compile-time scripts</h1>
+<p>You can embed Python scripts in Birdee codes. The scripts are executed in compile time and these scripts will NOT be executed in the run time. Generally, the script is used for </p>
+<ul>
+<li>generating and compiling Birdee code in compile-time</li>
+<li>altering the existing Birdee code</li>
+</ul>
+<p>Compile-time scripts can completely replace macros and template-based meta-programming. In C++, these two features are powerful but hard to master - that's one of the reason of starting this programming language project.</p>
+<h2 id="91-script-basics">9.1 Script basics</h2>
+<p>To embed Python scripts in Birdee source code, you only need to surround your Python script with "{@" and "@}". For example</p>
+<pre><code class="vb">{@
+print(&quot;hello world&quot;)
+@}
+
+dim a = &quot;hey world&quot;
+println(a)
+</code></pre>
+
+<p>The above is a Birdee program. It can be divided into two parts. The first part is a Python script, which prints a string "hello world". When the program is compiled, the script will be run by the Birdee compiler, and prints the string in the standard output of the compiler itself. The second part is the Birdee code. It defines a variable and prints a string "hey world". This part will be executed in the run time.</p>
+<p>What can embedded Python scripts do? You can use them to generate Birdee code and insert the generated code into the place where "{@" and "@}" is. The "{@" and "@}" with the script can serve as a statement, expression or a type specifier. An expression is a piece of code which represents a value, like "1", "add(1,2)", "variable_a". Statements are super-class of expressions. A statement is a line or a block of Birdee code, but not necessarily has a value. For example, "dim a as int", "if a&gt;0 then ...". A type specifier represents a typename and usually appears after "as" key word in Birdee code.</p>
+<p>To use the script as an expression, see the following example:</p>
+<pre><code class="vb">dim a as int = {@set_ast(expr(&quot;56&quot;))@}
+</code></pre>
+
+<p>The script in "{@" and "@}" will generate an expression "56" as an integer and the script will be replaced by this expression when compiled. The functions "set_ast" and "expr" are built-in functions defined in Birdee compiler's embeded Python interpreter. The Python function "expr" accepts a string and compiles the string as the source code of an expression in Birdee. It returns an AST node for Birdee compiler. (An AST node is an element of the parsed Birdee source code.) The function "set_ast" takes an AST node as input and make Birdee compiler to insert the AST node at the position of current script in the Birdee source code. Note that in "{@" and "@}", any valid Python code is allowed. You can even use Python3's "input" function to get input from the user when the source code is compiled. You can also define functions in embedded scripts. Note that all Python code in "{@" and "@}" is executed in the same "top level" of Python interpreter. Defining variables in one script will affect all scripts executed later.</p>
+<p>Next let's see a more complex example:</p>
+<pre><code class="vb">class student
+    private id as int
+    public function __init__(id as int)
+        this.id=id
+    end
+end
+
+{@
+cnt=0
+def counter():
+    set_ast(expr(str(cnt)))
+    cnt+=1
+@}
+
+dim stu1 = new student({@counter()@})
+dim stu2 = new student({@counter()@})
+dim stu3 = new student({@counter()@})
+</code></pre>
+
+<p>In this example, we have created a python function "counter", which generates an increasing integer after each call to it. Then we create 3 instances of "student" class and statically assign IDs to them. Then parameters for the constructor of  "student" class for stu1 to stu3 will be "1", "2" and "3". Note that in C++, it may introduce much more lines of code to implement such compile-time template-based counter.</p>
+<p>Statements without values can also be compiled by Birdee's embedded scripts. Instead of using the function "expr", the function "stmt" can be utilized to compile a python string to an AST node. For example:</p>
+<pre><code class="vb">dim cmpstr= &quot;hello&quot;
+{@
+user_input=input()
+set_ast(stmt(f''' if cmpstr == &quot;{user_input}&quot; then
+    println(&quot;It is hello!&quot;)
+end
+'''))
+@}
+</code></pre>
+
+<p>The above example can be compiled by Birdee with Python 3.6+. It gets an input from the user and generate an "if" statement block to compare with a Birdee string variable. </p>
+<p>A script in Birdee can be used as a type specifier. Similar to statement and expression generation, you can use the functions "set_type" and "resolve_type" in the scripts to use script as a type. "resolve_type" accepts a string and will compile the string as a typename. It returns a "ResolvedType" object which is an internal representation of a type in Birdee. "set_type" accepts an "ResolvedType" object and makes the compiler replace the current script with this type. Here is an example in which defines an integer variable using these two functions:</p>
+<pre><code class="vb">dim v as {@set_type(resolve_type(&quot;int&quot;))@}
+</code></pre>
+
+<p>We can do some "meta-programming" with the scripts. The following example implements a compile-time function to get and use the return type of any function (the counterpart of C++ meta-programming "std::result_of"):</p>
+<pre><code class="vb">{@
+def result_of(str_expr):
+    exp = expr(str_expr).get()
+    ty = exp.resolved_type
+    prototype = ty.get_detail()
+    assert(isinstance(prototype, PrototypeAST)) # make sure the expression points to an function
+    set_type(prototype.return_type)
+@}
+
+function func1() as int
+    return 0
+end
+
+dim v as {@result_of(&quot;func1&quot;)@}  # should be int
+</code></pre>
+
+<p>As we can see in this example, we can access the type of an expression by the "resolved_type" field and we can get the return type of an function prototype by its "return_type". AST nodes are objects that can be accessed by the python script and details of the nodes can be found in the fields of them. We will later discuss the details of AST nodes.</p>
+<p>The python scripts of Birdee can import existing Python modules by normal "import" command of python. Note that the directory "$BIRDEE_HOME/pylib" has been added to the python module search path of Python interpreter.</p>
+<h2 id="92-scopes-of-the-scripts">9.2 Scopes of the scripts</h2>
+<p>As we know, variable names in Python are scoped. For example, you cannot use a local variable defined in a Python function in the code outside of the function. Similarly, the embeded scripts of Birdee follows the scopes of the Birdee code.</p>
+<ul>
+<li>The Python interpreter uses the "context" to manage the mapping from variable names to the actual data.</li>
+<li>Once the Birdee code enters a new level of basic block (e.g. the compiler enters a function/the body of "for" loop) or scope (e.g. the class definition), the Python interpreter will copy the Python context (the "name" - "variable" map) of the previous context.</li>
+<li>The scripts in the child context (in other words, in the lower level of the scopes) can have access to the names defined in parent Python contexts. But the scripts in the parent context cannot access the names in children context.</li>
+<li>The scripts in the same level of Birdee scope/basic block shares the same Python context.</li>
+</ul>
+<p>See the following example:</p>
+<pre><code>{@a=1@}
+function f()
+   {@print(a)@} # Okay, &quot;a&quot; is defined in the parent context
+   print(&quot;Hi&quot;) # Birdee code
+   {@b=1@} 
+end
+{@print(b)@} # Error here! &quot;b&quot; is defined in the children context
+</code></pre>
+
+<p>The modules of Birdee has different Python contexts, which means that you cannot directly use the Python names defined in scripts in other Birdee modules. But there is a way to do so and we will introduce it later in this chapter.</p>
+<h2 id="93-annotations">9.3 Annotations</h2>
+<p>Annotations can be applied on statements or expressions of Birdee programs. The syntax to use annotation is:</p>
+<pre><code class="vb">@annotation_name1
+@annotation_name2
+....
+expression_or_statement
+</code></pre>
+
+<p>or </p>
+<pre><code class="vb">@annotation_name expression_or_statement
+</code></pre>
+
+<p>In a word, annotations can be used by prepending <code>@annotation_name</code> to an expression or statement. The annotation and the annotated code can be separated by a new line or not. You can add multiple annotations to the same part of code (the multiple annotations will be called in the order in the source code). A parsed Birdee program will be translated in the form of AST (Abstract Syntax Tree) form. Each expression or statement is a node of the AST.</p>
+<p>To process the annotation, in the compile time, the compiler will evaluate the <code>annotation_name</code> as a Python expression. The <code>annotation_name</code> can be a Python function name, a call to a Python function generator or any Python code that returns a callable Python object. The annotated part of code (in the AST node object form) will be applied to the Python function specified by the annotation name. The python function or callable object called by an annotation should take a parameter which is an AST node object. We show an example of an annotation that prints the type of the annotated AST node. You should first define or import a python function in an embedded script. Then call it with an annotation in Birdee code.</p>
+<pre><code class="vb">{@
+def show_ast(node):
+    print(type(node))
+@}
+
+@show_ast
+function func1()
+    println(&quot;hello&quot;)
+end
+
+@show_ast
+dim var as int
+
+@show_ast
+func1()
+
+{@
+def show_ast2(prefix):
+   return lambda node: print(prefix + type(node))
+@}
+
+@show_ast2(&quot;prefix&quot;)
+function func2()
+   println(&quot;hello&quot;)
+end
+</code></pre>
+
+<p>After compiling the above code, the compiler will print "FunctionAST", "VariableSingleDefAST" and "CallExprAST" to its stdout. Note that the three annotations are executed in the same order as they are used in the Birdee source code. In the example, we first define a python function named "show_ast" in the script. It has one argument which is the annotated AST node. Here we simply get and print the type of the AST node with python's built-in keyword "type" and "print". Then in the Birdee part of code, we apply the annotation "show_ast" on a function definition, a variable definition and a function call expression. Finally, after compiling the code, we can see the type names of these AST nodes.</p>
+<p>This annotation example only reads the AST nodes. Useful tools can be developed by using read-only annotations, like code safety checking. We can do more than that because annotations can modify the annotated AST! In the next example, we define and use an annotation which:</p>
+<ul>
+<li>Can be applied on variable definitions</li>
+<li>Checks if the variable is a string and is not initialized when defined</li>
+<li>If so, add an initializer to the variable definition, and initialize the string variable to string "(null)"</li>
+</ul>
+<pre><code class="vb">{@
+def add_initializer(node):
+    if isinstance(node,VariableSingleDefAST):
+        if node.value is None and node.resolved_type == resolve_type(&quot;string&quot;): 
+            #if node's initializer is null and its type is string
+            node.value = expr('&quot;(null)&quot;'')
+    elif isinstance(node,VariableMultiDefAST)): #VariableMultiDefAST is multiple variable definitions in one line
+        for sub_def in node.lst: 
+            #node.lst is the list of VariableSingleDefAST contained in VariableMultiDefAST
+            add_initializer(sub_def)   #apply the VariableSingleDefAST to the current function 
+@}
+
+@add_initializer
+dim a as string
+println(a)
+
+@add_initializer
+dim b as string, c as string=&quot;hi&quot;
+println(b)
+println(c)
+
+</code></pre>
+
+<p>We first define a python function. It accepts a single variable definition (VariableSingleDefAST) or multiple definitions (VariableMultiDefAST) in a line of code. Then for single variable definitions, the function check the initializer expression (node.value) and the variable type (node.resolved_type), and sets the initializer to string expression "(null)" if the variable has no initializer and the variable type is "string". For multiple definitions, the AST node (VariableMultiDefAST) contains a list of VariableSingleDefAST for each of the variable definitions. Our function iterates on the the list of contained VariableSingleDefAST to add the initializer. Once again, some fields of the AST node objects are used in this example. We will discuss about their details later. </p>
+<p>We apply the annotation on a single variable definition "a" and multiple definitions "b" and "c". Since variable "c" already has an initializer, the annotation has no effect on it. For variables "a" and "b", they will have an initial value "(null)" after the annotation has been applied.  </p>
+<p>If you apply an annotation on a template, the corresponding Python function will not be called with the template AST, but when each of the instance of the template is constructed, the Python function will be called on the instance AST.</p>
+<p>Please be careful on how Birdee compiler split the annotation from the annotated Birdee code. The annotation starts from "@" and ends at the first encountered space (" ") or newline. So if your annotation contains a space, the code will not work as expected. For example, the following code will not compile, because there is a space in "The prefix":</p>
+<pre><code>{@
+def show_ast2(prefix):
+   return lambda node: print(prefix + type(node))
+@}
+
+@show_ast2(&quot;The prefix&quot;)
+function func2()
+   println(&quot;hello&quot;)
+</code></pre>
+
+<h2 id="94-init-scripts-and-importing-as-modules">9.4 Init scripts and importing as modules</h2>
+<p>By default, Birdee will dispose all embeded Python scripts which are not in templates. So the following module will compile, but will not function:</p>
+<pre><code>{@
+def somefunction(ast):
+   pass
+@}
+
+@somefunction
+func hello[T](h as T)
+
+end
+</code></pre>
+
+<p>If we compile the above code in a Birdee module "hello" and we import "hello" in another module, a Python error will be thrown, saying that the name "somefunction" is not found. The cause is that the script in the top level that defines the function is lost. To preserve the script, you should add an annotation <code>init_script</code> on the embeded scripts. Note that <code>init_script</code> is a special annotation defined by Birdee compiler, so you cannot create a user-defined annotation with the same name. <code>init_script</code> can only be applied on top-level embeded scripts. Otherwise, the compiler will fail on the program.</p>
+<p>You can mark multiple top-level scripts as <code>init_script</code>, the scripts will be executed after it is imported by other modules. The multiple scriptts will be executed in the original order defined in the source code. The above code can be modified to work:</p>
+<pre><code>@init_script
+{@
+def somefunction(ast):
+   pass
+@}
+...
+</code></pre>
+
+<p>Remind that the different modules in Birdee have independent Python contexts. Even after importing a module, the init scripts will not affect the Python context in the current module. So in the above example, the function "somefunction" can only be used in the scripts in the module "hello". However, you can import the Python names defined in other modules' init scripts by importing them:</p>
+<pre><code>import hello
+
+{@from hello import somefunction@}
+
+@somefunction
+function a()
+end
+</code></pre>
+
+<p>In the above example, the init scipts of the module <code>hello</code> is imported as a Python module by the line <code>{@from hello import somefunction@}</code>. The module names of the Python modules can be derived from the names of Birdee modules where the scripts are defined. You just need to replace the "." in the Birdee module names with "_0". For example, for Birdee module "org.birdee.a", its corresponding Python module is <code>org_0birdee_0a</code>. </p>
+<h2 id="95-generative-script">9.5 Generative script</h2>
+<p>It is an interesting feature that the Birdee compiler itself can be used as an python library. Python programs can use Birdee to generate Birdee programs. We call these python programs "generative scripts". There are two ways to use Birdee in python generative scripts. The first way is to use Birdee compiler in Python interpreter mode. You need to add a switch "-s" to the command line parameter of Birdee compiler to activate this mode. When "-s" switch is given, the compiler will treat the input file as an Python program and run the input script with Python interpreter. The second way to run generative scripts is to simply run the standard python interpreter and import the module "birdeec" in the python code. Note that the Birdee binary library for python binding must be available in Python's library search path. And the library file must be named "birdeec.so" (on linux) or "birdeec.pyd" (on Windows). All APIs used in embedded scripts that are discussed above can also be used in generative scripts. Birdee compiler exposes some APIs that are only available for generative scripts. They are designed for compiler control. Here is an simple example of a generative script.</p>
+<pre><code class="python">from birdeec import *
+top_level('''
+dim str = &quot;hello world&quot;
+println(str)
+''')
+process_top_level()
+generate()
+clear_compile_unit()
+</code></pre>
+
+<p>To use Birdee as a python library, you must first import the module "birdeec". (Note that for embedded scripts, this module has been automatically imported.) You can compile the top level code by function "top_level". It accepts a python string of Birdee source code. The function returns nothing, but the top-level code will be stored in the compiler library after "top_level" is called. Then, you should use function "process_top_level" to build the AST of the program and check the potential errors in the source code. The next step is to call function "generate" to generate the target object file. Optionally, if you want to re-use the current python process to compile another Birdee program, you should call the function "clear_compile_unit" to clear the internal states of the Birdee compiler library. This function is useful when you need to compile multiple Birdee programs in one script for testing. </p>
+<p>Our Birdee compiler project has been using generative scripts to test the features and expected behaviors of the compiler.</p>
+<h2 id="94-error-handling">9.4 Error handling</h2>
+<p>We have already introduced several APIs for python to compile a string of Birdee code to Birdee programs, including "expr", "stmt", "top_level", "process_top_level". An erroneous Birdee program string will fail to compile and an Python exception will be raised when calling these functions. You can catch the exception in both embedded and generative scripts using python's exception handling mechanism. The basic example to catch compilation errors is shown as follows:</p>
+<pre><code class="python">try:
+    ...
+    may_throw(...)
+    ...
+except TokenizerException:
+    e=get_tokenizer_error()
+    print(e.linenumber,e.pos,e.msg)
+except CompileException:
+    e=get_compile_error()
+    print(e.linenumber,e.pos,e.msg)
+</code></pre>
+
+<p>Catching a TokenizerException means that the compiler meets an unrecognized token in the program. An CompileException means that the program is somewhat invalid.</p>
+<p>The function "may_throw" is any function that may raise an compiler exception, which include:</p>
+<ul>
+<li>expr - may throw TokenizerException and CompileException</li>
+<li>stmt - may throw TokenizerException and CompileException</li>
+<li>top_level - may throw TokenizerException</li>
+<li>process_top_level - may throw CompileException</li>
+</ul>
+<p>Note that the exception object in the "except" clause in python for Birdee does not contain detailed exception informantion. You can either use function "get_tokenizer_error" or "get_compile_error" to get detailed exception information like the position of the error and the explanation of the error.</p>
+<p>Important note: Once the compile raises an exception, the compiler is in an unrecoverable state. You must not continue to use the compiler instance and you must call "clear_compile_unit" to reset the state of the compiler before continue to use "birdeec" library.</p>
+<h2 id="95-memory-management-and-pointer-ownership">9.5 Memory management and pointer ownership</h2>
+<p>There are two memory management systems in Birdee's compiler. One is the core part of the compiler which is written in C++. It uses unique_ptr to manage the lifetime and the ownership of the AST nodes. The other is the python interpreter's memory management system which uses reference counting. It is challenging to combine these two memory systems. For example, after we allocate an AST in python (e.g. by "expr" function), how can we move the ownership of the AST object to the C++ unique_ptr? We address this problem by introducing "pointer ownership" in python binding of Birdee. Having ownership of an object means that the respective memory management system is responsible to free the space for the object. If a parent AST node has the ownership pointer to another children AST node, it means that when the parent node is destroyed, the children nodes of it must be destroyed by it. If a python variable has the ownership pointer to an AST node, you can transfer the ownership of the pointer by assigning the ownership pointer to an existing AST node's ownership pointer field. Or you can use some APIs like "set_ast" to transfer the ownership to the compiler.</p>
+<p>For most of the fields in AST nodes, getting the fields in python gives you a reference. In this section, we refer to the term "reference" as the pointer to an AST node without ownership. Note that reading an ownership pointer field of an AST node in python returns a reference to the object (not the ownership pointer!). For example, a Birdee variable definition is represented by the AST node class "VariableSingleDefAST" and the initializer of the variable can be accessed by the field "value" as an ownership pointer. You can get the reference to the initializer expression by:</p>
+<pre><code class="python">var_ast = some_variable_def_ast
+init_of_var = var_ast.value
+</code></pre>
+
+<p>The functions like "expr" and "stmt" returns an ownership pointer to the compiled AST. You cannot directly access the fields of the AST node by an ownership pointer. However, you can use the "get" method of an ownership pointer in python to get the reference to the AST object and then access the fields with the reference.</p>
+<pre><code class="python">exp=expr(&quot;123&quot;)
+print(type(exp)) #should be &quot;StatementAST_UniquePtr&quot;
+print(type(exp.get())) #should be &quot;NumberExprAST&quot;
+</code></pre>
+
+<p>Writing to an ownership pointer field of an AST node requires an ownership pointer in python. You cannot write to an ownership pointer field with a reference. After ownership transfer from a python ownership pointer, the python ownership pointer will point to null value. Take the class "VariableSingleDefAST" as an example:</p>
+<pre><code class="python">var_ast = some_variable_def_ast # it has type VariableSingleDefAST
+exp=expr(&quot;123&quot;) #an ownership pointer to an expression
+var_ast.value = exp.get() #fails to run here! It requires an ownership pointer, not a reference
+var_ast.value = exp   #okay, ownership transfer from exp
+assert(exp.get() is None) #exp is empty after transfering ownership
+</code></pre>
+
+<h2 id="96-detailed-api-specification">9.6 Detailed API specification</h2>
+<p>TBD</p></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"search": 83, "next": 78, "help": 191, "previous": 80};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

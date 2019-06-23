@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>12. Exception handling - Birdee Language</title>
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+
+                <!-- Collapsed navigation -->
+                <div class="navbar-header">
+                    <!-- Expander button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="../..">Birdee Language</a>
+                </div>
+
+                <!-- Expanded navigation -->
+                <div class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li >
+                                <a href="../..">Welcome</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Birdee Language Mannual <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li >
+    <a href="../0010HelloWorld/">1. Hello world!</a>
+</li>
+                                    
+<li >
+    <a href="../0020Basics/">2. Language Basics</a>
+</li>
+                                    
+<li >
+    <a href="../0030FlowControl/">3. Flow Control</a>
+</li>
+                                    
+<li >
+    <a href="../0040ScopeAndName/">4. Scope and names</a>
+</li>
+                                    
+<li >
+    <a href="../0050Array/">5. Array</a>
+</li>
+                                    
+<li >
+    <a href="../0060Class/">6. Class</a>
+</li>
+                                    
+<li >
+    <a href="../0070Import/">7. Modules and Imports</a>
+</li>
+                                    
+<li >
+    <a href="../0080Template/">8. Templates</a>
+</li>
+                                    
+<li >
+    <a href="../0090Script/">9. Compile-time scripts</a>
+</li>
+                                    
+<li >
+    <a href="../0100Cpp/">10. Interoperability with C/C++</a>
+</li>
+                                    
+<li >
+    <a href="../0110Functional/">11. Functional Programming</a>
+</li>
+                                    
+<li class="active">
+    <a href="./">12. Exception handling</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tools <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li >
+    <a href="../../Tools/Birdee-playground-(REPL)/">Birdee playground</a>
+</li>
+                                    
+<li >
+    <a href="../../Tools/Compiler-command-line-mannual/">Command line arguments for compiler (birdeec)</a>
+</li>
+                                    
+<li >
+    <a href="../../Tools/bbuild/">The automatic building tool for Birdee - bbuild</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li >
+                                <a rel="next" href="../0110Functional/">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li >
+                                <a rel="prev" href="../../Tools/Birdee-playground-(REPL)/">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#12-exception-handling">12. Exception handling</a></li>
+            <li><a href="#121-exception-handling-basics">12.1 Exception handling basics</a></li>
+            <li><a href="#122-hardware-generated-exceptions">12.2 Hardware generated exceptions</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="12-exception-handling">12. Exception handling</h1>
+<h2 id="121-exception-handling-basics">12.1 Exception handling basics</h2>
+<p>Exceptions means that the program enters an uncommon state at the run time. Exceptions may occur when the program has encountered some errors like dereferencing null or dividing by 0:</p>
+<pre><code class="vb">dim a as string = null, b as int = 0
+println(a) 
+dim c = 32/b
+</code></pre>
+
+<p>Birdee programmers can also manually generate an exception in their Birdee code. Let's first consider what the program will be like without exceptions. For example, if we need to write a program that checks the communication with a server. We are given a function "send_msg" that can send a message to the server. If sending message fails, "send_msg" returns false. If successful, it returns true. We are required to send 4 messages to the server. If any one of the message fails, we must print "Connection Down". The program will be:</p>
+<pre><code class="vb">if send_msg()==false then
+    println(&quot;Connection Down&quot;)
+else if send_msg()==false then
+    println(&quot;Connection Down&quot;)
+else if send_msg()==false then
+    println(&quot;Connection Down&quot;)
+end
+</code></pre>
+
+<p>There are three nested "if-else", making the program less readable. We will see later how exceptions can simplify the program.</p>
+<p>To throw an exception, you can create a class object and use the "throw" keyword to raise the exception.</p>
+<pre><code class="vb">throw {exception_object}
+</code></pre>
+
+<p>The class of "exception_object" must be annotated "enable_rtti" when defined. For example,</p>
+<pre><code class="vb">@enable_rtti
+class SomeException
+    public msg as string
+    public __init__(msg as string) =&gt; this.msg = msg
+end
+
+func sss()
+    throw new SomeException(&quot;hello&quot;)
+end
+</code></pre>
+
+<p>To handle an exception, you must put the code that may throw an exception in a "try" block, and put the code that handles the exception in "catch" blocks. The syntax of "try-catch" error handling is:</p>
+<pre><code class="vb">try
+    ...
+catch {exception_object_name} as {exception_type}
+    ...
+catch {exception_object_name} as {exception_type}
+    ...
+...
+end
+</code></pre>
+
+<p>The code between "try" and the first "catch" is the "try block". The one "try" should be followed by at least one "catch" block. Each catch block has a "exception_type". Once an exception is thrown in the try block, the type of the throw exception object will be checked against the "exception_type" of each of the catch blocks in the order of defined in the source code. If a catch block's "exception_type" is the same class or the super class of the throw exception object, this catch block will be executed. And you can access the thrown exception object with variable "{exception_object_name}". If multiple "catch" blocks can match the exception, only the first "catch" block will be executed.</p>
+<p>If no catch-block is matched with the thrown exception, the exception will be handled by the current function's caller's try-catch blocks (if there is any). If no match in the caller's function, the exception will be recursively passed to the related try-catch blocks of functions in the call stack, in the direction from the current function to the top-level code. If still no catch-block is matched, the program will be terminated. </p>
+<p>Note that if an exception is throw, the program will jump to the matched catch block, and will not execute the code after the execption. After a catch block is executed, the program will continue its execution at the end of the matched try-catch block.</p>
+<p>In the above example of checking server communications, we can improve the program by using exceptions. Now if it fails to send the message, the function "send_msg" will throw an exception of type "connect_error".</p>
+<pre><code class="vb">try
+    send_msg()
+    send_msg()
+    send_msg()
+catch e as connection_error
+    println(&quot;Connection Down&quot;)
+end
+</code></pre>
+
+<p>Here is an example that nested try-catch handles one exception:</p>
+<pre><code>@enable_rtti
+class E1
+   public dummy as int
+   public str as string
+   public func __init__(str as string) =&gt; this.str=str
+   public func print() =&gt; println(&quot;E1&quot;+str)
+end
+
+@enable_rtti
+class E2
+   public str as string
+   public dummy as int
+   public func __init__(str as string) =&gt; this.str=str
+   public func print() =&gt; println(&quot;E2&quot;+str)
+end
+
+@enable_rtti
+class E3
+   public dummy as int
+   public dummy2 as int
+   public str as string
+   public func __init__(str as string) =&gt; this.str=str
+   public func print() =&gt; println(&quot;E3&quot;+str)
+end
+
+function f1()
+
+   try
+      f2()
+      println(&quot;try conti&quot;)
+   catch e as E1
+      e.print()
+   catch e as E2
+      e.print()
+   catch e as E3
+      e.print()
+   end
+   println(&quot;Continue&quot;)
+end
+
+function f2()
+
+   try
+      throw new E3(&quot;yo&quot;)
+   catch e as E1
+      print(&quot;f2&quot;)
+      e.print()
+   catch e as E2
+      print(&quot;f2&quot;)
+      e.print()
+   end
+end
+
+f1()
+</code></pre>
+
+<p>This example throws an "E3" in f2 and the function f2 cannot handle the exception. The exception will finally be handled by function "f1". So the output of the program will be:</p>
+<pre><code>E3yo
+Continue
+</code></pre>
+
+<h2 id="122-hardware-generated-exceptions">12.2 Hardware generated exceptions</h2>
+<p>In the above section, we have shown two kinds of exceptions that can be thrown by the hardware: Memory access exception and Zero Division. You can catch these two exceptions with exception class "mem_access_exception" and "zero_div_exception", respectively.</p>
+<pre><code class="vb">func test()
+    dim a as string=null
+    println(a)
+end
+
+
+func wrapper1()
+    try
+        test()
+    catch e as mem_access_exception
+        println(&quot;Caught SEGV&quot;)
+    end
+end
+
+wrapper1()
+wrapper1()
+wrapper1()
+
+func test2[T]() as T
+    dim a as T = 0
+    return 2/a
+end
+
+
+func wrapper2[T,STR as string]()
+    try
+        test2[T]()
+    catch e as div_zero_exception
+        println(STR)
+    end
+end
+
+wrapper2[int,&quot;int&quot;]()
+wrapper2[int,&quot;int&quot;]()
+wrapper2[int,&quot;int&quot;]()
+</code></pre></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"search": 83, "next": 78, "help": 191, "previous": 80};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>7. Modules and Imports - Birdee Language</title>
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+
+                <!-- Collapsed navigation -->
+                <div class="navbar-header">
+                    <!-- Expander button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="../..">Birdee Language</a>
+                </div>
+
+                <!-- Expanded navigation -->
+                <div class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li >
+                                <a href="../..">Welcome</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Birdee Language Mannual <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li >
+    <a href="../0010HelloWorld/">1. Hello world!</a>
+</li>
+                                    
+<li >
+    <a href="../0020Basics/">2. Language Basics</a>
+</li>
+                                    
+<li >
+    <a href="../0030FlowControl/">3. Flow Control</a>
+</li>
+                                    
+<li >
+    <a href="../0040ScopeAndName/">4. Scope and names</a>
+</li>
+                                    
+<li >
+    <a href="../0050Array/">5. Array</a>
+</li>
+                                    
+<li >
+    <a href="../0060Class/">6. Class</a>
+</li>
+                                    
+<li class="active">
+    <a href="./">7. Modules and Imports</a>
+</li>
+                                    
+<li >
+    <a href="../0080Template/">8. Templates</a>
+</li>
+                                    
+<li >
+    <a href="../0090Script/">9. Compile-time scripts</a>
+</li>
+                                    
+<li >
+    <a href="../0100Cpp/">10. Interoperability with C/C++</a>
+</li>
+                                    
+<li >
+    <a href="../0110Functional/">11. Functional Programming</a>
+</li>
+                                    
+<li >
+    <a href="../0120Exception/">12. Exception handling</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tools <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li >
+    <a href="../../Tools/Birdee-playground-(REPL)/">Birdee playground</a>
+</li>
+                                    
+<li >
+    <a href="../../Tools/Compiler-command-line-mannual/">Command line arguments for compiler (birdeec)</a>
+</li>
+                                    
+<li >
+    <a href="../../Tools/bbuild/">The automatic building tool for Birdee - bbuild</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li >
+                                <a rel="next" href="../0060Class/">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li >
+                                <a rel="prev" href="../0080Template/">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#7-modules-and-imports">7. Modules and Imports</a></li>
+            <li><a href="#71-module-import">7.1 Module Import</a></li>
+            <li><a href="#72-symbol-import">7.2 Symbol Import</a></li>
+            <li><a href="#73-all-symbols-import">7.3 All Symbols Import</a></li>
+            <li><a href="#74-auto-import">7.4 Auto Import</a></li>
+            <li><a href="#75-private-symbols">7.5 Private symbols</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="7-modules-and-imports">7. Modules and Imports</h1>
+<p>Birdee programs can be encapsulated into modules. A module is a collection of functions, classes and global variables that can be invoked and used by other Birdee code. A similar concept for Birdee's module is the object files in C/C++ compilation systems. The main difference is that Birdee's modules contains metadata to describe the prototype of the exported functions, the definitions of the classes and the types of the exported variables in the module, while in C/C++, an object file is just a collection of code and variable, and users must write a header file or explicitly declare the variables and functions with "extern" keyword. Such header files are no longer needed in Birdee.</p>
+<p>When a Birdee program is compiled by the "birdeec" compiler, the source code will be converted into a module, which consists of an object file (which can be linked with C/C++ object files) and a metadata file (*.bmm file. "bmm" represents "Birdee Module Metadata") which describes the variables, classes and functions of the module. To use a module that already exists, users can use "import" keyword in the Birdee code. Note that a module can "import" multiple existing modules and all "import" should be written at the beginning of the Birdee code before any other top level code. The functions, classes and variables in the top-level of a module are called symbols. After importing a module, the symbols can be used in the current Birdee module. </p>
+<p>Note that if a module is imported by any syntax above, the top-level code of the imported library will be executed exactly once.</p>
+<p>There are 4 ways to import an external module.</p>
+<h2 id="71-module-import">7.1 Module Import</h2>
+<p>The first form of syntax is:</p>
+<pre><code class="java">import {module_name}
+</code></pre>
+
+<p>The "module_name" is composed of directory names separated by dots ("."). The Birdee compiler will search the local file system for the module to be imported using the path provided by the "module_name". There are two ways setting the root path of searching the modules. One way is to set the "BIRDEE_HOME" environment variable in your OS. The compiler will search "BIRDEE_HOME/blib" for the target module. Another way is to set a module search path in the command line arguments for "birdeec" with "-l" switch. The compiler will first try to find the target module with root directory set by the command line arguments, then by the "BIRDEE_HOME" environment variable. For example, if the "BIRDEE_HOME" is set as "/home/menooker/birdee" and we have a "-l /sourcecode/mylib" argument in the command line, to resolve the code "import sys.net.socket" (let's assume there exists such a module), the compiler will first find "/sourcecode/mylib/sys/net/socket.bmm". If it does not exist, "/home/menooker/birdee/blib/sys/net/socket.bmm" will be searched.</p>
+<p>After importing with this syntax, users can use "{module_name}.{symbol_name}" to access the variables, functions or classes in the module. For example, </p>
+<pre><code class="vb">import sys.net.socket
+sys.net.socket.connect(&quot;192.168.0.1&quot;,999)
+</code></pre>
+
+<p>The "{module_name}.{symbol_name}" is called qualified name of a symbol. However, the module we are talking about here has not been implemented yet unfortunately.</p>
+<h2 id="72-symbol-import">7.2 Symbol Import</h2>
+<p>The second form of syntax is:</p>
+<pre><code class="java">import {module_name}:{symbol_name}
+</code></pre>
+
+<p>This form of import will do "module import" just as the last section does. In addition, it will import a symbol name of a variable, function or class from the target module. Users can simply use "symbol_name" to access the the symbol instead of the long qualified name. For example</p>
+<pre><code class="vb">import sys.net.socket:connect
+connect(&quot;192.168.0.1&quot;,999)
+</code></pre>
+
+<h2 id="73-all-symbols-import">7.3 All Symbols Import</h2>
+<p>All symbols import will do "Symbol Import" on all symbols of the target module. The syntax is:</p>
+<pre><code class="java">import {module_name}:*
+</code></pre>
+
+<p>After all symbols import, the variables, functions and classes can be accessed using the names instead of qualified names. For example</p>
+<pre><code class="vb">import sys.net.socket:*
+connect(&quot;192.168.0.1&quot;,999)
+</code></pre>
+
+<h2 id="74-auto-import">7.4 Auto Import</h2>
+<p>The compiler will automatically import all symbols from some core modules of Birdee, such as "birdee.bmm". "birdee.bmm" contains the core features like "string", "println".</p>
+<h2 id="75-private-symbols">7.5 Private symbols</h2>
+<p>As we have discussed above, the classes, variables and functions (include function declartions) in the top-level will be exported in a Birdee module, which can be used by other modules. Sometimes, developers do not want to expose the internal classes/variables/functions of a module. In this case, they can add "@private" before the symbols (classes/variables/functions) that they want to hide from other modules. If a symbol is marked "private", other modules cannot access it by importing the module. Here is an example of a module with private symbols:</p>
+<pre><code class="vb">@private dim private_v = 1 #the &quot;private&quot; can be followed by a space
+
+@private
+class someclass #the &quot;private&quot; can be followed by a newline
+
+end
+
+function foo() #by default, it is public
+end
+</code></pre></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"search": 83, "next": 78, "help": 191, "previous": 80};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

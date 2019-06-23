@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>6. Class - Birdee Language</title>
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+
+                <!-- Collapsed navigation -->
+                <div class="navbar-header">
+                    <!-- Expander button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="../..">Birdee Language</a>
+                </div>
+
+                <!-- Expanded navigation -->
+                <div class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li >
+                                <a href="../..">Welcome</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Birdee Language Mannual <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li >
+    <a href="../0010HelloWorld/">1. Hello world!</a>
+</li>
+                                    
+<li >
+    <a href="../0020Basics/">2. Language Basics</a>
+</li>
+                                    
+<li >
+    <a href="../0030FlowControl/">3. Flow Control</a>
+</li>
+                                    
+<li >
+    <a href="../0040ScopeAndName/">4. Scope and names</a>
+</li>
+                                    
+<li >
+    <a href="../0050Array/">5. Array</a>
+</li>
+                                    
+<li class="active">
+    <a href="./">6. Class</a>
+</li>
+                                    
+<li >
+    <a href="../0070Import/">7. Modules and Imports</a>
+</li>
+                                    
+<li >
+    <a href="../0080Template/">8. Templates</a>
+</li>
+                                    
+<li >
+    <a href="../0090Script/">9. Compile-time scripts</a>
+</li>
+                                    
+<li >
+    <a href="../0100Cpp/">10. Interoperability with C/C++</a>
+</li>
+                                    
+<li >
+    <a href="../0110Functional/">11. Functional Programming</a>
+</li>
+                                    
+<li >
+    <a href="../0120Exception/">12. Exception handling</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tools <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li >
+    <a href="../../Tools/Birdee-playground-(REPL)/">Birdee playground</a>
+</li>
+                                    
+<li >
+    <a href="../../Tools/Compiler-command-line-mannual/">Command line arguments for compiler (birdeec)</a>
+</li>
+                                    
+<li >
+    <a href="../../Tools/bbuild/">The automatic building tool for Birdee - bbuild</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li >
+                                <a rel="next" href="../0050Array/">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li >
+                                <a rel="prev" href="../0070Import/">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#6-class">6. Class</a></li>
+            <li><a href="#61-basic-definitions">6.1 Basic definitions</a></li>
+            <li><a href="#62-explanations-of-terminologies">6.2 Explanations of terminologies</a></li>
+            <li><a href="#63-member-functions">6.3 Member functions</a></li>
+            <li><a href="#64-access-modifier">6.4 Access modifier</a></li>
+            <li><a href="#65-initialization-destruction">6.5 Initialization &amp; destruction</a></li>
+            <li><a href="#66-operator-overloading">6.6 Operator overloading</a></li>
+            <li><a href="#67-class-inherit">6.7 Class inherit</a></li>
+            <li><a href="#68-run-time-type-information-rtti">6.8 Run Time Type Information (RTTI)</a></li>
+            <li><a href="#69-structs">6.9 Structs</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="6-class">6. Class</h1>
+<h2 id="61-basic-definitions">6.1 Basic definitions</h2>
+<p>A class is a structured collection of data. Related variables can be include in a class. To define a class, use the below syntax:</p>
+<pre><code class="vb">class {class_name}
+    ...
+end [class]
+</code></pre>
+
+<p>The body of a class ("..." in above syntax) can be declaration of member variables and member functions.
+To define a member variable, use the below syntax within the "class ... end":</p>
+<pre><code class="vb">public {variable_name} as {type}
+</code></pre>
+
+<p>or </p>
+<pre><code class="vb">private {variable_name} as {type}
+</code></pre>
+
+<p>Note: current version of Birdee does not allow assign initial values to member variables. </p>
+<p>The "public" and "private" keywords specify the access modifier of the variable. We will discusses it a bit later. Now we write our first class:</p>
+<pre><code class="vb">class bird
+    public name as string
+    public weight as float
+end
+</code></pre>
+
+<p>The class describes a bird with a name and a weight. You cannot use the member variables until you create an instance of the class. To create an instance of "bird" class, use "new" keyword:</p>
+<pre><code class="vb">dim mybird as bird = new bird
+mybird.name = &quot;Birdee&quot;
+mybird.wright = 2.3
+println(mybird.name)
+</code></pre>
+
+<p>The member variables can be accessed by a "." after a class instance expression, with the name of the member variable.
+The above example creates an instance of class "bird" and assign it to a variable "mybird" (Note that the class name can be used as a type!). The example then assign the member variables of "mybird". The member variables belongs to the instances of the class. Thus, you cannot use them without a reference to an instance.</p>
+<h2 id="62-explanations-of-terminologies">6.2 Explanations of terminologies</h2>
+<h3 id="621-class-vs-class-instance-vs-object">6.2.1 Class v.s. Class Instance v.s. Object</h3>
+<p>As defined above, a class is the definition of structured data. A class (for example, "bird" class) is a type for some data.</p>
+<p>Class instance is a piece of concrete data of some class. "string" is a class, and a string variable is a class instance of string. Class instances are sometimes called "Objects".</p>
+<p>Note that different instances of a class are independent with each other. Assigning the member variable of one instance will not affect the same member variable of others. </p>
+<h3 id="622-member-variables-fields">6.2.2 Member variables &amp; fields</h3>
+<p>They have the same meaning.</p>
+<h3 id="623-member-functions-methods">6.2.3 Member functions &amp; methods</h3>
+<p>They have the same meaning.</p>
+<h3 id="624-reference">6.2.4 Reference</h3>
+<p>Once an object is allocated in memory, how can you find it and operate on it? The answer is by "reference". A reference points to a instance of class (or an array). Variables of class/array types holds the references to the instances in the memory (e.g. dim mybird as bird). So copying variables of class/array types copies the references to the instances, instead of copying the object/array themselves.</p>
+<p>Here we introduce a special reference constant "null". It points to actually nothing. You can assign null to any reference typed variable (class, array). If a reference is null, it means that it is an empty value. You should never call a member method or get the field of a null reference, or an error will occur. You can check if a reference is null by:</p>
+<pre><code class="vb">if some_reference !== null then
+...
+end
+</code></pre>
+
+<p>Note that for class object variables, the initial values are null.</p>
+<h3 id="625-this">6.2.5 "this"</h3>
+<p>"this" is a reference to the current object in the member function. It is a Birdee keyword that can only be used in member functions. For Birdee code</p>
+<pre><code class="vb">obj.funct()
+</code></pre>
+
+<p>when it is run, in the method "funct", "this" will point to the object being called - in this case, "obj".</p>
+<h2 id="63-member-functions">6.3 Member functions</h2>
+<p>Member functions can be defined within the scope of the class:</p>
+<pre><code class="vb">{access_modifier} function {function_name} ([ {parameter1} as {type}, {parameter2} as {type}, ... ]) [as  {type}]
+    ...
+end [function]
+</code></pre>
+
+<p>It is similar to the definition of normal functions, except that member functions are defined inside a class, and there is an "access_modifier" at the beginning of the function. The "access_modifier" can be "public", "private" or omitted (which will be explained later). </p>
+<p>We can write a member function in the above "bird" class:</p>
+<pre><code class="vb">class bird
+    public name as string
+    public weight as float
+    public function fly()
+        println(&quot;my name is &quot;+ this.name + &quot;. I am flying!&quot;)
+    end
+end
+</code></pre>
+
+<p>You can call "fly" on an instance of "bird" class:</p>
+<pre><code class="vb">dim mybird as bird = new bird
+mybird.name = &quot;Birdee&quot;
+mybird.wright = 2.3
+mybird.fly()
+</code></pre>
+
+<p>The above example of "bird" class uses a keyword "this" of Birdee to represent the current instance calling the member function (see the line: println("my name is "+ this.name + ". I am flying!") ) . When the member function is called ( mybird.fly() ), "this" will be a reference to the instance pointed by "mybird". "this" keyword cannot be used outside the class definition. Also, in the member functions, to use the member variables, "this" keyword can be omitted. For example "this.name" can be simplified to "name", when name is a member variable of the same class. Also note that for a member function, if there is a local variable (variables defined in the body of a function or in the arguments) having the same name of a member variable, using the name will result in using the local variable. To use the member variable have a conflicting name, use "this.XXX" instead. (XXX is the conflicting name).</p>
+<p>Note that the member functions cannot be accessed without an instance.</p>
+<h2 id="64-access-modifier">6.4 Access modifier</h2>
+<p>We finally explain what is "private" and "public" in front of the member variables and functions. If a member variable or function is defined "private", no one can access it unless it is a member function of the same class, for example:</p>
+<pre><code class="vb">class bird
+    public name as string
+    public weight as float
+    private secret_name as string
+end
+
+dim mybird as bird = new bird
+mybird.secret_name=&quot;sadas&quot;
+</code></pre>
+
+<p>The above code will not compile, because "secret_name" is a private member. Access control (making members private/public) is useful when you have some internal variables or functions that you do not want other people to have access to. But remind that a member function can always access all members of the same class, regardless of being private or public.</p>
+<p>Note that a member function's access modifier can be omitted when defining it, and the access is set to "public" by default.</p>
+<h2 id="65-initialization-destruction">6.5 Initialization &amp; destruction</h2>
+<p>We can now create instances by "new". But what if we want to initialze the object while creating it? The syntax of "New with initialization" can be use.</p>
+<pre><code class="vb">new {class_name}.{method_name}([arg1,arg2,....])
+</code></pre>
+
+<p>The class_name is the name of the class of the instance to be created. The method_name is the member function name to be called after the creation of the object. The function should be a public function. Here is an example:</p>
+<pre><code class="vb">class bird
+    public name as string
+    public weight as float
+    public void init(name as string, weight as float)
+        this.name=name
+        this.weight=weight
+    end
+end
+
+dim mybird as bird = new bird.init(&quot;birdee&quot;,2.13)
+</code></pre>
+
+<p>The above example creates and initializes a "bird" object, which is equivalent to:</p>
+<pre><code class="vb">dim mybird as bird = new bird
+mybird.init(&quot;birdee&quot;,2.13)
+</code></pre>
+
+<p>Note: the "New with initialization" will discard the return value of the called function and will always return the created instance.</p>
+<p>When the class has a "__init__" method defined in the class body, users can use "New with initialization" in a simpler way. The following code:</p>
+<pre><code class="vb">dim obj = new SomeClass(&quot;hi&quot;)
+</code></pre>
+
+<p>will create an new instance of class SomeClass and call obj.__init__("hi") for initialization. </p>
+<p>If the "__init__" method has no arguments, users can further save the "(...)" for calling "__init__":</p>
+<pre><code class="vb">class SomeClass
+    public function __init__()
+    end
+end
+dim obj = new SomeClass   #__init__ will be called here.
+</code></pre>
+
+<p>Note that "__init__" must be a public function in the class.</p>
+<p>Birdee uses garbage collection for memory management, which means when the object created is no longer used (when there are no references pointing to the object), the object will be automatically delected. If the object has "__del__" method defined, when it is deleted and, the method will be called. You can do some finalization work in this method.</p>
+<h2 id="66-operator-overloading">6.6 Operator overloading</h2>
+<p>Operator overloading means you can apply basic operators (like +,-,*,/,...) on you own class and define your classes' own behavior on them.</p>
+<p>We are acutally familar with the use of operator overload, which is used in "+" operator of string. (Don't forget that "string" is simply a class defined by Birdee!). We can use "+" to concatenate two strings:</p>
+<pre><code class="vb">println(&quot;string A&quot; + &quot;string B&quot;)
+</code></pre>
+
+<p>There is no magic in it and Birdee implements it using operator overload.</p>
+<p>To overload operator "+", you must define a special member function "__add__" in your class:</p>
+<pre><code class="vb">class complex
+    public real as double
+    public imaginary as double
+
+    public function __add__(complex other) as complex
+        return new complex:set(this.real + other.real, this.imaginary + other.imaginary)
+    end
+
+    public function set(real as double,imaginary as double)
+        this.real=real
+        this.imaginary=imaginary
+    end
+end
+
+dim v1 = new complex:set(1,3), v2 = new complex:set(2,4)
+dim v3 = v1 + v2
+println(double2str(v3.real))
+</code></pre>
+
+<p>The above example defines a complex number class. It overloads "+" by the function "__add__". The function accepts another "complex" object and creates a new complex object as the result. It then creates two complex numbers (1,3) and (2,4), add them and store in variable "v3" and print the real part of the result. The line "dim v3 = v1 + v2" will be equivalent to:</p>
+<pre><code class="vb">dim v3 = v1.__add__(v2)
+</code></pre>
+
+<p>There are other operators that can be overloaded. The operators and functions to implement are listed in the below table:</p>
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Function Name to implement</th>
+<th>Operand</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>+</td>
+<td>__add__</td>
+<td>The other object</td>
+</tr>
+<tr>
+<td>-</td>
+<td>__sub__</td>
+<td>The other object</td>
+</tr>
+<tr>
+<td>*</td>
+<td>__mul__</td>
+<td>The other object</td>
+</tr>
+<tr>
+<td>/</td>
+<td>__div__</td>
+<td>The other object</td>
+</tr>
+<tr>
+<td>%</td>
+<td>__mod__</td>
+<td>The other object</td>
+</tr>
+<tr>
+<td>==</td>
+<td>__eq__</td>
+<td>The other object</td>
+</tr>
+<tr>
+<td>!=</td>
+<td>__ne__</td>
+<td>The other object</td>
+</tr>
+<tr>
+<td>&gt;=</td>
+<td>__ge__</td>
+<td>The other object</td>
+</tr>
+<tr>
+<td>&lt;=</td>
+<td>__le__</td>
+<td>The other object</td>
+</tr>
+<tr>
+<td>&gt;</td>
+<td>__gt__</td>
+<td>The other object</td>
+</tr>
+<tr>
+<td>&lt;</td>
+<td>__lt__</td>
+<td>The other object</td>
+</tr>
+<tr>
+<td>||</td>
+<td>__logic_or__</td>
+<td>The other object</td>
+</tr>
+<tr>
+<td>|</td>
+<td>__or__</td>
+<td>The other object</td>
+</tr>
+<tr>
+<td>&amp;&amp;</td>
+<td>__logic_and__</td>
+<td>The other object</td>
+</tr>
+<tr>
+<td>&amp;</td>
+<td>__and__</td>
+<td>The other object</td>
+</tr>
+<tr>
+<td>^</td>
+<td>__xor__</td>
+<td>The other object</td>
+</tr>
+<tr>
+<td>!</td>
+<td>__not__</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Array read</td>
+<td>__getitem__</td>
+<td>The "index"</td>
+</tr>
+<tr>
+<td>Array write</td>
+<td>__setitem__</td>
+<td>The "index" and the object to "put" in</td>
+</tr>
+</tbody>
+</table>
+<p>For a class object, if an operator is applied, the corresponding method will be called. If the method is not defined or it is private, a compile error will be raised.</p>
+<p>For overloaded binary opeartors (operators with two opearnds), "A ? B", where "?" is any binary operators, is equivalent to "A.__XXXX__(B)", where "__XXXX__" is the corresponding method. For overloaded unary operators (operators with one operand), using them is equivalent to "A.__XXXX__()", where "__XXXX__" is the corresponding method.</p>
+<p>Operators for array read &amp; write are special cases for operator overloading. These two operators overloads the "[]" operator which is originally used for accessing array elements. If the indexed object is to be read "from" an object, the "__getitem__" method will be called. For Birdee code like</p>
+<pre><code class="vb">dim a = obj[&quot;123&quot;]
+</code></pre>
+
+<p>where the variable "obj" is not an array, the compiler will first the "__getitem__" method of the class of "obj". The actual generated code will be </p>
+<pre><code class="vb">dim a = obj.__getitem__(&quot;123&quot;)
+</code></pre>
+
+<p>Similarly, if the indexed element is written (on the left of the "="), the method "__setitem__" will be called. The first parameter should be the index and the second parameter should be the value to be written to the object. For example, the following two lines of code have the same effect:</p>
+<pre><code class="vb">obj[&quot;123&quot;]=34
+obj.__setitem__(&quot;123&quot;,34)
+</code></pre>
+
+<p>The existence of the method "__setitem__" is optional, as long as you never "write" to an indexed element. However, if you want to overload "[]", the method "__getitem__" should always be defined in the class.</p>
+<p>Note that the type of parameters of methods for operator overloading is not necessarily the same class of the current class. They can be any valid types.</p>
+<p>Also note that you can use function templates for operator overloading. Templates will be later introduced.</p>
+<h2 id="67-class-inherit">6.7 Class inherit</h2>
+<h3 id="671-basic-inherit">6.7.1 Basic inherit</h3>
+<p>Class can inherit another class's public members through class inherit. The inherited class is also called parent class. A class with parent class is usually viewed as a specification of its parent. </p>
+<p>The following codes:</p>
+<pre><code class="vb">class ParentClass
+    private a as int
+    public b as int
+    public function get() as int
+        return a
+    end
+end
+class SomeClass : ParentClass
+    public function __init__()
+    end
+    public function get2() as int
+        return b + get()
+    end
+end
+</code></pre>
+
+<p>define a class named "SomeClass" with a parent class named "ParentClass", and SomeClass inherits member field "b" and member function "get()" from ParentClass, note that member field "a" is not inherited since it's private to ParentClass. Also, SomeClass can access the member it inherits inside class directly, as showed in the example.</p>
+<p>Besides, the following code:</p>
+<pre><code class="vb">class ParentClass
+    public function __init__()
+    end
+    public function __del__()
+    end
+    public function __not__() as boolean
+        return true
+    end
+end
+class SomeClass : ParentClass
+    public function __init__()
+    end
+    public function __del__()
+    end
+end
+
+dim foo = new SomeClass
+dim bar = !foo
+</code></pre>
+
+<p>shows an example of class inherit with special member functions. Note that in code "dim foo = new SomeClass", the function <strong>init</strong>() of SomeClass will be automatically called, but <strong>init</strong>() of ParentClass will not! Also, the <strong>del</strong>() of SomeClass will be automatically called when garbadge collected, but <strong>del</strong>() of ParentClass will not. And the code "dim bar = !foo" won't compile because SomeClass does not contain an operator overloading function for !. Even if SomeClass inherits one from ParentClass, the compiler will not automatically call it.</p>
+<h3 id="672-super">6.7.2 "super"</h3>
+<p>What if we want the functions in parent be called during above scenarios? We can use the "super" keyword. Similar to "this" keyword, "super" keyword represents a built-in reference inside class. However, "this" refers to the instance itself, while "super" refers to the parent part of the instance. That is to say, we can use "super" keyword to only access the members inherited from parent. </p>
+<p>With "super" keyword, the above code can be modified to:</p>
+<pre><code class="vb">class ParentClass
+    public function __init__()
+    end
+    public function __del__()
+    end
+    public function __not__() as boolean
+        return true
+    end
+end
+class SomeClass : ParentClass
+    public function __init__()
+        super.__init__()
+    end
+    public function __del__()
+        super.__del__()
+    end
+    public function __not__() as boolean
+        return super.__not__()
+    end
+end
+
+
+dim foo = new SomeClass
+dim bar = !foo
+</code></pre>
+
+<p>Then, the code will compile and the special functions of parent will be called automatically.</p>
+<h2 id="68-run-time-type-information-rtti">6.8 Run Time Type Information (RTTI)</h2>
+<p>You can get the type information of an object at the run time, as long as the type of the object has Run Time Type Information (RTTI) enabled. The RTTI describes the name and the inherience information of a class. By default, RTTI will not be generated for classes unless the classes has virtual functions. You can manually enable RTTI on a class by adding "@enable_rtti" before the "class" keyword of a class. The following example shows three classes with RTTI. Note that classes with virtual functions automatically include RTTI. </p>
+<pre><code class="vb">@enable_rtti
+class A
+end
+
+class B
+   @virtual public function b()
+   end
+end
+
+class C
+   public c as int
+   @virtual public function b()
+   end
+end
+</code></pre>
+
+<p>Note that if a class has RTTI enabled, all classes extending (inheriting from) it will be automatically marked RTTI-enabled. If a class is manually marked <code>enable_rtti</code>, either it has no parent class, or it should extend a class with RTTI.</p>
+<p>Given an expression, the RTTI data can be fetched by the keyword <code>typeof</code>. The returned value of <code>typeof(some_expression)</code> is an object of class <code>type_info</code>, which contains the RTTI of the class of the expression. The class <code>type_info</code> has a method to get the name of the class - <code>get_name</code>, and it has a method</p>
+<p><code>public function is_parent_of(child as type_info) as boolean</code></p>
+<p>to check if another class (represented by RTTI) is inherited from the current class. Also, the <code>type_info</code> class has a method </p>
+<p><code>public function get_parent() as type_info</code></p>
+<p>to get RTTI of the parent class. If a class has no parent class, the method returns null. See the following example:</p>
+<pre><code class="vb">dim a as B = new C
+println(typeof(a).get_name()) # should print &quot;XXXX.C&quot;
+println(typeof(a).get_parent().get_name()) # should print &quot;XXXX.B&quot;
+</code></pre>
+
+<p>The variable "a" is declared as an object in class B. But it is assigned with an instance of class C. Using <code>typeof</code> operator, we can get the exact type of the variable "a".</p>
+<p>The <code>typeof</code> operator will execute the expression and extract the reference to the RTTI object at the run time. The expressions to be evaluated by <code>typeof</code> should be of classes with RTTI, otherwise the compiler will throw an error.</p>
+<p>A unique RTTI object will be created for each different class. Class template instances are different classes with different RTTIs.  </p>
+<p>Given a type, the RTTI can be fetched by a special function <code>get_type_info[T]</code> defined in module <code>rtti</code>. You can import this function by <code>import rtti:get_type_info</code>. You need to replace <code>T</code> with the class you need to fetch for RTTI. <code>T</code> can only be classes with RTTI.</p>
+<p>RTTI is useful when a variable is assigned with a subclass of the class which the variable is defined. Developers may want to check if the variable really holds an object in a subclass. Since RTTI for a class is unique, we can compare the references of <code>type_info</code> (RTTI) by <code>===</code> to check that:</p>
+<pre><code class="vb">import rtti:get_type_info
+dim a as B = new C
+if typeof(a)===get_type_info[C]() then
+   println(&quot;the variable a is of class C&quot;)
+end
+</code></pre>
+
+<p>The subclass checking and safe down-casting can be done with RTTI. Birdee provides the function <code>dyn_cast</code> in the module <code>rtti</code> to safely convert a superclass reference to a subclass reference.</p>
+<pre><code class="vb">import rtti:dyn_cast
+dim a as B = new C
+dim c as C = dyn_cast[C](a)
+priintln(int2str(c.c))
+</code></pre>
+
+<p>The above code converts a variable "a" of superclass "B" to variable "c" of subclass "C", using <code>dyn_cast[C]</code>. The function <code>dyn_cast[C]</code> will convert the reference in the parameter to a reference of class "C". If the object pointered by the given parameter is not an instance of "C" or subclass of "C", <code>dyn_cast[C]</code> will return null. You can replace 'C' here with other classes with RTTI. <code>dyn_cast[...]</code> is a system provided function, which internally compares the RTTIs of the classes.</p>
+<p>Enabling RTTI has some overhead in space. If a class has RTTI, all of its instance has one additional hidden member pointing to the <code>type_info</code> object of the class.</p>
+<h2 id="69-structs">6.9 Structs</h2>
+<p>Struct is a similar but different concept as class. Structs can be similarly defined as classes. You just need to replace "class" keyword with "struct".</p>
+<pre><code class="vb">struct {name}
+...
+end [struct]
+</code></pre>
+
+<p>The member variables and functions can be similarly defined and used in structs. </p>
+<p>So what's the difference between struct and class? One key difference is that for local variables defined in functions, structs are allocated on the stack and class objects are allocated on the heap. The access and allocation of data on the stack is much faster than on the heap. Also, once the program leaves the scope of a function, the space of the local struct variables will be deallocated. </p>
+<p>The second difference is that, in the context of Birdee, variables of "class" has "reference semantic", while variables of "struct" has "value semantic". A class variable (including local, global and member one) is always a reference to an object in the heap or null. If you copy a class object variable, you just copy the reference to the object, not the actual data of object. On the other hand, copying struct variables (by operator "=") or implicitly copying struct variables (in function parameters), you will copy the whole struct object. Hence, struct variables are "values", not "references".</p>
+<p>If a class/struct, say "A", has a class, say "B", member variable, the class/struct A only holds a refernce to B. But if "B" is changed to struct, "B" will embeded into the memory layout of "A", which means allocating an object of "A" will implicitly allocate space for "B". </p>
+<p>So you should be careful when the struct has many fields - copying these structs involves large amounts of memory copying.</p>
+<p>Some notes on struct:</p>
+<ul>
+<li>Operator overloading is supported in structs.</li>
+<li>You cannot enable RTTI on struct</li>
+</ul>
+<p>Important: The "__del__" methods of structs will not be automatically called when the structs objects are destroyed!</p></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"search": 83, "next": 78, "help": 191, "previous": 80};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

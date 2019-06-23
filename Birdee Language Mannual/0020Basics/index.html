@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>2. Language Basics - Birdee Language</title>
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+
+                <!-- Collapsed navigation -->
+                <div class="navbar-header">
+                    <!-- Expander button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="../..">Birdee Language</a>
+                </div>
+
+                <!-- Expanded navigation -->
+                <div class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li >
+                                <a href="../..">Welcome</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Birdee Language Mannual <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li >
+    <a href="../0010HelloWorld/">1. Hello world!</a>
+</li>
+                                    
+<li class="active">
+    <a href="./">2. Language Basics</a>
+</li>
+                                    
+<li >
+    <a href="../0030FlowControl/">3. Flow Control</a>
+</li>
+                                    
+<li >
+    <a href="../0040ScopeAndName/">4. Scope and names</a>
+</li>
+                                    
+<li >
+    <a href="../0050Array/">5. Array</a>
+</li>
+                                    
+<li >
+    <a href="../0060Class/">6. Class</a>
+</li>
+                                    
+<li >
+    <a href="../0070Import/">7. Modules and Imports</a>
+</li>
+                                    
+<li >
+    <a href="../0080Template/">8. Templates</a>
+</li>
+                                    
+<li >
+    <a href="../0090Script/">9. Compile-time scripts</a>
+</li>
+                                    
+<li >
+    <a href="../0100Cpp/">10. Interoperability with C/C++</a>
+</li>
+                                    
+<li >
+    <a href="../0110Functional/">11. Functional Programming</a>
+</li>
+                                    
+<li >
+    <a href="../0120Exception/">12. Exception handling</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tools <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li >
+    <a href="../../Tools/Birdee-playground-(REPL)/">Birdee playground</a>
+</li>
+                                    
+<li >
+    <a href="../../Tools/Compiler-command-line-mannual/">Command line arguments for compiler (birdeec)</a>
+</li>
+                                    
+<li >
+    <a href="../../Tools/bbuild/">The automatic building tool for Birdee - bbuild</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li >
+                                <a rel="next" href="../0010HelloWorld/">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li >
+                                <a rel="prev" href="../0030FlowControl/">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#2-language-basics">2. Language Basics</a></li>
+            <li><a href="#21-variables-and-expressions">2.1 Variables and expressions</a></li>
+            <li><a href="#22-comment">2.2 Comment</a></li>
+            <li><a href="#23-function">2.3 Function</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="2-language-basics">2. Language Basics</h1>
+<p>In this section, the basic syntax of Birdee will be explained, and building more complex programs become possible.</p>
+<h2 id="21-variables-and-expressions">2.1 Variables and expressions</h2>
+<p>Variables are holders of data. They have types specified when they are defined. There are basic types in Birdee, which include boolean (true/false), byte (8-bit signed integer), int (32-bit signed integer), long (64-bit signed integer), uint (32-bit unsigned integer), ulong (64-bit unsigned integer), float (32-bit float-point number), double (64-bit float-point number) and pointer (native pointer type). Complex types like array and class will be explained later. (Note: the class type "string" is one of the most commonly used class in Birdee, and we have already used it in our "hello world" example!)</p>
+<h3 id="211-variables-definitions">2.1.1 Variables definitions</h3>
+<p>To define a variable, use the keyword "dim". The basic syntax is shown below. The variable_name can be any valid name composed by "_", numbers (0-9) and English characters (a-z and A-Z). In addition, the variable_name should not be one of the keywords of Birdee, such as "dim" and "as". The type can be a basic type, array type or class type.</p>
+<pre><code class="vb">dim {variable_name} as {type}
+</code></pre>
+
+<p>Below is an example to define a variable named "v" with integer type in the top-level scope.</p>
+<pre><code class="vb">dim v as int
+</code></pre>
+
+<p>You can assign a value to the variable when defining it.</p>
+<pre><code class="vb">dim v as int = 123
+dim str as string = &quot;hello&quot;
+</code></pre>
+
+<p>You can define multiple variables in one line with only one "dim" keyword, separated by comma. (and you can still use "=" to assign an initial value). </p>
+<pre><code class="vb">dim v as int = 123, str as string = &quot;hello&quot;, length as float
+</code></pre>
+
+<p>The type can be omitted and inferred by the compiler in a variable definition when the definition has an initial value assigned. The above example code can be simplified to:</p>
+<pre><code class="vb">dim v = 123, str = &quot;hello&quot;, length as float
+</code></pre>
+
+<p>Note that the variable "length" has no initial value assigned, so the type must be given.</p>
+<h3 id="212-variable-assignment">2.1.2 Variable assignment</h3>
+<p>To use a variable, you should first define it with a specific type (or assign an initial value to it). For example,</p>
+<pre><code class="vb">dim v1 as int, v2 as float, v3 as string, v4 as int
+</code></pre>
+
+<p>You can assign values to variables by "=":</p>
+<pre><code class="vb">v1=123
+v2=3.14
+v3=&quot;birdee&quot;
+</code></pre>
+
+<p>Note that in the above code, the value "birdee", which is surrounded by a pair of quotation marks ("), is a string literal. The string literals will be explained later.</p>
+<p>Variable does not allow to be assigned with incompatable types. For example, the following two lines of code are not allowed by Birdee.</p>
+<pre><code class="vb">v1=&quot;123&quot;
+v3=321
+</code></pre>
+
+<p>It is because "v1" is of int type, which cannot be assigned a string value. And "v3" is a string variable, and does not accept integers.</p>
+<h3 id="213-operators">2.1.3 Operators</h3>
+<p>Birdee allows arithmetic(+,-,*,/,%, etc.) and logical operators (&amp;, &amp;&amp; ,| , ||, etc.) in expressions. The meanings and precedence of these operators are shown below:</p>
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Meaning</th>
+<th>Precedence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>*</td>
+<td>Multiplication</td>
+<td>15</td>
+</tr>
+<tr>
+<td>/</td>
+<td>Division</td>
+<td>15</td>
+</tr>
+<tr>
+<td>%</td>
+<td>Remainder</td>
+<td>15</td>
+</tr>
+<tr>
+<td>+</td>
+<td>Addition</td>
+<td>14</td>
+</tr>
+<tr>
+<td>-</td>
+<td>Substraction</td>
+<td>14</td>
+</tr>
+<tr>
+<td>&lt;</td>
+<td>Less than</td>
+<td>11</td>
+</tr>
+<tr>
+<td>&gt;</td>
+<td>Larger than</td>
+<td>11</td>
+</tr>
+<tr>
+<td>&gt;=</td>
+<td>Larger than or equal</td>
+<td>11</td>
+</tr>
+<tr>
+<td>&lt;=</td>
+<td>Less than or equal</td>
+<td>11</td>
+</tr>
+<tr>
+<td>==</td>
+<td>Value equal</td>
+<td>10</td>
+</tr>
+<tr>
+<td>!=</td>
+<td>Value not equal</td>
+<td>10</td>
+</tr>
+<tr>
+<td>===</td>
+<td>Reference equal (for class objects/arrays)</td>
+<td>10</td>
+</tr>
+<tr>
+<td>!==</td>
+<td>Reference not equal (for class objects/arrays)</td>
+<td>10</td>
+</tr>
+<tr>
+<td>&amp;</td>
+<td>Bitwise and</td>
+<td>9</td>
+</tr>
+<tr>
+<td>^</td>
+<td>Bitwise xor</td>
+<td>8</td>
+</tr>
+<tr>
+<td>|</td>
+<td>Bitwise or</td>
+<td>7</td>
+</tr>
+<tr>
+<td>&amp;&amp;</td>
+<td>Logical and</td>
+<td>6</td>
+</tr>
+<tr>
+<td>||</td>
+<td>Logical or</td>
+<td>5</td>
+</tr>
+<tr>
+<td>=</td>
+<td>Assignment</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+<p>You can use brackets "()" to change the default precedence.</p>
+<p>TBD: explain Logical AND and OR</p>
+<p>For value types (integers, floats, pointers, ...), the operators "==" and "===" are equivalent (so are "!=" and "!=="). For references (class objects and arrays), the operators "==" and "!=" call the methods "<strong>eq</strong>" and "<strong>ne</strong>" of the left hand side object and use the right hand side object as the parameter, which compare whether the value of objects are equal. The operators "===" and "!==" only compares the references themselves.</p>
+<p>For now, we can write a bit more complex programs:</p>
+<pre><code class="vb">dim v1 as int, v1 as int, v3 as float
+v1 = (12345 + 999) * 6789
+v2 = v1 % 32
+dim v4 as boolean = v2 &gt; v1
+println(int2str(v2))
+println(bool2str(v4))
+</code></pre>
+
+<p>Note: "println", "bool2str" and "int2str" are system functions. "println" will print a line of string on the console (we have already used it in our "hello world"). "bool2str" and "int2str" are functions that convert boolean and int values to strings, respectively.</p>
+<h3 id="214-operators-for-class-types">2.1.4 Operators for class types</h3>
+<p>The operators in the above section are originally for basic types like int, float and boolean. However, Birdee allow you to apply operators on class types. We will explain it later, but we will now introduce an operator for our old friend - the string class, which is widely used. You can add (+) two strings by the operator "+" to concatenate one after the other:</p>
+<pre><code class="vb">dim v1 = &quot;birdee&quot;
+dim v2 as string
+v2= v1 + &quot; is awesome&quot;
+println(v2)
+</code></pre>
+
+<p>The above funtion concatenate strings "birdee" and " is awesome", then prints out the result string "birdee is awesome".</p>
+<h3 id="215-auto-type-conversion">2.1.5 Auto type conversion</h3>
+<p>If the types of the operands of an operator do not match, and the operands are both of numeric types (int, uint, float, etc.), Birdee compiler will try to do auto conversion. In an operator expression, the type with a smaller "promotion value" will be converted to the type with a larger "promotion value", and the resulting type of the expression will be the larger "promotion value" type. The promotion values for numeric types are listed below:</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Promotion values</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>byte</td>
+<td>-1</td>
+</tr>
+<tr>
+<td>int</td>
+<td>0</td>
+</tr>
+<tr>
+<td>uint</td>
+<td>1</td>
+</tr>
+<tr>
+<td>long</td>
+<td>2</td>
+</tr>
+<tr>
+<td>ulong</td>
+<td>3</td>
+</tr>
+<tr>
+<td>float</td>
+<td>4</td>
+</tr>
+<tr>
+<td>double</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+<p>For example, </p>
+<pre><code class="vb">dim a as byte = 1, dim b as long =3
+b=a+b
+dim c as float=0.1
+dim d = c+b
+</code></pre>
+
+<p>The above program adds a byte (a) with a long (b). It will first convert the value of "a" to type long, and add with "b", resulting in a type long value. Similarly, when adding "c" with "b", it will convert "b" to type float and the result is in type float, making variable "d" a float variable.</p>
+<p>Important note: The assignment operator does not do auto conversion like above! It will try to convert the value on the right of "=" (we call it Rvalue) to the variable on the left of "=" (called Lvalue), disregarding the promotion values.</p>
+<h3 id="216-string-literals">2.1.6 String literals</h3>
+<p>We have met string literals in above examples. Characters surrounded by a pair of quotation marks (") represents a string literal, Birdee also supports escape characters like "\n", "\\".</p>
+<p>Also, Birdee supports raw strings, which will disregard any escape characters. A raw string starts and ends with three quotation marks ('''). You can even have multiple lines in a raw string.</p>
+<pre><code class="vb">println(&quot;Hey\nThis is Birdee!&quot;)
+println('''Hey
+This is Birdee!''')
+println('''Hey\nThis is Birdee!''')
+</code></pre>
+
+<p>The above program will output:</p>
+<pre><code class="vb">Hey
+This is Birdee!
+Hey
+This is Birdee!
+Hey\nThis is Birdee!
+</code></pre>
+
+<p>Note that the first two string literals are equivalent. The third string literal does not parse the escape character "\n".</p>
+<p>TBD: introduce other constants</p>
+<h2 id="22-comment">2.2 Comment</h2>
+<p>Comments in the source code could help you and other programmers better understand the program. The Birdee compiler will ignore the comments in a program when it is compiled. One way to write comments is to use "#", and it will let the compiler to ignore "#" and later characters in the source code until the end of the current line.</p>
+<pre><code class="vb">dim a as int = 3+4  # &quot;a&quot; is an integer with value 7
+println(int2str(a)) # print the value of &quot;a&quot;
+</code></pre>
+
+<p>To write comments in multiple lines, you should use "##" to mark the start of the comment and use another "##" to mark the end of the comment.</p>
+<pre><code class="vb">## This program computes the value of 3+4,
+and then put the value in the variable &quot;a&quot;.
+It finally print the value of &quot;a&quot; ##
+dim a as int = 3+4  
+println(int2str(a))
+</code></pre>
+
+<h2 id="23-function">2.3 Function</h2>
+<p>A function in Birdee is a reusable block of code. To define a function in the top-level, use syntax like:</p>
+<pre><code class="vb">function {function_name} ([ {parameter1} as {type}, {parameter2} as {type}, ... ]) [as  {type}]
+    ...
+end [function]
+</code></pre>
+
+<p>In the example, "{ }" means names that you must define and "[ ]" means optional syntax which can be omitted.</p>
+<p>A function with a returning value should specify the returning type at the end of function definition ("[as  {type}]"), but a function without returning value can omit it. A function can have zero or multiple parameters, with each parameter defined by "{parameter} as {type}" in the function definition. The "end" in the last line of the function definition marks the end of the function. To make Birdee look similar with the syntax of Visual Basic, you can write an additional (and optional) "function" word after "end", and the "function" word will be omitted by the compiler.</p>
+<p>We have already met some functions like "println" and "int2str". They are system functions provided and defined by Birdee.</p>
+<p>We first show an example of a function doing addition:</p>
+<pre><code class="vb">function add (a as int, b as int) as int
+    dim c = a + b
+    return c
+end
+
+dim result=add(3,4)
+</code></pre>
+
+<p>The function "add" takes two parameters: "a" and "b", both of integer type and returns an integer. In the body of the function, it adds the two parameters and return the result by the "return" keyword. In the last line, we call the funtion, and save the result in a variable. Note that unlike the code in the top-level, the code in a function will not be executed unless the function is called.</p>
+<p>To call a function, type the funtion name followed by a pair of brackets, with the parameters filled in order. If the funtion returns a value, you can use the function call expression as a value:</p>
+<pre><code class="vb">println(int2str(12345))
+</code></pre>
+
+<p>In the above example, "int2str(12345)" is a function call expression. The function "int2str" takes the integer "12345" as the input and returns a string format of it. So the expression "int2str(12345)" itself is a string, and is used as the input of the function "println", to print the string in the console.</p>
+<p>There is a simpler way to define a function in a single line. The syntax is:</p>
+<pre><code class="vb">function [function_name] ([ {parameter1} as {type}, {parameter2} as {type}, ... ]) [as  {type}] =&gt; {expression}
+</code></pre>
+
+<p>You can use the keyword "=&gt;" to define the function's body in a single expression. Note that if the function has a return type, the expression of the function body will be automatically returned. You can even omit the function name in function definition. This is useful for functional programming. In addition, the keyword "function" can be simplified to "func". So a shorter form of the "add" function in the last example can be:</p>
+<pre><code class="vb">func add(a as int, b as int) as int =&gt; a+b
+</code></pre></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"search": 83, "next": 78, "help": 191, "previous": 80};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

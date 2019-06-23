@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>4. Scope and names - Birdee Language</title>
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+
+                <!-- Collapsed navigation -->
+                <div class="navbar-header">
+                    <!-- Expander button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="../..">Birdee Language</a>
+                </div>
+
+                <!-- Expanded navigation -->
+                <div class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li >
+                                <a href="../..">Welcome</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Birdee Language Mannual <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li >
+    <a href="../0010HelloWorld/">1. Hello world!</a>
+</li>
+                                    
+<li >
+    <a href="../0020Basics/">2. Language Basics</a>
+</li>
+                                    
+<li >
+    <a href="../0030FlowControl/">3. Flow Control</a>
+</li>
+                                    
+<li class="active">
+    <a href="./">4. Scope and names</a>
+</li>
+                                    
+<li >
+    <a href="../0050Array/">5. Array</a>
+</li>
+                                    
+<li >
+    <a href="../0060Class/">6. Class</a>
+</li>
+                                    
+<li >
+    <a href="../0070Import/">7. Modules and Imports</a>
+</li>
+                                    
+<li >
+    <a href="../0080Template/">8. Templates</a>
+</li>
+                                    
+<li >
+    <a href="../0090Script/">9. Compile-time scripts</a>
+</li>
+                                    
+<li >
+    <a href="../0100Cpp/">10. Interoperability with C/C++</a>
+</li>
+                                    
+<li >
+    <a href="../0110Functional/">11. Functional Programming</a>
+</li>
+                                    
+<li >
+    <a href="../0120Exception/">12. Exception handling</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tools <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li >
+    <a href="../../Tools/Birdee-playground-(REPL)/">Birdee playground</a>
+</li>
+                                    
+<li >
+    <a href="../../Tools/Compiler-command-line-mannual/">Command line arguments for compiler (birdeec)</a>
+</li>
+                                    
+<li >
+    <a href="../../Tools/bbuild/">The automatic building tool for Birdee - bbuild</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li >
+                                <a rel="next" href="../0030FlowControl/">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li >
+                                <a rel="prev" href="../0050Array/">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#4-scope-and-names">4. Scope and names</a></li>
+            <li><a href="#41-name-resolution-rules">4.1 Name resolution rules</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="4-scope-and-names">4. Scope and names</h1>
+<p>We first introduce a concept: basic block. A basic block is a block of code. The basic block in the highest-level is the top-level code; A simple "if-else" has two basic blocks: one for condition being true and the other for condition being false; A for loop itself is a basic block. As you can see, basic blocks may have some children basic blocks.</p>
+<p>Scopes define where a name (variable/function/class) can be used and is visible to the programmers. Every basic block has one corresponding scope. When a name is defined, the name will be added into the current basic block's scope. Scopes are maintained in a tree, where a parent scope may have zero or multiple children scopes. There are some simple rules for scopes in Birdee:
+ 1. The code in a child scope can reference all names (for variable/function/class) of its ancestor scopes - In a child basic block, you can use the functions/variables/classes defined in any ancestor basic blocks.
+ 2. The code in a parent scope is unaware of the names in a child basic block - In a parent basic block, you cannot use the variables (or functions, etc.) which is defined in a child basic block. You can define a variable in the parent basic block which have the same name of some variable in the child basic block.
+ 3. In the same scope, defining two variables/functions/classes with the same name is not allowed.
+ 4. In the child scope, it is allowed to define a variable (or function/class) which has the same name of some variables (or functions, etc.) in the ancestor scopes.
+ 5. When resolving a name, if the name is defined in some ancestor scopes or in the current scope, the variable (or function, etc.) defined in the lowest level of scope will be selected.</p>
+<p>Note that the parameters of functions can be viewed as defined variables in the function's scope.</p>
+<p>For more explanations, see comments:</p>
+<pre><code class="vb">dim a as int = 2
+function compute(b as int) as int
+    return a*b  # Okay because of rule 1
+end
+
+b=3 # Won't compile! Due to rule 2
+if a==2 then
+    dim c as float=123.2
+end
+c=333.0 # Won't compile! Due to rule 2
+
+dim a as string # Won't compile! Due to rule 3
+
+function show(b as int)
+    dim a = &quot;hi&quot;  # Okay because of rule 4
+    println(a + int2str(b))  # Okay because of rule 5, the definition in the current scope is selected
+end
+</code></pre>
+
+<h2 id="41-name-resolution-rules">4.1 Name resolution rules</h2>
+<p>The name resolution rules defines how identifiers are resolved and bound to the function/variable definition. Given a name of identifier for expression, Birdee language should find the name in the definitions in the following order, from upper ones to lower ones. Once an definition name is matched with the identifier name, the compiler will bind this identifier expression with the selected definition, and will disregard all definitions in lower orders.</p>
+<ol>
+<li>The names of local variables in the current basic block</li>
+<li>The names of local variables (including function arguments) in the ancestor basic blocks (nearest first)</li>
+<li>The names of template arguments (we will discuss templates later. Note that compilers only search constant expression template arguments here.)</li>
+<li>(If currently in a member function of a class,) The field names of the current class</li>
+<li>(If currently in a member function of a class,) The member function names of the current class.</li>
+<li>The global variable (defined in top-level) names defined in the current module</li>
+<li>The functions names defined in the current module</li>
+<li>The imported global variable (defined in top-level) names defined in other modules</li>
+<li>The imported functions names defined in other modules</li>
+<li>The imported package names</li>
+</ol>
+<p>The above is the order of name resolution of identifier expressions. Birdee also defines the resolution order for type names. The following order applies to types (e.g. the identifiers after "as"):</p>
+<ol>
+<li>The template argument names of the current function</li>
+<li>The template argument names of the current class (if exists)</li>
+<li>The "functype" or closure names of the current module</li>
+<li>The imported "functype" or closure names of the imported modules</li>
+<li>The class names of the current module</li>
+<li>The imported class names of the imported modules</li>
+</ol></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"search": 83, "next": 78, "help": 191, "previous": 80};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
