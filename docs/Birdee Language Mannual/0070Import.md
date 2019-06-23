@@ -75,3 +75,25 @@ end
 function foo() #by default, it is public
 end
 ```
+
+## 7.6 Import using scripts
+
+You can use a Python expression to generate the module name and the symbol to import at the compile time by 
+
+```java
+import {@PYTHONSCRIPT@}
+```
+
+or by 
+
+```java
+import module_name:{@PYTHONSCRIPT@}
+```
+
+The code between "{@" and "@}" should be a Python string expression. Birdee compiler will execute the Python code to get the module name and the symbol name to import. This feature is useful when your code needs to support multiple platforms. The following example shows how to import a module on Windows and import another module on Linux.
+
+```java
+import {@"system.specific.win32.file" if get_os_name()=="windows" else "system.specific.unistd.file"@}:*
+```
+
+In this example, the modules `system.specific.win32.file` and `system.specific.unistd.file` contains operation system specific code, but they provide the same interfaces for the user of these two modules. The users of the modules do not need to modify their own code to make the code platform independent.
