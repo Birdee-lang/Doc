@@ -1,0 +1,2387 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Birdee Language Mannual - Birdee Language</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Birdee Language Mannual";
+    var mkdocs_page_input_path = "Birdee-Language-Mannual.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Birdee Language</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">Birdee Language Mannual</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#table-of-contents">Table of Contents</a></li>
+    
+
+    <li class="toctree-l2"><a href="#birdee-language-mannual">Birdee Language Mannual</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#1-hello-world">1. Hello world!</a></li>
+        
+            <li><a class="toctree-l3" href="#2-language-basics">2. Language Basics</a></li>
+        
+            <li><a class="toctree-l3" href="#21-variables-and-expressions">2.1 Variables and expressions</a></li>
+        
+            <li><a class="toctree-l3" href="#22-comment">2.2 Comment</a></li>
+        
+            <li><a class="toctree-l3" href="#23-function">2.3 Function</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l2"><a href="#3-flow-control">3. Flow Control</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#31-conditional-branches">3.1 Conditional Branches</a></li>
+        
+            <li><a class="toctree-l3" href="#32-loop">3.2 Loop</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l2"><a href="#4-scope-and-names">4. Scope and names</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#41-name-resolution-rules">4.1 Name resolution rules</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l2"><a href="#5-array">5. Array</a></li>
+    
+
+    <li class="toctree-l2"><a href="#6-class">6. Class</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#61-basic-definitions">6.1 Basic definitions</a></li>
+        
+            <li><a class="toctree-l3" href="#62-explanations-of-terminologies">6.2 Explanations of terminologies</a></li>
+        
+            <li><a class="toctree-l3" href="#63-member-functions">6.3 Member functions</a></li>
+        
+            <li><a class="toctree-l3" href="#64-access-modifier">6.4 Access modifier</a></li>
+        
+            <li><a class="toctree-l3" href="#65-initialization-destruction">6.5 Initialization &amp; destruction</a></li>
+        
+            <li><a class="toctree-l3" href="#66-operator-overloading">6.6 Operator overloading</a></li>
+        
+            <li><a class="toctree-l3" href="#67-class-inherit">6.7 Class inherit</a></li>
+        
+            <li><a class="toctree-l3" href="#68-run-time-type-information-rtti">6.8 Run Time Type Information (RTTI)</a></li>
+        
+            <li><a class="toctree-l3" href="#69-structs">6.9 Structs</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l2"><a href="#7-modules-and-imports">7. Modules and Imports</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#71-module-import">7.1 Module Import</a></li>
+        
+            <li><a class="toctree-l3" href="#72-symbol-import">7.2 Symbol Import</a></li>
+        
+            <li><a class="toctree-l3" href="#73-all-symbols-import">7.3 All Symbols Import</a></li>
+        
+            <li><a class="toctree-l3" href="#74-auto-import">7.4 Auto Import</a></li>
+        
+            <li><a class="toctree-l3" href="#75-private-symbols">7.5 Private symbols</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l2"><a href="#8-templates">8. Templates</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#81-function-templates">8.1 Function Templates</a></li>
+        
+            <li><a class="toctree-l3" href="#82-class-templates">8.2 Class Templates</a></li>
+        
+            <li><a class="toctree-l3" href="#83-template-type-parameter-deduction">8.3 Template type parameter deduction</a></li>
+        
+            <li><a class="toctree-l3" href="#84-variadic-template-and-function">8.4 Variadic template and function</a></li>
+        
+            <li><a class="toctree-l3" href="#85-notes-on-templates">8.5 Notes on Templates</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l2"><a href="#9-compile-time-scripts">9. Compile-time scripts</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#91-script-basics">9.1 Script basics</a></li>
+        
+            <li><a class="toctree-l3" href="#92-scopes-of-the-scripts">9.2 Scopes of the scripts</a></li>
+        
+            <li><a class="toctree-l3" href="#93-annotations">9.3 Annotations</a></li>
+        
+            <li><a class="toctree-l3" href="#94-init-scripts-and-importing-as-modules">9.4 Init scripts and importing as modules</a></li>
+        
+            <li><a class="toctree-l3" href="#95-generative-script">9.5 Generative script</a></li>
+        
+            <li><a class="toctree-l3" href="#94-error-handling">9.4 Error handling</a></li>
+        
+            <li><a class="toctree-l3" href="#95-memory-management-and-pointer-ownership">9.5 Memory management and pointer ownership</a></li>
+        
+            <li><a class="toctree-l3" href="#96-detailed-api-specification">9.6 Detailed API specification</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l2"><a href="#10-interoperability-with-cc">10. Interoperability with C/C++</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#101-calling-cc-from-birdee">10.1 Calling C/C++ from Birdee</a></li>
+        
+            <li><a class="toctree-l3" href="#102-calling-birdee-from-cc">10.2 Calling Birdee from C/C++</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l2"><a href="#11-functional-programming">11. Functional Programming</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#111-function-variables">11.1 Function variables</a></li>
+        
+            <li><a class="toctree-l3" href="#112-closures">11.2 Closures</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l2"><a href="#12-exception-handling">12. Exception handling</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#121-exception-handling-basics">12.1 Exception handling basics</a></li>
+        
+            <li><a class="toctree-l3" href="#122-hardware-generated-exceptions">12.2 Hardware generated exceptions</a></li>
+        
+        </ul>
+    
+
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../Birdee-playground-(REPL)/">Birdee playground</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../Compiler-command-line-mannual/">Compiler command line mannual</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../bbuild/">The automatic building tool for Birdee - bbuild</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Birdee Language Mannual</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../Birdee Language Mannual/0010bbuild/">The automatic building tool for Birdee - bbuild</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Birdee Language Mannual/0020Birdee-playground-(REPL)/">Birdee playground</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Birdee Language Mannual/0030index/">0030index</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Birdee Language</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Birdee Language Mannual</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="table-of-contents">Table of Contents</h1>
+<ul>
+<li><a href="#table-of-contents">Table of Contents</a></li>
+<li><a href="#birdee-language-mannual">Birdee Language Mannual</a><ul>
+<li><a href="#1-hello-world">1. Hello world!</a></li>
+<li><a href="#2-language-basics">2. Language Basics</a></li>
+<li><a href="#21-variables-and-expressions">2.1 Variables and expressions</a><ul>
+<li><a href="#211-variables-definitions">2.1.1 Variables definitions</a></li>
+<li><a href="#212-variable-assignment">2.1.2 Variable assignment</a></li>
+<li><a href="#213-operators">2.1.3 Operators</a></li>
+<li><a href="#214-operators-for-class-types">2.1.4 Operators for class types</a></li>
+<li><a href="#215-auto-type-conversion">2.1.5 Auto type conversion</a></li>
+<li><a href="#216-string-literals">2.1.6 String literals</a></li>
+</ul>
+</li>
+<li><a href="#22-comment">2.2 Comment</a></li>
+<li><a href="#23-function">2.3 Function</a></li>
+</ul>
+</li>
+<li><a href="#3-flow-control">3. Flow Control</a><ul>
+<li><a href="#31-conditional-branches">3.1 Conditional Branches</a><ul>
+<li><a href="#311-if">3.1.1 If</a></li>
+</ul>
+</li>
+<li><a href="#32-loop">3.2 Loop</a><ul>
+<li><a href="#321-for-loop">3.2.1 For Loop</a></li>
+<li><a href="#322-while-loop">3.2.2 While Loop</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#4-scope-and-names">4. Scope and names</a><ul>
+<li><a href="#41-name-resolution-rules">4.1 Name resolution rules</a></li>
+</ul>
+</li>
+<li><a href="#5-array">5. Array</a></li>
+<li><a href="#6-class">6. Class</a><ul>
+<li><a href="#61-basic-definitions">6.1 Basic definitions</a></li>
+<li><a href="#62-explanations-of-terminologies">6.2 Explanations of terminologies</a><ul>
+<li><a href="#621-class-vs-class-instance-vs-object">6.2.1 Class v.s. Class Instance v.s. Object</a></li>
+<li><a href="#622-member-variables--fields">6.2.2 Member variables &amp; fields</a></li>
+<li><a href="#623-member-functions--methods">6.2.3 Member functions &amp; methods</a></li>
+<li><a href="#624-reference">6.2.4 Reference</a></li>
+<li><a href="#625-this">6.2.5 "this"</a></li>
+</ul>
+</li>
+<li><a href="#63-member-functions">6.3 Member functions</a></li>
+<li><a href="#64-access-modifier">6.4 Access modifier</a></li>
+<li><a href="#65-initialization--destruction">6.5 Initialization &amp; destruction</a></li>
+<li><a href="#66-operator-overloading">6.6 Operator overloading</a></li>
+<li><a href="#67-class-inherit">6.7 Class inherit</a><ul>
+<li><a href="#671-basic-inherit">6.7.1 Basic inherit</a></li>
+<li><a href="#672-super">6.7.2 "super"</a></li>
+</ul>
+</li>
+<li><a href="#68-structs">6.8 Structs</a></li>
+</ul>
+</li>
+<li><a href="#7-modules-and-imports">7. Modules and Imports</a><ul>
+<li><a href="#71-module-import">7.1 Module Import</a></li>
+<li><a href="#72-symbol-import">7.2 Symbol Import</a></li>
+<li><a href="#73-all-symbols-import">7.3 All Symbols Import</a></li>
+<li><a href="#74-auto-import">7.4 Auto Import</a></li>
+</ul>
+</li>
+<li><a href="#8-templates">8. Templates</a><ul>
+<li><a href="#81-function-templates">8.1 Function Templates</a></li>
+<li><a href="#82-class-templates">8.2 Class Templates</a></li>
+<li><a href="#83-template-type-parameter-deduction">8.3 Template type parameter deduction</a></li>
+<li><a href="#84-variadic-template-and-function">8.4 Variadic template and function</a><ul>
+<li><a href="#841-variadic-template">8.4.1 Variadic template</a></li>
+<li><a href="#842-variadic-function">8.4.2 Variadic function</a></li>
+<li><a href="#843-named-variadic-parameter">8.4.3 Named variadic parameter</a></li>
+</ul>
+</li>
+<li><a href="#85-notes-on-templates">8.5 Notes on Templates</a></li>
+</ul>
+</li>
+<li><a href="#9-compile-time-scripts">9. Compile-time scripts</a><ul>
+<li><a href="#91-script-basics">9.1 Script basics</a></li>
+<li><a href="#92-annotations">9.2 Annotations</a></li>
+<li><a href="#93-generative-script">9.3 Generative script</a></li>
+<li><a href="#94-error-handling">9.4 Error handling</a></li>
+<li><a href="#95-memory-management-and-pointer-ownership">9.5 Memory management and pointer ownership</a></li>
+<li><a href="#96-detailed-api-specification">9.6 Detailed API specification</a></li>
+</ul>
+</li>
+<li><a href="#10-interoperability-with-cc">10. Interoperability with C/C  </a><ul>
+<li><a href="#101-calling-cc-from-birdee">10.1 Calling C/C   from Birdee</a></li>
+<li><a href="#102-calling-birdee-from-cc">10.2 Calling Birdee from C/C  </a></li>
+</ul>
+</li>
+<li><a href="#11-functional-programming">11. Functional Programming</a><ul>
+<li><a href="#111-function-variables">11.1 Function variables</a></li>
+<li><a href="#112-closures">11.2 Closures</a><ul>
+<li><a href="#1121-binding-objects-with-methods-using-closures">11.2.1 Binding objects with methods using closures</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#12-exception-handling">12. Exception handling</a><ul>
+<li><a href="#121-exception-handling-basics">12.1 Exception handling basics</a></li>
+<li><a href="#122-hardware-generated-exceptions">12.2 Hardware generated exceptions</a></li>
+</ul>
+</li>
+</ul>
+<p>Created by <a href="https://github.com/ekalinin/github-markdown-toc">gh-md-toc</a></p>
+<h1 id="birdee-language-mannual">Birdee Language Mannual</h1>
+<p>Birdee is a static programming language and it adopts part of the syntax from Visual Basic. Birdee allows top-level code, so you don't need to write a "main" function and any codes in the top-level will be executed like the main funtion.</p>
+<h2 id="1-hello-world">1. Hello world!</h2>
+<p>Our first Birdee program prints a line of words "Hello world" on the console. Create a file named "hello.bdm", and write a simple line of code in the file:</p>
+<pre><code class="vb">println(&quot;Hello world&quot;)
+</code></pre>
+
+<p>Then switch to the directory of the file "hello.bdm" and compile it with command in Linux:</p>
+<pre><code class="shell">python $BIRDEE_HOME/pylib/bbuild.py -le ./hello -i . -o . hello
+</code></pre>
+
+<p>If you are using Windows, you should run the following command in Visual Studio x64 Commmand Prompt. (You can find it in the Visual Studio directory of the start menu.)</p>
+<pre><code class="shell">python %BIRDEE_HOME%\pylib\bbuild.py -le .\hello.exe -i . -o . hello
+</code></pre>
+
+<p>"bbuild.py" is a high-level tool for Birdee source compiling and linking. You should use Python 3 to run this command. The above command tells the compiler to find the source code in the current directory and put the object files in the current directory too. It also links the object files to an executable binary file at "./hello".</p>
+<p>Now we have our first Birdee executable "hello". Run it by:</p>
+<pre><code class="shell">./hello
+</code></pre>
+
+<p>Instead of using bbuild, you can also manually compile and link the program with commands:</p>
+<pre><code class="shell">$BIRDEE_HOME/bin/birdeec -i hello.bdm -o hello.o -e
+gcc -o hello hello.o $BIRDEE_HOME/blib/birdee.o $BIRDEE_HOME/lib/libBirdeeRuntime.a -lgc
+</code></pre>
+
+<p>More command line options for "birdeec" can be found <a href="https://github.com/Birdee-lang/Birdee2/wiki/Compiler-command-line-mannual">here</a>. "birdeec" is the core compiler for Birdee language and it generates object files only. You need to link the object file with other necessary files to generate an executable. Fortunately, our tool bbuild can do these all for you. More details of bbuild can be found <a href="https://github.com/Birdee-lang/Birdee2/wiki/bbuild">here</a></p>
+<p>An simpler way to try and run Birdee code without compiling and linking is to use the Birdee playground. It provides a interactive environment which accepts Birdee code and immediately evaluate the result of it after you press "Enter". More on the playground can be found <a href="https://github.com/Birdee-lang/Birdee2/wiki/Birdee-playground-(REPL)">here</a></p>
+<h2 id="2-language-basics">2. Language Basics</h2>
+<p>In this section, the basic syntax of Birdee will be explained, and building more complex programs become possible.</p>
+<h2 id="21-variables-and-expressions">2.1 Variables and expressions</h2>
+<p>Variables are holders of data. They have types specified when they are defined. There are basic types in Birdee, which include boolean (true/false), byte (8-bit signed integer), int (32-bit signed integer), long (64-bit signed integer), uint (32-bit unsigned integer), ulong (64-bit unsigned integer), float (32-bit float-point number), double (64-bit float-point number) and pointer (native pointer type). Complex types like array and class will be explained later. (Note: the class type "string" is one of the most commonly used class in Birdee, and we have already used it in our "hello world" example!)</p>
+<h3 id="211-variables-definitions">2.1.1 Variables definitions</h3>
+<p>To define a variable, use the keyword "dim". The basic syntax is shown below. The variable_name can be any valid name composed by "_", numbers (0-9) and English characters (a-z and A-Z). In addition, the variable_name should not be one of the keywords of Birdee, such as "dim" and "as". The type can be a basic type, array type or class type.</p>
+<pre><code class="vb">dim {variable_name} as {type}
+</code></pre>
+
+<p>Below is an example to define a variable named "v" with integer type in the top-level scope.</p>
+<pre><code class="vb">dim v as int
+</code></pre>
+
+<p>You can assign a value to the variable when defining it.</p>
+<pre><code class="vb">dim v as int = 123
+dim str as string = &quot;hello&quot;
+</code></pre>
+
+<p>You can define multiple variables in one line with only one "dim" keyword, separated by comma. (and you can still use "=" to assign an initial value). </p>
+<pre><code class="vb">dim v as int = 123, str as string = &quot;hello&quot;, length as float
+</code></pre>
+
+<p>The type can be omitted and inferred by the compiler in a variable definition when the definition has an initial value assigned. The above example code can be simplified to:</p>
+<pre><code class="vb">dim v = 123, str = &quot;hello&quot;, length as float
+</code></pre>
+
+<p>Note that the variable "length" has no initial value assigned, so the type must be given.</p>
+<h3 id="212-variable-assignment">2.1.2 Variable assignment</h3>
+<p>To use a variable, you should first define it with a specific type (or assign an initial value to it). For example,</p>
+<pre><code class="vb">dim v1 as int, v2 as float, v3 as string, v4 as int
+</code></pre>
+
+<p>You can assign values to variables by "=":</p>
+<pre><code class="vb">v1=123
+v2=3.14
+v3=&quot;birdee&quot;
+</code></pre>
+
+<p>Note that in the above code, the value "birdee", which is surrounded by a pair of quotation marks ("), is a string literal. The string literals will be explained later.</p>
+<p>Variable does not allow to be assigned with incompatable types. For example, the following two lines of code are not allowed by Birdee.</p>
+<pre><code class="vb">v1=&quot;123&quot;
+v3=321
+</code></pre>
+
+<p>It is because "v1" is of int type, which cannot be assigned a string value. And "v3" is a string variable, and does not accept integers.</p>
+<h3 id="213-operators">2.1.3 Operators</h3>
+<p>Birdee allows arithmetic(+,-,*,/,%, etc.) and logical operators (&amp;, &amp;&amp; ,| , ||, etc.) in expressions. The meanings and precedence of these operators are shown below:</p>
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Meaning</th>
+<th>Precedence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>*</td>
+<td>Multiplication</td>
+<td>15</td>
+</tr>
+<tr>
+<td>/</td>
+<td>Division</td>
+<td>15</td>
+</tr>
+<tr>
+<td>%</td>
+<td>Remainder</td>
+<td>15</td>
+</tr>
+<tr>
+<td>+</td>
+<td>Addition</td>
+<td>14</td>
+</tr>
+<tr>
+<td>-</td>
+<td>Substraction</td>
+<td>14</td>
+</tr>
+<tr>
+<td>&lt;</td>
+<td>Less than</td>
+<td>11</td>
+</tr>
+<tr>
+<td>&gt;</td>
+<td>Larger than</td>
+<td>11</td>
+</tr>
+<tr>
+<td>&gt;=</td>
+<td>Larger than or equal</td>
+<td>11</td>
+</tr>
+<tr>
+<td>&lt;=</td>
+<td>Less than or equal</td>
+<td>11</td>
+</tr>
+<tr>
+<td>==</td>
+<td>Value equal</td>
+<td>10</td>
+</tr>
+<tr>
+<td>!=</td>
+<td>Value not equal</td>
+<td>10</td>
+</tr>
+<tr>
+<td>===</td>
+<td>Reference equal (for class objects/arrays)</td>
+<td>10</td>
+</tr>
+<tr>
+<td>!==</td>
+<td>Reference not equal (for class objects/arrays)</td>
+<td>10</td>
+</tr>
+<tr>
+<td>&amp;</td>
+<td>Bitwise and</td>
+<td>9</td>
+</tr>
+<tr>
+<td>^</td>
+<td>Bitwise xor</td>
+<td>8</td>
+</tr>
+<tr>
+<td>|</td>
+<td>Bitwise or</td>
+<td>7</td>
+</tr>
+<tr>
+<td>&amp;&amp;</td>
+<td>Logical and</td>
+<td>6</td>
+</tr>
+<tr>
+<td>||</td>
+<td>Logical or</td>
+<td>5</td>
+</tr>
+<tr>
+<td>=</td>
+<td>Assignment</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+<p>You can use brackets "()" to change the default precedence.</p>
+<p>TBD: explain Logical AND and OR</p>
+<p>For value types (integers, floats, pointers, ...), the operators "==" and "===" are equivalent (so are "!=" and "!=="). For references (class objects and arrays), the operators "==" and "!=" call the methods "<strong>eq</strong>" and "<strong>ne</strong>" of the left hand side object and use the right hand side object as the parameter, which compare whether the value of objects are equal. The operators "===" and "!==" only compares the references themselves.</p>
+<p>For now, we can write a bit more complex programs:</p>
+<pre><code class="vb">dim v1 as int, v1 as int, v3 as float
+v1 = (12345 + 999) * 6789
+v2 = v1 % 32
+dim v4 as boolean = v2 &gt; v1
+println(int2str(v2))
+println(bool2str(v4))
+</code></pre>
+
+<p>Note: "println", "bool2str" and "int2str" are system functions. "println" will print a line of string on the console (we have already used it in our "hello world"). "bool2str" and "int2str" are functions that convert boolean and int values to strings, respectively.</p>
+<h3 id="214-operators-for-class-types">2.1.4 Operators for class types</h3>
+<p>The operators in the above section are originally for basic types like int, float and boolean. However, Birdee allow you to apply operators on class types. We will explain it later, but we will now introduce an operator for our old friend - the string class, which is widely used. You can add (+) two strings by the operator "+" to concatenate one after the other:</p>
+<pre><code class="vb">dim v1 = &quot;birdee&quot;
+dim v2 as string
+v2= v1 + &quot; is awesome&quot;
+println(v2)
+</code></pre>
+
+<p>The above funtion concatenate strings "birdee" and " is awesome", then prints out the result string "birdee is awesome".</p>
+<h3 id="215-auto-type-conversion">2.1.5 Auto type conversion</h3>
+<p>If the types of the operands of an operator do not match, and the operands are both of numeric types (int, uint, float, etc.), Birdee compiler will try to do auto conversion. In an operator expression, the type with a smaller "promotion value" will be converted to the type with a larger "promotion value", and the resulting type of the expression will be the larger "promotion value" type. The promotion values for numeric types are listed below:</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Promotion values</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>byte</td>
+<td>-1</td>
+</tr>
+<tr>
+<td>int</td>
+<td>0</td>
+</tr>
+<tr>
+<td>uint</td>
+<td>1</td>
+</tr>
+<tr>
+<td>long</td>
+<td>2</td>
+</tr>
+<tr>
+<td>ulong</td>
+<td>3</td>
+</tr>
+<tr>
+<td>float</td>
+<td>4</td>
+</tr>
+<tr>
+<td>double</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+<p>For example, </p>
+<pre><code class="vb">dim a as byte = 1, dim b as long =3
+b=a+b
+dim c as float=0.1
+dim d = c+b
+</code></pre>
+
+<p>The above program adds a byte (a) with a long (b). It will first convert the value of "a" to type long, and add with "b", resulting in a type long value. Similarly, when adding "c" with "b", it will convert "b" to type float and the result is in type float, making variable "d" a float variable.</p>
+<p>Important note: The assignment operator does not do auto conversion like above! It will try to convert the value on the right of "=" (we call it Rvalue) to the variable on the left of "=" (called Lvalue), disregarding the promotion values.</p>
+<h3 id="216-string-literals">2.1.6 String literals</h3>
+<p>We have met string literals in above examples. Characters surrounded by a pair of quotation marks (") represents a string literal, Birdee also supports escape characters like "\n", "\\".</p>
+<p>Also, Birdee supports raw strings, which will disregard any escape characters. A raw string starts and ends with three quotation marks ('''). You can even have multiple lines in a raw string.</p>
+<pre><code class="vb">println(&quot;Hey\nThis is Birdee!&quot;)
+println('''Hey
+This is Birdee!''')
+println('''Hey\nThis is Birdee!''')
+</code></pre>
+
+<p>The above program will output:</p>
+<pre><code class="vb">Hey
+This is Birdee!
+Hey
+This is Birdee!
+Hey\nThis is Birdee!
+</code></pre>
+
+<p>Note that the first two string literals are equivalent. The third string literal does not parse the escape character "\n".</p>
+<p>TBD: introduce other constants</p>
+<h2 id="22-comment">2.2 Comment</h2>
+<p>Comments in the source code could help you and other programmers better understand the program. The Birdee compiler will ignore the comments in a program when it is compiled. One way to write comments is to use "#", and it will let the compiler to ignore "#" and later characters in the source code until the end of the current line.</p>
+<pre><code class="vb">dim a as int = 3+4  # &quot;a&quot; is an integer with value 7
+println(int2str(a)) # print the value of &quot;a&quot;
+</code></pre>
+
+<p>To write comments in multiple lines, you should use "##" to mark the start of the comment and use another "##" to mark the end of the comment.</p>
+<pre><code class="vb">## This program computes the value of 3+4,
+and then put the value in the variable &quot;a&quot;.
+It finally print the value of &quot;a&quot; ##
+dim a as int = 3+4  
+println(int2str(a))
+</code></pre>
+
+<h2 id="23-function">2.3 Function</h2>
+<p>A function in Birdee is a reusable block of code. To define a function in the top-level, use syntax like:</p>
+<pre><code class="vb">function {function_name} ([ {parameter1} as {type}, {parameter2} as {type}, ... ]) [as  {type}]
+    ...
+end [function]
+</code></pre>
+
+<p>In the example, "{ }" means names that you must define and "[ ]" means optional syntax which can be omitted.</p>
+<p>A function with a returning value should specify the returning type at the end of function definition ("[as  {type}]"), but a function without returning value can omit it. A function can have zero or multiple parameters, with each parameter defined by "{parameter} as {type}" in the function definition. The "end" in the last line of the function definition marks the end of the function. To make Birdee look similar with the syntax of Visual Basic, you can write an additional (and optional) "function" word after "end", and the "function" word will be omitted by the compiler.</p>
+<p>We have already met some functions like "println" and "int2str". They are system functions provided and defined by Birdee.</p>
+<p>We first show an example of a function doing addition:</p>
+<pre><code class="vb">function add (a as int, b as int) as int
+    dim c = a + b
+    return c
+end
+
+dim result=add(3,4)
+</code></pre>
+
+<p>The function "add" takes two parameters: "a" and "b", both of integer type and returns an integer. In the body of the function, it adds the two parameters and return the result by the "return" keyword. In the last line, we call the funtion, and save the result in a variable. Note that unlike the code in the top-level, the code in a function will not be executed unless the function is called.</p>
+<p>To call a function, type the funtion name followed by a pair of brackets, with the parameters filled in order. If the funtion returns a value, you can use the function call expression as a value:</p>
+<pre><code class="vb">println(int2str(12345))
+</code></pre>
+
+<p>In the above example, "int2str(12345)" is a function call expression. The function "int2str" takes the integer "12345" as the input and returns a string format of it. So the expression "int2str(12345)" itself is a string, and is used as the input of the function "println", to print the string in the console.</p>
+<p>There is a simpler way to define a function in a single line. The syntax is:</p>
+<pre><code class="vb">function [function_name] ([ {parameter1} as {type}, {parameter2} as {type}, ... ]) [as  {type}] =&gt; {expression}
+</code></pre>
+
+<p>You can use the keyword "=&gt;" to define the function's body in a single expression. Note that if the function has a return type, the expression of the function body will be automatically returned. You can even omit the function name in function definition. This is useful for functional programming. In addition, the keyword "function" can be simplified to "func". So a shorter form of the "add" function in the last example can be:</p>
+<pre><code class="vb">func add(a as int, b as int) as int =&gt; a+b
+</code></pre>
+
+<h1 id="3-flow-control">3. Flow Control</h1>
+<p>The syntax introduced till now allows programs to be executed sequentially. But how to let different parts of the program be executed under different conditions? How to execute some blocks of code for multiple times? The answer is by flow control!</p>
+<h2 id="31-conditional-branches">3.1 Conditional Branches</h2>
+<h3 id="311-if">3.1.1 If</h3>
+<p>The "if" syntax is used to execute a block of code when the condition is true. The basic syntax is:</p>
+<pre><code class="vb">if {condition} then
+    ...
+end [if]
+</code></pre>
+
+<p>The "{condition}" should be an boolean expression (could be true or false), such as "a&gt;0", "a!=b &amp;&amp; b&gt;32" and so on. The code within an "if" block will be executed if the condition is true. To mark the end of the block of code, use "end" or "end if". No matter the condition is true or not, the program will continue at the line after "end" or "end if", after the "if" block is executed. The following example checks if the value of "a" is larger than 100. If so, it prints a line "a is larger than 100". The program will always print the value of "a" no matter what value "a" is.</p>
+<pre><code class="vb">if a&gt;100 then
+    println(&quot;a is larger than 100&quot;)
+end
+println(&quot;a is &quot; + int2str(a))
+</code></pre>
+
+<p>You may want to wirte a program like this: if a condition is true, execute block A; otherwise, execute block B. You can achieve this by the "if...else..." syntax. For example, we could change the above program a little bit: if a is not larger than 100, we also want to print a line "a is no larger than 100":</p>
+<pre><code class="vb">if a&gt;100 then
+    println(&quot;a is larger than 100&quot;)
+else
+    println(&quot;a is no larger than 100&quot;)
+end
+println(&quot;a is &quot; + int2str(a))
+</code></pre>
+
+<p>The "else" key word will mark the end of the block to be executed if true, and mark the start of the block to be executed if false.</p>
+<p>In many cases, multiple conditions should be considered. For example, a teacher may want to find the grade from a score. The grades are given according to the following table (assume the scores are integers):</p>
+<table>
+<thead>
+<tr>
+<th>Grade</th>
+<th>Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>90-100</td>
+</tr>
+<tr>
+<td>B</td>
+<td>75-89</td>
+</tr>
+<tr>
+<td>C</td>
+<td>60-74</td>
+</tr>
+<tr>
+<td>F</td>
+<td>0-59</td>
+</tr>
+</tbody>
+</table>
+<p>We can write a Birdee program to solve the problem:</p>
+<pre><code class="vb">function find_grade(score as int) as string
+    if score&lt;=59 then
+        return &quot;F&quot;
+    else
+        if score&lt;=74 then
+            return &quot;C&quot;
+        else
+            if score&lt;=89 then
+                return &quot;B&quot;
+            else
+                return &quot;A&quot;
+            end
+        end
+    end
+end
+</code></pre>
+
+<p>Yes, "if" blocks can be nested, but the above program is not an elegant way to solve this program. The nested "if...else..." blocks can be simplified by "else if" blocks:</p>
+<pre><code class="vb">function find_grade(score as int) as string
+    if score&lt;=59 then
+        return &quot;F&quot;
+    else if score&lt;=74 then
+        return &quot;C&quot;
+    else if score&lt;=89 then
+        return &quot;B&quot;
+    else
+        return &quot;A&quot;
+    end
+end
+</code></pre>
+
+<p>The "else if" syntax saves some "end"s and make nested "if" blocks looks better.</p>
+<h2 id="32-loop">3.2 Loop</h2>
+<h3 id="321-for-loop">3.2.1 For Loop</h3>
+<p>To execute a block of code for a specific times, "for loop" can be used. The basic syntax is:</p>
+<pre><code class="vb">for {variable} = {start} to {end}
+    ...
+end [for]
+</code></pre>
+
+<p>The "{variable}" should be any Lvalue in integer type. {start} and {end} are any valid integer expressions. The {variable} will increment from {start} to {end} and the block of code in the loop will be executed for ({end} - {start} + 1) times. If {end} &lt; {start}, the loop stop executing. The following code will print "hi! From i=1", "hi! From i=2", "hi! From i=3".</p>
+<pre><code class="vb">dim i as int
+for i=1 to 3
+    println(&quot;hi! From i=&quot; + int2str(i))
+end
+</code></pre>
+
+<p>The variable "i" is called loop variable, which is modified by Birdee language every time the body of the loop is executed. Note that internally, Birdee will generate code to increment the loop variable at the end of the loop body and compare the variable against the {end} expression to decide whether to run the loop body again.</p>
+<p>You can combine the definition of loop variable with the for loop. For example, you can simply modify the above example to:</p>
+<pre><code class="vb">for dim i=1 to 3
+    println(&quot;hi! From i=&quot; + int2str(i))
+end
+</code></pre>
+
+<p>However, the loop variables are defined in different scopes in the previous two examples. (What is "scope"? We will explain later.) Keep in mind that if you define a variable in a for loop (in the for ... to ..., or in the body of the loop), the variable can only be used within this particular for loop and is not available outside of it. For example, we add a line in the above example:</p>
+<pre><code class="vb">for dim i=1 to 3
+    println(&quot;hi! From i=&quot; + int2str(i))
+end
+println(i+1)  # Compiler will complain here!
+</code></pre>
+
+<p>Birdee compiler will recognize an error in the last line because variable "i" is only defined within the for loop.</p>
+<p>Also note that {start} and {end} are not necessarily constants, they can be variables, function calls or whatever valid integer expressions.</p>
+<p>If you do not want to include the {end} value in the for loop, you can use "till" key word instead of "to" key word:</p>
+<pre><code class="vb">for dim i=1 till 3
+    println(&quot;hi! From i=&quot; + int2str(i))
+end
+</code></pre>
+
+<p>The above for loop will be executed twice, with i=1 and then i=2.</p>
+<p>You may want to jump out of the loop in some cases, where you can use the "break" keyword to jump to the next line of the end of the loop:</p>
+<pre><code class="vb">for dim i=1 to 1000
+    println(&quot;hi! From i=&quot; + int2str(i))
+    if i==2 then
+        break
+    end
+end
+println(&quot;End of the loop&quot;)
+</code></pre>
+
+<p>The "break" keyword in the above program will let it jump to the line "println("End of the loop")". Then you will see two lines with i=1 and i=2 printed in console and a line "End of the loop", after the program is executed.</p>
+<p>You can use "continue" keyword to skip the rest of the loop body in the current iteration, and continue at the next iteration:</p>
+<pre><code class="vb">for dim i=1 to 3
+    if i==2 then
+        continue
+    end
+    println(&quot;hi! From i=&quot; + int2str(i))
+end
+</code></pre>
+
+<p>The above example will print 2 lines with i=1 and i=3. Because when i=2, the loop is skipped.</p>
+<p>You cannot use "break" and "continue" outside of loops.</p>
+<h3 id="322-while-loop">3.2.2 While Loop</h3>
+<p>The "while" loop will execute a block of code repeatedly until the given condition becomes "false". The syntax of it is:</p>
+<pre><code class="vb">while {condition}
+   ...
+end [while]
+</code></pre>
+
+<p>The "condition" should be a boolean-typed expression. Here we present an example for printing strings from a "black box". Assume that the "black box" contains some strings and you can call "get" function to fetch a string from the box, and you can call "has_next" function (which returns a boolean value) to find whether there are any strings in the black box. </p>
+<pre><code class="vb">while has_next()
+    println(get())
+end
+</code></pre>
+
+<h1 id="4-scope-and-names">4. Scope and names</h1>
+<p>We first introduce a concept: basic block. A basic block is a block of code. The basic block in the highest-level is the top-level code; A simple "if-else" has two basic blocks: one for condition being true and the other for condition being false; A for loop itself is a basic block. As you can see, basic blocks may have some children basic blocks.</p>
+<p>Scopes define where a name (variable/function/class) can be used and is visible to the programmers. Every basic block has one corresponding scope. When a name is defined, the name will be added into the current basic block's scope. Scopes are maintained in a tree, where a parent scope may have zero or multiple children scopes. There are some simple rules for scopes in Birdee:
+ 1. The code in a child scope can reference all names (for variable/function/class) of its ancestor scopes - In a child basic block, you can use the functions/variables/classes defined in any ancestor basic blocks.
+ 2. The code in a parent scope is unaware of the names in a child basic block - In a parent basic block, you cannot use the variables (or functions, etc.) which is defined in a child basic block. You can define a variable in the parent basic block which have the same name of some variable in the child basic block.
+ 3. In the same scope, defining two variables/functions/classes with the same name is not allowed.
+ 4. In the child scope, it is allowed to define a variable (or function/class) which has the same name of some variables (or functions, etc.) in the ancestor scopes.
+ 5. When resolving a name, if the name is defined in some ancestor scopes or in the current scope, the variable (or function, etc.) defined in the lowest level of scope will be selected.</p>
+<p>Note that the parameters of functions can be viewed as defined variables in the function's scope.</p>
+<p>For more explanations, see comments:</p>
+<pre><code class="vb">dim a as int = 2
+function compute(b as int) as int
+    return a*b  # Okay because of rule 1
+end
+
+b=3 # Won't compile! Due to rule 2
+if a==2 then
+    dim c as float=123.2
+end
+c=333.0 # Won't compile! Due to rule 2
+
+dim a as string # Won't compile! Due to rule 3
+
+function show(b as int)
+    dim a = &quot;hi&quot;  # Okay because of rule 4
+    println(a + int2str(b))  # Okay because of rule 5, the definition in the current scope is selected
+end
+</code></pre>
+
+<h2 id="41-name-resolution-rules">4.1 Name resolution rules</h2>
+<p>The name resolution rules defines how identifiers are resolved and bound to the function/variable definition. Given a name of identifier for expression, Birdee language should find the name in the definitions in the following order, from upper ones to lower ones. Once an definition name is matched with the identifier name, the compiler will bind this identifier expression with the selected definition, and will disregard all definitions in lower orders.</p>
+<ol>
+<li>The names of local variables in the current basic block</li>
+<li>The names of local variables (including function arguments) in the ancestor basic blocks (nearest first)</li>
+<li>The names of template arguments (we will discuss templates later. Note that compilers only search constant expression template arguments here.)</li>
+<li>(If currently in a member function of a class,) The field names of the current class</li>
+<li>(If currently in a member function of a class,) The member function names of the current class.</li>
+<li>The global variable (defined in top-level) names defined in the current module</li>
+<li>The functions names defined in the current module</li>
+<li>The imported global variable (defined in top-level) names defined in other modules</li>
+<li>The imported functions names defined in other modules</li>
+<li>The imported package names</li>
+</ol>
+<p>The above is the order of name resolution of identifier expressions. Birdee also defines the resolution order for type names. The following order applies to types (e.g. the identifiers after "as"):</p>
+<ol>
+<li>The template argument names of the current function</li>
+<li>The template argument names of the current class (if exists)</li>
+<li>The "functype" or closure names of the current module</li>
+<li>The imported "functype" or closure names of the imported modules</li>
+<li>The class names of the current module</li>
+<li>The imported class names of the imported modules</li>
+</ol>
+<h1 id="5-array">5. Array</h1>
+<p>An array is an sequential collection of values with the same type. To use an array type, you can append "[]" to other types and you will get a array of that type. See example:</p>
+<pre><code class="vb">dim arr1 as int[]
+</code></pre>
+
+<p>Here "arr1" is a variable of integer array type.</p>
+<p>Arrays of objects are also allowed:</p>
+<pre><code class="vb">dim arr2 as string[]
+</code></pre>
+
+<p>You can declare arrays of arrays (multi-dimension array). Here is an example of two-dimension array:</p>
+<pre><code class="vb">dim arr2 as float[][]
+</code></pre>
+
+<p>To use an array, you should first allocate space for it, by "new" operator. The syntax is:</p>
+<pre><code class="vb">new {type} * {number_of_elements} 
+</code></pre>
+
+<p>For example, to create an array of integer with 10 elements:</p>
+<pre><code class="vb">dim arr as int[] = new int * 10
+</code></pre>
+
+<p>To create an [10x20] array of float, you can:</p>
+<pre><code class="vb">dim arr2 as float[][] = new float * 10, 20
+</code></pre>
+
+<p>Finally, you can access the array by "[ ]":</p>
+<pre><code class="vb">arr[0]=12
+dim c = arr[0] + 23
+arr2[1][3]=3.14
+</code></pre>
+
+<p>Note that surrounded by "[ ]" is the index of the array element you want to access. The index must be an integer type (int, uint, long, ulong, ...). Also, the index starts at 0 and ends at number_of_elements-1. If you create an array by "new int[10]", the valid index will be within [0 ~ 9].</p>
+<p>The array variable is a reference to the array, not the array itself. So the following code:</p>
+<pre><code class="vb">dim arr as int[] = new int * 10
+dim arr2 as int[] = new int * 10
+arr2 = arr
+</code></pre>
+
+<p>will not copy the array of 10 elements to "arr2", but make the variable "arr2" points to the same array of "arr". So if we assign a value to an element of "arr", you can find the change by the variable "arr2", because both variables points to the same array!</p>
+<pre><code class="vb">dim arr as int[] = new int * 10
+dim arr2 as int[] = new int * 10
+arr2 = arr
+arr[3] = 123
+println(int2str(arr2[3])) # you will see &quot;123&quot;
+</code></pre>
+
+<p>Also note that variables for classes are also references. The same effect applies to class variables too.</p>
+<p>You can access some properties of an array by:</p>
+<pre><code class="vb">dim arr as int[] = new int * 10
+println(&quot;The number of elements is &quot; + arr.length()) #arr.length() gets the # of elements
+dim ptr as pointer = arr.getRaw()                    #arr.getRaw() gets the native pointer of the array
+</code></pre>
+
+<h1 id="6-class">6. Class</h1>
+<h2 id="61-basic-definitions">6.1 Basic definitions</h2>
+<p>A class is a structured collection of data. Related variables can be include in a class. To define a class, use the below syntax:</p>
+<pre><code class="vb">class {class_name}
+    ...
+end [class]
+</code></pre>
+
+<p>The body of a class ("..." in above syntax) can be declaration of member variables and member functions.
+To define a member variable, use the below syntax within the "class ... end":</p>
+<pre><code class="vb">public {variable_name} as {type}
+</code></pre>
+
+<p>or </p>
+<pre><code class="vb">private {variable_name} as {type}
+</code></pre>
+
+<p>Note: current version of Birdee does not allow assign initial values to member variables. </p>
+<p>The "public" and "private" keywords specify the access modifier of the variable. We will discusses it a bit later. Now we write our first class:</p>
+<pre><code class="vb">class bird
+    public name as string
+    public weight as float
+end
+</code></pre>
+
+<p>The class describes a bird with a name and a weight. You cannot use the member variables until you create an instance of the class. To create an instance of "bird" class, use "new" keyword:</p>
+<pre><code class="vb">dim mybird as bird = new bird
+mybird.name = &quot;Birdee&quot;
+mybird.wright = 2.3
+println(mybird.name)
+</code></pre>
+
+<p>The member variables can be accessed by a "." after a class instance expression, with the name of the member variable.
+The above example creates an instance of class "bird" and assign it to a variable "mybird" (Note that the class name can be used as a type!). The example then assign the member variables of "mybird". The member variables belongs to the instances of the class. Thus, you cannot use them without a reference to an instance.</p>
+<h2 id="62-explanations-of-terminologies">6.2 Explanations of terminologies</h2>
+<h3 id="621-class-vs-class-instance-vs-object">6.2.1 Class v.s. Class Instance v.s. Object</h3>
+<p>As defined above, a class is the definition of structured data. A class (for example, "bird" class) is a type for some data.</p>
+<p>Class instance is a piece of concrete data of some class. "string" is a class, and a string variable is a class instance of string. Class instances are sometimes called "Objects".</p>
+<p>Note that different instances of a class are independent with each other. Assigning the member variable of one instance will not affect the same member variable of others. </p>
+<h3 id="622-member-variables-fields">6.2.2 Member variables &amp; fields</h3>
+<p>They have the same meaning.</p>
+<h3 id="623-member-functions-methods">6.2.3 Member functions &amp; methods</h3>
+<p>They have the same meaning.</p>
+<h3 id="624-reference">6.2.4 Reference</h3>
+<p>Once an object is allocated in memory, how can you find it and operate on it? The answer is by "reference". A reference points to a instance of class (or an array). Variables of class/array types holds the references to the instances in the memory (e.g. dim mybird as bird). So copying variables of class/array types copies the references to the instances, instead of copying the object/array themselves.</p>
+<p>Here we introduce a special reference constant "null". It points to actually nothing. You can assign null to any reference typed variable (class, array). If a reference is null, it means that it is an empty value. You should never call a member method or get the field of a null reference, or an error will occur. You can check if a reference is null by:</p>
+<pre><code class="vb">if some_reference !== null then
+...
+end
+</code></pre>
+
+<p>Note that for class object variables, the initial values are null.</p>
+<h3 id="625-this">6.2.5 "this"</h3>
+<p>"this" is a reference to the current object in the member function. It is a Birdee keyword that can only be used in member functions. For Birdee code</p>
+<pre><code class="vb">obj.funct()
+</code></pre>
+
+<p>when it is run, in the method "funct", "this" will point to the object being called - in this case, "obj".</p>
+<h2 id="63-member-functions">6.3 Member functions</h2>
+<p>Member functions can be defined within the scope of the class:</p>
+<pre><code class="vb">{access_modifier} function {function_name} ([ {parameter1} as {type}, {parameter2} as {type}, ... ]) [as  {type}]
+    ...
+end [function]
+</code></pre>
+
+<p>It is similar to the definition of normal functions, except that member functions are defined inside a class, and there is an "access_modifier" at the beginning of the function. The "access_modifier" can be "public", "private" or omitted (which will be explained later). </p>
+<p>We can write a member function in the above "bird" class:</p>
+<pre><code class="vb">class bird
+    public name as string
+    public weight as float
+    public function fly()
+        println(&quot;my name is &quot;+ this.name + &quot;. I am flying!&quot;)
+    end
+end
+</code></pre>
+
+<p>You can call "fly" on an instance of "bird" class:</p>
+<pre><code class="vb">dim mybird as bird = new bird
+mybird.name = &quot;Birdee&quot;
+mybird.wright = 2.3
+mybird.fly()
+</code></pre>
+
+<p>The above example of "bird" class uses a keyword "this" of Birdee to represent the current instance calling the member function (see the line: println("my name is "+ this.name + ". I am flying!") ) . When the member function is called ( mybird.fly() ), "this" will be a reference to the instance pointed by "mybird". "this" keyword cannot be used outside the class definition. Also, in the member functions, to use the member variables, "this" keyword can be omitted. For example "this.name" can be simplified to "name", when name is a member variable of the same class. Also note that for a member function, if there is a local variable (variables defined in the body of a function or in the arguments) having the same name of a member variable, using the name will result in using the local variable. To use the member variable have a conflicting name, use "this.XXX" instead. (XXX is the conflicting name).</p>
+<p>Note that the member functions cannot be accessed without an instance.</p>
+<h2 id="64-access-modifier">6.4 Access modifier</h2>
+<p>We finally explain what is "private" and "public" in front of the member variables and functions. If a member variable or function is defined "private", no one can access it unless it is a member function of the same class, for example:</p>
+<pre><code class="vb">class bird
+    public name as string
+    public weight as float
+    private secret_name as string
+end
+
+dim mybird as bird = new bird
+mybird.secret_name=&quot;sadas&quot;
+</code></pre>
+
+<p>The above code will not compile, because "secret_name" is a private member. Access control (making members private/public) is useful when you have some internal variables or functions that you do not want other people to have access to. But remind that a member function can always access all members of the same class, regardless of being private or public.</p>
+<p>Note that a member function's access modifier can be omitted when defining it, and the access is set to "public" by default.</p>
+<h2 id="65-initialization-destruction">6.5 Initialization &amp; destruction</h2>
+<p>We can now create instances by "new". But what if we want to initialze the object while creating it? The syntax of "New with initialization" can be use.</p>
+<pre><code class="vb">new {class_name}.{method_name}([arg1,arg2,....])
+</code></pre>
+
+<p>The class_name is the name of the class of the instance to be created. The method_name is the member function name to be called after the creation of the object. The function should be a public function. Here is an example:</p>
+<pre><code class="vb">class bird
+    public name as string
+    public weight as float
+    public void init(name as string, weight as float)
+        this.name=name
+        this.weight=weight
+    end
+end
+
+dim mybird as bird = new bird.init(&quot;birdee&quot;,2.13)
+</code></pre>
+
+<p>The above example creates and initializes a "bird" object, which is equivalent to:</p>
+<pre><code class="vb">dim mybird as bird = new bird
+mybird.init(&quot;birdee&quot;,2.13)
+</code></pre>
+
+<p>Note: the "New with initialization" will discard the return value of the called function and will always return the created instance.</p>
+<p>When the class has a "__init__" method defined in the class body, users can use "New with initialization" in a simpler way. The following code:</p>
+<pre><code class="vb">dim obj = new SomeClass(&quot;hi&quot;)
+</code></pre>
+
+<p>will create an new instance of class SomeClass and call obj.__init__("hi") for initialization. </p>
+<p>If the "__init__" method has no arguments, users can further save the "(...)" for calling "__init__":</p>
+<pre><code class="vb">class SomeClass
+    public function __init__()
+    end
+end
+dim obj = new SomeClass   #__init__ will be called here.
+</code></pre>
+
+<p>Note that "__init__" must be a public function in the class.</p>
+<p>Birdee uses garbage collection for memory management, which means when the object created is no longer used (when there are no references pointing to the object), the object will be automatically delected. If the object has "__del__" method defined, when it is deleted and, the method will be called. You can do some finalization work in this method.</p>
+<h2 id="66-operator-overloading">6.6 Operator overloading</h2>
+<p>Operator overloading means you can apply basic operators (like +,-,*,/,...) on you own class and define your classes' own behavior on them.</p>
+<p>We are acutally familar with the use of operator overload, which is used in "+" operator of string. (Don't forget that "string" is simply a class defined by Birdee!). We can use "+" to concatenate two strings:</p>
+<pre><code class="vb">println(&quot;string A&quot; + &quot;string B&quot;)
+</code></pre>
+
+<p>There is no magic in it and Birdee implements it using operator overload.</p>
+<p>To overload operator "+", you must define a special member function "__add__" in your class:</p>
+<pre><code class="vb">class complex
+    public real as double
+    public imaginary as double
+
+    public function __add__(complex other) as complex
+        return new complex:set(this.real + other.real, this.imaginary + other.imaginary)
+    end
+
+    public function set(real as double,imaginary as double)
+        this.real=real
+        this.imaginary=imaginary
+    end
+end
+
+dim v1 = new complex:set(1,3), v2 = new complex:set(2,4)
+dim v3 = v1 + v2
+println(double2str(v3.real))
+</code></pre>
+
+<p>The above example defines a complex number class. It overloads "+" by the function "__add__". The function accepts another "complex" object and creates a new complex object as the result. It then creates two complex numbers (1,3) and (2,4), add them and store in variable "v3" and print the real part of the result. The line "dim v3 = v1 + v2" will be equivalent to:</p>
+<pre><code class="vb">dim v3 = v1.__add__(v2)
+</code></pre>
+
+<p>There are other operators that can be overloaded. The operators and functions to implement are listed in the below table:</p>
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Function Name to implement</th>
+<th>Operand</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>+</td>
+<td>__add__</td>
+<td>The other object</td>
+</tr>
+<tr>
+<td>-</td>
+<td>__sub__</td>
+<td>The other object</td>
+</tr>
+<tr>
+<td>*</td>
+<td>__mul__</td>
+<td>The other object</td>
+</tr>
+<tr>
+<td>/</td>
+<td>__div__</td>
+<td>The other object</td>
+</tr>
+<tr>
+<td>%</td>
+<td>__mod__</td>
+<td>The other object</td>
+</tr>
+<tr>
+<td>==</td>
+<td>__eq__</td>
+<td>The other object</td>
+</tr>
+<tr>
+<td>!=</td>
+<td>__ne__</td>
+<td>The other object</td>
+</tr>
+<tr>
+<td>&gt;=</td>
+<td>__ge__</td>
+<td>The other object</td>
+</tr>
+<tr>
+<td>&lt;=</td>
+<td>__le__</td>
+<td>The other object</td>
+</tr>
+<tr>
+<td>&gt;</td>
+<td>__gt__</td>
+<td>The other object</td>
+</tr>
+<tr>
+<td>&lt;</td>
+<td>__lt__</td>
+<td>The other object</td>
+</tr>
+<tr>
+<td>||</td>
+<td>__logic_or__</td>
+<td>The other object</td>
+</tr>
+<tr>
+<td>|</td>
+<td>__or__</td>
+<td>The other object</td>
+</tr>
+<tr>
+<td>&amp;&amp;</td>
+<td>__logic_and__</td>
+<td>The other object</td>
+</tr>
+<tr>
+<td>&amp;</td>
+<td>__and__</td>
+<td>The other object</td>
+</tr>
+<tr>
+<td>^</td>
+<td>__xor__</td>
+<td>The other object</td>
+</tr>
+<tr>
+<td>!</td>
+<td>__not__</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Array read</td>
+<td>__getitem__</td>
+<td>The "index"</td>
+</tr>
+<tr>
+<td>Array write</td>
+<td>__setitem__</td>
+<td>The "index" and the object to "put" in</td>
+</tr>
+</tbody>
+</table>
+<p>For a class object, if an operator is applied, the corresponding method will be called. If the method is not defined or it is private, a compile error will be raised.</p>
+<p>For overloaded binary opeartors (operators with two opearnds), "A ? B", where "?" is any binary operators, is equivalent to "A.__XXXX__(B)", where "__XXXX__" is the corresponding method. For overloaded unary operators (operators with one operand), using them is equivalent to "A.__XXXX__()", where "__XXXX__" is the corresponding method.</p>
+<p>Operators for array read &amp; write are special cases for operator overloading. These two operators overloads the "[]" operator which is originally used for accessing array elements. If the indexed object is to be read "from" an object, the "__getitem__" method will be called. For Birdee code like</p>
+<pre><code class="vb">dim a = obj[&quot;123&quot;]
+</code></pre>
+
+<p>where the variable "obj" is not an array, the compiler will first the "__getitem__" method of the class of "obj". The actual generated code will be </p>
+<pre><code class="vb">dim a = obj.__getitem__(&quot;123&quot;)
+</code></pre>
+
+<p>Similarly, if the indexed element is written (on the left of the "="), the method "__setitem__" will be called. The first parameter should be the index and the second parameter should be the value to be written to the object. For example, the following two lines of code have the same effect:</p>
+<pre><code class="vb">obj[&quot;123&quot;]=34
+obj.__setitem__(&quot;123&quot;,34)
+</code></pre>
+
+<p>The existence of the method "__setitem__" is optional, as long as you never "write" to an indexed element. However, if you want to overload "[]", the method "__getitem__" should always be defined in the class.</p>
+<p>Note that the type of parameters of methods for operator overloading is not necessarily the same class of the current class. They can be any valid types.</p>
+<p>Also note that you can use function templates for operator overloading. Templates will be later introduced.</p>
+<h2 id="67-class-inherit">6.7 Class inherit</h2>
+<h3 id="671-basic-inherit">6.7.1 Basic inherit</h3>
+<p>Class can inherit another class's public members through class inherit. The inherited class is also called parent class. A class with parent class is usually viewed as a specification of its parent. </p>
+<p>The following codes:</p>
+<pre><code class="vb">class ParentClass
+    private a as int
+    public b as int
+    public function get() as int
+        return a
+    end
+end
+class SomeClass : ParentClass
+    public function __init__()
+    end
+    public function get2() as int
+        return b + get()
+    end
+end
+</code></pre>
+
+<p>define a class named "SomeClass" with a parent class named "ParentClass", and SomeClass inherits member field "b" and member function "get()" from ParentClass, note that member field "a" is not inherited since it's private to ParentClass. Also, SomeClass can access the member it inherits inside class directly, as showed in the example.</p>
+<p>Besides, the following code:</p>
+<pre><code class="vb">class ParentClass
+    public function __init__()
+    end
+    public function __del__()
+    end
+    public function __not__() as boolean
+        return true
+    end
+end
+class SomeClass : ParentClass
+    public function __init__()
+    end
+    public function __del__()
+    end
+end
+
+dim foo = new SomeClass
+dim bar = !foo
+</code></pre>
+
+<p>shows an example of class inherit with special member functions. Note that in code "dim foo = new SomeClass", the function <strong>init</strong>() of SomeClass will be automatically called, but <strong>init</strong>() of ParentClass will not! Also, the <strong>del</strong>() of SomeClass will be automatically called when garbadge collected, but <strong>del</strong>() of ParentClass will not. And the code "dim bar = !foo" won't compile because SomeClass does not contain an operator overloading function for !. Even if SomeClass inherits one from ParentClass, the compiler will not automatically call it.</p>
+<h3 id="672-super">6.7.2 "super"</h3>
+<p>What if we want the functions in parent be called during above scenarios? We can use the "super" keyword. Similar to "this" keyword, "super" keyword represents a built-in reference inside class. However, "this" refers to the instance itself, while "super" refers to the parent part of the instance. That is to say, we can use "super" keyword to only access the members inherited from parent. </p>
+<p>With "super" keyword, the above code can be modified to:</p>
+<pre><code class="vb">class ParentClass
+    public function __init__()
+    end
+    public function __del__()
+    end
+    public function __not__() as boolean
+        return true
+    end
+end
+class SomeClass : ParentClass
+    public function __init__()
+        super.__init__()
+    end
+    public function __del__()
+        super.__del__()
+    end
+    public function __not__() as boolean
+        return super.__not__()
+    end
+end
+
+
+dim foo = new SomeClass
+dim bar = !foo
+</code></pre>
+
+<p>Then, the code will compile and the special functions of parent will be called automatically.</p>
+<h2 id="68-run-time-type-information-rtti">6.8 Run Time Type Information (RTTI)</h2>
+<p>You can get the type information of an object at the run time, as long as the type of the object has Run Time Type Information (RTTI) enabled. The RTTI describes the name and the inherience information of a class. By default, RTTI will not be generated for classes unless the classes has virtual functions. You can manually enable RTTI on a class by adding "@enable_rtti" before the "class" keyword of a class. The following example shows three classes with RTTI. Note that classes with virtual functions automatically include RTTI. </p>
+<pre><code class="vb">@enable_rtti
+class A
+end
+
+class B
+   @virtual public function b()
+   end
+end
+
+class C
+   public c as int
+   @virtual public function b()
+   end
+end
+</code></pre>
+
+<p>Note that if a class has RTTI enabled, all classes extending (inheriting from) it will be automatically marked RTTI-enabled. If a class is manually marked <code>enable_rtti</code>, either it has no parent class, or it should extend a class with RTTI.</p>
+<p>Given an expression, the RTTI data can be fetched by the keyword <code>typeof</code>. The returned value of <code>typeof(some_expression)</code> is an object of class <code>type_info</code>, which contains the RTTI of the class of the expression. The class <code>type_info</code> has a method to get the name of the class - <code>get_name</code>, and it has a method</p>
+<p><code>public function is_parent_of(child as type_info) as boolean</code></p>
+<p>to check if another class (represented by RTTI) is inherited from the current class. Also, the <code>type_info</code> class has a method </p>
+<p><code>public function get_parent() as type_info</code></p>
+<p>to get RTTI of the parent class. If a class has no parent class, the method returns null. See the following example:</p>
+<pre><code class="vb">dim a as B = new C
+println(typeof(a).get_name()) # should print &quot;XXXX.C&quot;
+println(typeof(a).get_parent().get_name()) # should print &quot;XXXX.B&quot;
+</code></pre>
+
+<p>The variable "a" is declared as an object in class B. But it is assigned with an instance of class C. Using <code>typeof</code> operator, we can get the exact type of the variable "a".</p>
+<p>The <code>typeof</code> operator will execute the expression and extract the reference to the RTTI object at the run time. The expressions to be evaluated by <code>typeof</code> should be of classes with RTTI, otherwise the compiler will throw an error.</p>
+<p>A unique RTTI object will be created for each different class. Class template instances are different classes with different RTTIs.  </p>
+<p>Given a type, the RTTI can be fetched by a special function <code>get_type_info[T]</code> defined in module <code>rtti</code>. You can import this function by <code>import rtti:get_type_info</code>. You need to replace <code>T</code> with the class you need to fetch for RTTI. <code>T</code> can only be classes with RTTI.</p>
+<p>RTTI is useful when a variable is assigned with a subclass of the class which the variable is defined. Developers may want to check if the variable really holds an object in a subclass. Since RTTI for a class is unique, we can compare the references of <code>type_info</code> (RTTI) by <code>===</code> to check that:</p>
+<pre><code class="vb">import rtti:get_type_info
+dim a as B = new C
+if typeof(a)===get_type_info[C]() then
+   println(&quot;the variable a is of class C&quot;)
+end
+</code></pre>
+
+<p>The subclass checking and safe down-casting can be done with RTTI. Birdee provides the function <code>dyn_cast</code> in the module <code>rtti</code> to safely convert a superclass reference to a subclass reference.</p>
+<pre><code class="vb">import rtti:dyn_cast
+dim a as B = new C
+dim c as C = dyn_cast[C](a)
+priintln(int2str(c.c))
+</code></pre>
+
+<p>The above code converts a variable "a" of superclass "B" to variable "c" of subclass "C", using <code>dyn_cast[C]</code>. The function <code>dyn_cast[C]</code> will convert the reference in the parameter to a reference of class "C". If the object pointered by the given parameter is not an instance of "C" or subclass of "C", <code>dyn_cast[C]</code> will return null. You can replace 'C' here with other classes with RTTI. <code>dyn_cast[...]</code> is a system provided function, which internally compares the RTTIs of the classes.</p>
+<p>Enabling RTTI has some overhead in space. If a class has RTTI, all of its instance has one additional hidden member pointing to the <code>type_info</code> object of the class.</p>
+<h2 id="69-structs">6.9 Structs</h2>
+<p>Struct is a similar but different concept as class. Structs can be similarly defined as classes. You just need to replace "class" keyword with "struct".</p>
+<pre><code class="vb">struct {name}
+...
+end [struct]
+</code></pre>
+
+<p>The member variables and functions can be similarly defined and used in structs. </p>
+<p>So what's the difference between struct and class? One key difference is that for local variables defined in functions, structs are allocated on the stack and class objects are allocated on the heap. The access and allocation of data on the stack is much faster than on the heap. Also, once the program leaves the scope of a function, the space of the local struct variables will be deallocated. </p>
+<p>The second difference is that, in the context of Birdee, variables of "class" has "reference semantic", while variables of "struct" has "value semantic". A class variable (including local, global and member one) is always a reference to an object in the heap or null. If you copy a class object variable, you just copy the reference to the object, not the actual data of object. On the other hand, copying struct variables (by operator "=") or implicitly copying struct variables (in function parameters), you will copy the whole struct object. Hence, struct variables are "values", not "references".</p>
+<p>If a class/struct, say "A", has a class, say "B", member variable, the class/struct A only holds a refernce to B. But if "B" is changed to struct, "B" will embeded into the memory layout of "A", which means allocating an object of "A" will implicitly allocate space for "B". </p>
+<p>So you should be careful when the struct has many fields - copying these structs involves large amounts of memory copying.</p>
+<p>Some notes on struct:
+ * Operator overloading is supported in structs.
+ * You cannot enable RTTI on struct</p>
+<p>Important: The "__del__" methods of structs will not be automatically called when the structs objects are destroyed!</p>
+<h1 id="7-modules-and-imports">7. Modules and Imports</h1>
+<p>Birdee programs can be encapsulated into modules. A module is a collection of functions, classes and global variables that can be invoked and used by other Birdee code. A similar concept for Birdee's module is the object files in C/C++ compilation systems. The main difference is that Birdee's modules contains metadata to describe the prototype of the exported functions, the definitions of the classes and the types of the exported variables in the module, while in C/C++, an object file is just a collection of code and variable, and users must write a header file or explicitly declare the variables and functions with "extern" keyword. Such header files are no longer needed in Birdee.</p>
+<p>When a Birdee program is compiled by the "birdeec" compiler, the source code will be converted into a module, which consists of an object file (which can be linked with C/C++ object files) and a metadata file (*.bmm file. "bmm" represents "Birdee Module Metadata") which describes the variables, classes and functions of the module. To use a module that already exists, users can use "import" keyword in the Birdee code. Note that a module can "import" multiple existing modules and all "import" should be written at the beginning of the Birdee code before any other top level code. The functions, classes and variables in the top-level of a module are called symbols. After importing a module, the symbols can be used in the current Birdee module. </p>
+<p>Note that if a module is imported by any syntax above, the top-level code of the imported library will be executed exactly once.</p>
+<p>There are 4 ways to import an external module.</p>
+<h2 id="71-module-import">7.1 Module Import</h2>
+<p>The first form of syntax is:</p>
+<pre><code class="java">import {module_name}
+</code></pre>
+
+<p>The "module_name" is composed of directory names separated by dots ("."). The Birdee compiler will search the local file system for the module to be imported using the path provided by the "module_name". There are two ways setting the root path of searching the modules. One way is to set the "BIRDEE_HOME" environment variable in your OS. The compiler will search "BIRDEE_HOME/blib" for the target module. Another way is to set a module search path in the command line arguments for "birdeec" with "-l" switch. The compiler will first try to find the target module with root directory set by the command line arguments, then by the "BIRDEE_HOME" environment variable. For example, if the "BIRDEE_HOME" is set as "/home/menooker/birdee" and we have a "-l /sourcecode/mylib" argument in the command line, to resolve the code "import sys.net.socket" (let's assume there exists such a module), the compiler will first find "/sourcecode/mylib/sys/net/socket.bmm". If it does not exist, "/home/menooker/birdee/blib/sys/net/socket.bmm" will be searched.</p>
+<p>After importing with this syntax, users can use "{module_name}.{symbol_name}" to access the variables, functions or classes in the module. For example, </p>
+<pre><code class="vb">import sys.net.socket
+sys.net.socket.connect(&quot;192.168.0.1&quot;,999)
+</code></pre>
+
+<p>The "{module_name}.{symbol_name}" is called qualified name of a symbol. However, the module we are talking about here has not been implemented yet unfortunately.</p>
+<h2 id="72-symbol-import">7.2 Symbol Import</h2>
+<p>The second form of syntax is:</p>
+<pre><code class="java">import {module_name}:{symbol_name}
+</code></pre>
+
+<p>This form of import will do "module import" just as the last section does. In addition, it will import a symbol name of a variable, function or class from the target module. Users can simply use "symbol_name" to access the the symbol instead of the long qualified name. For example</p>
+<pre><code class="vb">import sys.net.socket:connect
+connect(&quot;192.168.0.1&quot;,999)
+</code></pre>
+
+<h2 id="73-all-symbols-import">7.3 All Symbols Import</h2>
+<p>All symbols import will do "Symbol Import" on all symbols of the target module. The syntax is:</p>
+<pre><code class="java">import {module_name}:*
+</code></pre>
+
+<p>After all symbols import, the variables, functions and classes can be accessed using the names instead of qualified names. For example</p>
+<pre><code class="vb">import sys.net.socket:*
+connect(&quot;192.168.0.1&quot;,999)
+</code></pre>
+
+<h2 id="74-auto-import">7.4 Auto Import</h2>
+<p>The compiler will automatically import all symbols from some core modules of Birdee, such as "birdee.bmm". "birdee.bmm" contains the core features like "string", "println".</p>
+<h2 id="75-private-symbols">7.5 Private symbols</h2>
+<p>As we have discussed above, the classes, variables and functions (include function declartions) in the top-level will be exported in a Birdee module, which can be used by other modules. Sometimes, developers do not want to expose the internal classes/variables/functions of a module. In this case, they can add "@private" before the symbols (classes/variables/functions) that they want to hide from other modules. If a symbol is marked "private", other modules cannot access it by importing the module. Here is an example of a module with private symbols:</p>
+<pre><code class="vb">@private dim private_v = 1 #the &quot;private&quot; can be followed by a space
+
+@private
+class someclass #the &quot;private&quot; can be followed by a newline
+
+end
+
+function foo() #by default, it is public
+end
+</code></pre>
+
+<h1 id="8-templates">8. Templates</h1>
+<p>We explain the use of templates with the following example. Assume we have a function doing addition on int:</p>
+<pre><code class="vb">function add(a as int, b as int) as int
+    return a+b
+end
+</code></pre>
+
+<p>What if we want a function adding floats? We may re-write an similar function:</p>
+<pre><code class="vb">function add(a as float, b as float) as float
+    return a+b
+end
+</code></pre>
+
+<p>What if we want a function adding strings, or custom class objects? Writing so many functions that is almost the same? We can use templates!</p>
+<h2 id="81-function-templates">8.1 Function Templates</h2>
+<p>Templates can define more general version of functions. To define a function template, users should use the syntax:</p>
+<pre><code class="vb">function {function_name}[{placeholder1},{placeholder2},...]({arguments}) as {return type}
+    ...
+end
+</code></pre>
+
+<p>In the context of Birdee templates, the "placeholders" refers to the template parameters. The templates allow types to be the parameters of functions and classes. The difference between normal functions and function templates is that function templates has "[...]" part for the template arguments. Here is an example for adding two paramters:</p>
+<pre><code class="vb">function add[T](a as T, b as T) as T
+    return a+b
+end
+</code></pre>
+
+<p>In the function header, we declare a template parameter for typename by "T", and we can use the template parameter as a type in the rest part of the function. To use the template function, add "[...]" to the function name to give the parameters to the template parameters. For example:</p>
+<pre><code class="vb">add[int](1 , 3)
+add[string](&quot;haha&quot;,&quot;yoyo&quot;)
+add[float](1.2 , 3.4)
+</code></pre>
+
+<p>In addition, the template parameter in the function template can be actual constant values rather than typenames. As is shown above, to declare a typename template parameter, users need to insert an identifier in the "[...]" of the function header. Similarly, declare a constant value template parameter, insert "{identifier} as {type}" into "[...]". Note that Birdee only support basic types (integers/floats) and string as the type of constant value template parameter. For example, we modifier the template above a little:</p>
+<pre><code class="vb">function add[T,offset as int](a as T, b as T) as T
+    return a+b+offset
+end
+</code></pre>
+
+<p>We add a constant value template parameter "offset", and use it in the returned expression. Then we use it with:</p>
+<pre><code class="vb">add[int,3](1 , 3)
+add[float,66](1.2 , 3.4)
+</code></pre>
+
+<p>However, the code "add[string,123]("foo","bar")" will not compile, since adding an integer to a string is not allowed. Also note that the arguments to the constant value placeholders can only be literal numbers/strings, such as "12.34" or 12.34.</p>
+<p>Member functions of a class can also be a template:</p>
+<pre><code class="vb">class myclass
+    private value as int
+    public function add[T](v as T)
+        value = value + v
+    end
+end
+</code></pre>
+
+<h2 id="82-class-templates">8.2 Class Templates</h2>
+<p>Similarly, one can define a class template with the following syntax:</p>
+<pre><code class="vb">class {class_name}[{placeholder1},{placeholder2},...]
+    ...
+end
+</code></pre>
+
+<p>The placeholders can be similarly used in the scope of the class. Here is an example for a class for linked list:</p>
+<pre><code class="vb">class list[T]
+    public head as list_node[T]
+    public tail as list_node[T]
+    public function push_back(v as T)
+        dim node=new list_node[T]
+        node.v=v
+        node.next=null
+        if head===null then
+            head=node
+            tail=node
+        else
+            tail.next=node
+            tail=node
+        end
+    end
+    public function create()
+        head=null
+        tail=null
+    end
+end
+
+class list_node[T]
+    public v as T
+    public next as list_node[T]
+end
+</code></pre>
+
+<p>You can use it with:</p>
+<pre><code class="vb">dim mylist = new list[string]:create()
+mylist.push_back(&quot;hi&quot;)
+println(mylist.tail.v)
+</code></pre>
+
+<p>Note that "list[string]" and "list[int]" are different types and not related.</p>
+<h2 id="83-template-type-parameter-deduction">8.3 Template type parameter deduction</h2>
+<p>In some cases, you can call an template function without giving some of the template arguments. Birdee compiler can infer the template arguments from the function arguments. For example, for function:</p>
+<pre><code class="vb">function add[T](a as T, B as T) as T
+    return a+b
+end
+</code></pre>
+
+<p>We can call the template function with:</p>
+<pre><code class="vb">add(1,2)
+</code></pre>
+
+<p>Since the type of arguments of the function has been given ("1" and "2" are of type "int") and in the template they are declared as "T", Birdee can infer that the template parameter "T" for the template "add[T]" is "int". So the code above has the same effect as:</p>
+<pre><code class="vb">add[int](1,2)
+</code></pre>
+
+<p>Template type parameter deduction has some restrictions.
+ * It only applies to function templates. 
+ * The template parameters to be automatically inferred must be used in the function's parameters. The template parameters can be infered even it is in a complex type in the function parameter. For example, Birdee can infer the template parameter "T" in the following code:
+ <code>vb
+function get[T](a as T[]) as T
+    return a[0]
+end</code></p>
+<p>The function parameter "a" is declared as a complicated type "T[]". For the given function parameter <code>int[]</code>, the compiler can infer T as int. Besides the array type, the template parameter deduction on closure types and functypes are supported.
+ * You can manually give some of the template arguments and leave other template arguments to be inferred by Birdee compiler. However, the template parameters to be automatically inferred must be the last several template parameters declared in the template's parameter list. For example, if we need a function template to add two values and convert the value to a specific type, the code can be:</p>
+<p><code>vb
+function add[RetT,T1,T2](a as T1, B as T2) as RetT
+    return a+b
+end</code></p>
+<p>We can use it by giving the argument for "RetT" and leave "T1" and "T2" inferred by the compiler. For example:</p>
+<p><code>vb
+ dim v = add[double](123,3.45f)</code></p>
+<p>Make sure that the template parameters that are designed to be given by the caller manually must be the first few parameters in the parameter list.</p>
+<ul>
+<li>A template type parameters cannot be inferred as more than one different types. For example, the following template will not compile:</li>
+</ul>
+<p><code>vb
+function add[T](a as T, B as T) as T
+    return a+b
+end
+add(1, 2.34)</code></p>
+<p>Because "T" is first inferred as "int" then "float".
+ * All template parameters should either be manually specified by the caller (with [...]) or inferred with function's parameters.</p>
+<h2 id="84-variadic-template-and-function">8.4 Variadic template and function</h2>
+<h3 id="841-variadic-template">8.4.1 Variadic template</h3>
+<p>Sometimes it is useful to let templates have variable number of template parameters. For example, Birdee's standard library provides the "tuple" template struct which can combine value of multiple types in one variable. Here is an example for using "tuple":</p>
+<pre><code class="vb">import tuple:tuple
+dim a as tuple[int,float,string]
+a.v0 = 1 #v0 is int
+a.v1 = 3.14 #v1 is float
+a.v2 = &quot;hello&quot; #v2 is string
+
+dim b as tuple[float,int]
+b.v0 = a.v1 #v0 is int
+b.v1 = a.v0
+</code></pre>
+
+<p>The "tuple" template can accept any number of argument types. In the example, we use two instances of tuple, with arguments "int,float,string" and "float,int".</p>
+<p>The definition of the tuple template is something like:</p>
+<pre><code class="vb">struct tuple[...]
+    #detailed definition omitted
+end
+</code></pre>
+
+<p>Here the ellipsis "..." in the template parameter list lets the compiler know that the template is a variadic template. And the "..." accepts any number of template arguments.</p>
+<p>You can still declare template parameters even if there is the ellipsis ("...") in the parameter list. However, the ellipsis ("...") should appear at the end of the parameter list.</p>
+<pre><code class="vb"># an example of declaring template parameters with &quot;...&quot;
+struct vararg_struct[T1,T2,...]
+
+end
+
+# the following code won't compile
+struct vararg_struct_bad[...,T1,T2]
+
+end
+</code></pre>
+
+<p>You can use the compile-time scripts to get the argument types in "..." within a template instance, by Python code:</p>
+<pre><code class="python">targs = get_cur_class().template_instance_args
+for targ in targs:
+    ...
+</code></pre>
+
+<p>Compile-time scripts will be discussed soon later.</p>
+<h3 id="842-variadic-function">8.4.2 Variadic function</h3>
+<p>The ellipsis "..." can also be used in function parameter list. Moreover, you can use "..." in function's parameter to let the function accept variable number of parameters. For example, a function template that returns the sum of all arguments can be:</p>
+<pre><code class="vb">func addn[...](...) as int
+    return {@
+arr_args=[]
+for arg in get_cur_func().proto.args:
+    arr_args.append(arg.name)
+set_ast(expr(&quot; + &quot;.join(arr_args)))
+@}
+end
+</code></pre>
+
+<p>The code between "{@" and "@}" is the compile time Python script. The script expands "..." and returns an expression that adds the parameters all. We use function to add any number of values:</p>
+<pre><code class="vb">addn(1,2,3,4)
+addn(1,2)
+</code></pre>
+
+<p>How does variadic function works? It is based on template type parameter deduction. When you call the function "addn" with "addn(1,2,3,4)", the "..." in the function parameter will be assigned with types "int,int,int,int". Then the ellipsis in the template parameter will be matched with the ellipsis in the function parameter. So the actual function to be generated in this example will be "addn[int,int,int,int]".</p>
+<p>Another way to use variadic function is to use it in a member function of variadic template class/struct. For example, you can define a member function in "tuple" to set all fields in a tuple object:</p>
+<pre><code class="vb">struct tuple[...]
+    #detailed definition omitted
+    function set(...) 
+        #detailed code omitted
+    end
+end
+</code></pre>
+
+<p>For a tuple type "tuple[int,float]", the member function "set" will be expanded as</p>
+<pre><code class="vb">    function set(___vararg0 as int, ___vararg1 as float) 
+        #detailed code omitted
+    end
+</code></pre>
+
+<p>Some rules for variadic functions should be followed:
+ * Birdee creates an local varaible for each of the arguments of "..." in the function parameter, with names "___vararg0", "___vararg1", "___vararg2", ... (starting with three underscores "_"). 
+ * Only template functions with variadic template parameters can have variadic function parameters.
+ * The ellipsis should only appear in the end of function's parameter list.</p>
+<h3 id="843-named-variadic-parameter">8.4.3 Named variadic parameter</h3>
+<p>It is possible to create a variadic member function in a variadic class template. In the last section, we have already shown an example of using "..." in non-template function parameter to expand the variadic template parameters of the parent class. It is also allowed to create a variadic template function in a variadic class template. For example,</p>
+<pre><code class="vb">class cls[...]
+    public function f[...](...)
+    end
+end
+</code></pre>
+
+<p>In this example, which ellipsis will be expanded in the ellipsis in the function parameter? In this case, Birdee will expand the template argument of function "f" to the parameter list. That is, "new cls[int].f[string]" will have a parameter type of "string". However, what if we want to expand the "..." in the function parameter using the class template parameters? Thus, we introduce named variadic parameter. An identifier can follow the "..." in template parameter lists and function parameter lists to specify which ellipsis the function parameter will be expanded as.</p>
+<pre><code class="vb">class cls[...CArg]
+    public function f[...FArg](...CArg)
+    end
+    public function f2[...FArg](...FArg)
+    end
+end
+dim obj = new cls[boolean]
+obj.f[string](true)
+obj.f2[string](&quot;hello&quot;)
+</code></pre>
+
+<p>If a named function parameter ellipsis is expanded, it will first find a matched name in the current function template's named ellipsis. If no match, it will search for its name in 
+the current class/struct's named ellipsis. If still no match, an compile error occurs.</p>
+<p>If a named function parameter ellipsis is expanded, it will first try to match current function template's ellipsis. If current function is not a template instance, it will search match current class/struct's ellipsis.</p>
+<h2 id="85-notes-on-templates">8.5 Notes on Templates</h2>
+<p>Once users "call" a template with arguments, the compiler will instantiate an instance of the template. The template instance will be created only once for the same arguments to the placeholders in the same module. An instance of template will create an independent segment of code and data structures that is not shared by other instances.</p>
+<p>The whole source code for the templates will be copied into the metadata file of the module after compiled, for the use of other modules.</p>
+<h1 id="9-compile-time-scripts">9. Compile-time scripts</h1>
+<p>You can embed Python scripts in Birdee codes. The scripts are executed in compile time and these scripts will NOT be executed in the run time. Generally, the script is used for </p>
+<ul>
+<li>generating and compiling Birdee code in compile-time</li>
+<li>altering the existing Birdee code</li>
+</ul>
+<p>Compile-time scripts can completely replace macros and template-based meta-programming. In C++, these two features are powerful but hard to master - that's one of the reason of starting this programming language project.</p>
+<h2 id="91-script-basics">9.1 Script basics</h2>
+<p>To embed Python scripts in Birdee source code, you only need to surround your Python script with "{@" and "@}". For example</p>
+<pre><code class="vb">{@
+print(&quot;hello world&quot;)
+@}
+
+dim a = &quot;hey world&quot;
+println(a)
+</code></pre>
+
+<p>The above is a Birdee program. It can be divided into two parts. The first part is a Python script, which prints a string "hello world". When the program is compiled, the script will be run by the Birdee compiler, and prints the string in the standard output of the compiler itself. The second part is the Birdee code. It defines a variable and prints a string "hey world". This part will be executed in the run time.</p>
+<p>What can embedded Python scripts do? You can use them to generate Birdee code and insert the generated code into the place where "{@" and "@}" is. The "{@" and "@}" with the script can serve as a statement, expression or a type specifier. An expression is a piece of code which represents a value, like "1", "add(1,2)", "variable_a". Statements are super-class of expressions. A statement is a line or a block of Birdee code, but not necessarily has a value. For example, "dim a as int", "if a&gt;0 then ...". A type specifier represents a typename and usually appears after "as" key word in Birdee code.</p>
+<p>To use the script as an expression, see the following example:</p>
+<pre><code class="vb">dim a as int = {@set_ast(expr(&quot;56&quot;))@}
+</code></pre>
+
+<p>The script in "{@" and "@}" will generate an expression "56" as an integer and the script will be replaced by this expression when compiled. The functions "set_ast" and "expr" are built-in functions defined in Birdee compiler's embeded Python interpreter. The Python function "expr" accepts a string and compiles the string as the source code of an expression in Birdee. It returns an AST node for Birdee compiler. (An AST node is an element of the parsed Birdee source code.) The function "set_ast" takes an AST node as input and make Birdee compiler to insert the AST node at the position of current script in the Birdee source code. Note that in "{@" and "@}", any valid Python code is allowed. You can even use Python3's "input" function to get input from the user when the source code is compiled. You can also define functions in embedded scripts. Note that all Python code in "{@" and "@}" is executed in the same "top level" of Python interpreter. Defining variables in one script will affect all scripts executed later.</p>
+<p>Next let's see a more complex example:</p>
+<pre><code class="vb">class student
+    private id as int
+    public function __init__(id as int)
+        this.id=id
+    end
+end
+
+{@
+cnt=0
+def counter():
+    set_ast(expr(str(cnt)))
+    cnt+=1
+@}
+
+dim stu1 = new student({@counter()@})
+dim stu2 = new student({@counter()@})
+dim stu3 = new student({@counter()@})
+</code></pre>
+
+<p>In this example, we have created a python function "counter", which generates an increasing integer after each call to it. Then we create 3 instances of "student" class and statically assign IDs to them. Then parameters for the constructor of  "student" class for stu1 to stu3 will be "1", "2" and "3". Note that in C++, it may introduce much more lines of code to implement such compile-time template-based counter.</p>
+<p>Statements without values can also be compiled by Birdee's embedded scripts. Instead of using the function "expr", the function "stmt" can be utilized to compile a python string to an AST node. For example:</p>
+<pre><code class="vb">dim cmpstr= &quot;hello&quot;
+{@
+user_input=input()
+set_ast(stmt(f''' if cmpstr == &quot;{user_input}&quot; then
+    println(&quot;It is hello!&quot;)
+end
+'''))
+@}
+</code></pre>
+
+<p>The above example can be compiled by Birdee with Python 3.6+. It gets an input from the user and generate an "if" statement block to compare with a Birdee string variable. </p>
+<p>A script in Birdee can be used as a type specifier. Similar to statement and expression generation, you can use the functions "set_type" and "resolve_type" in the scripts to use script as a type. "resolve_type" accepts a string and will compile the string as a typename. It returns a "ResolvedType" object which is an internal representation of a type in Birdee. "set_type" accepts an "ResolvedType" object and makes the compiler replace the current script with this type. Here is an example in which defines an integer variable using these two functions:</p>
+<pre><code class="vb">dim v as {@set_type(resolve_type(&quot;int&quot;))@}
+</code></pre>
+
+<p>We can do some "meta-programming" with the scripts. The following example implements a compile-time function to get and use the return type of any function (the counterpart of C++ meta-programming "std::result_of"):</p>
+<pre><code class="vb">{@
+def result_of(str_expr):
+    exp = expr(str_expr).get()
+    ty = exp.resolved_type
+    prototype = ty.get_detail()
+    assert(isinstance(prototype, PrototypeAST)) # make sure the expression points to an function
+    set_type(prototype.return_type)
+@}
+
+function func1() as int
+    return 0
+end
+
+dim v as {@result_of(&quot;func1&quot;)@}  # should be int
+</code></pre>
+
+<p>As we can see in this example, we can access the type of an expression by the "resolved_type" field and we can get the return type of an function prototype by its "return_type". AST nodes are objects that can be accessed by the python script and details of the nodes can be found in the fields of them. We will later discuss the details of AST nodes.</p>
+<p>The python scripts of Birdee can import existing Python modules by normal "import" command of python. Note that the directory "$BIRDEE_HOME/pylib" has been added to the python module search path of Python interpreter.</p>
+<h2 id="92-scopes-of-the-scripts">9.2 Scopes of the scripts</h2>
+<p>As we know, variable names in Python are scoped. For example, you cannot use a local variable defined in a Python function in the code outside of the function. Similarly, the embeded scripts of Birdee follows the scopes of the Birdee code.</p>
+<ul>
+<li>The Python interpreter uses the "context" to manage the mapping from variable names to the actual data.</li>
+<li>Once the Birdee code enters a new level of basic block (e.g. the compiler enters a function/the body of "for" loop) or scope (e.g. the class definition), the Python interpreter will copy the Python context (the "name" - "variable" map) of the previous context.</li>
+<li>The scripts in the child context (in other words, in the lower level of the scopes) can have access to the names defined in parent Python contexts. But the scripts in the parent context cannot access the names in children context.</li>
+<li>The scripts in the same level of Birdee scope/basic block shares the same Python context.</li>
+</ul>
+<p>See the following example:</p>
+<pre><code>{@a=1@}
+function f()
+   {@print(a)@} # Okay, &quot;a&quot; is defined in the parent context
+   print(&quot;Hi&quot;) # Birdee code
+   {@b=1@} 
+end
+{@print(b)@} # Error here! &quot;b&quot; is defined in the children context
+</code></pre>
+
+<p>The modules of Birdee has different Python contexts, which means that you cannot directly use the Python names defined in scripts in other Birdee modules. But there is a way to do so and we will introduce it later in this chapter.</p>
+<h2 id="93-annotations">9.3 Annotations</h2>
+<p>Annotations can be applied on statements or expressions of Birdee programs. The syntax to use annotation is:</p>
+<pre><code class="vb">@annotation_name1
+@annotation_name2
+....
+expression_or_statement
+</code></pre>
+
+<p>or </p>
+<pre><code class="vb">@annotation_name expression_or_statement
+</code></pre>
+
+<p>In a word, annotations can be used by prepending <code>@annotation_name</code> to an expression or statement. The annotation and the annotated code can be separated by a new line or not. You can add multiple annotations to the same part of code (the multiple annotations will be called in the order in the source code). A parsed Birdee program will be translated in the form of AST (Abstract Syntax Tree) form. Each expression or statement is a node of the AST.</p>
+<p>To process the annotation, in the compile time, the compiler will evaluate the <code>annotation_name</code> as a Python expression. The <code>annotation_name</code> can be a Python function name, a call to a Python function generator or any Python code that returns a callable Python object. The annotated part of code (in the AST node object form) will be applied to the Python function specified by the annotation name. The python function or callable object called by an annotation should take a parameter which is an AST node object. We show an example of an annotation that prints the type of the annotated AST node. You should first define or import a python function in an embedded script. Then call it with an annotation in Birdee code.</p>
+<pre><code class="vb">{@
+def show_ast(node):
+    print(type(node))
+@}
+
+@show_ast
+function func1()
+    println(&quot;hello&quot;)
+end
+
+@show_ast
+dim var as int
+
+@show_ast
+func1()
+
+{@
+def show_ast2(prefix):
+   return lambda node: print(prefix + type(node))
+@}
+
+@show_ast2(&quot;prefix&quot;)
+function func2()
+   println(&quot;hello&quot;)
+end
+</code></pre>
+
+<p>After compiling the above code, the compiler will print "FunctionAST", "VariableSingleDefAST" and "CallExprAST" to its stdout. Note that the three annotations are executed in the same order as they are used in the Birdee source code. In the example, we first define a python function named "show_ast" in the script. It has one argument which is the annotated AST node. Here we simply get and print the type of the AST node with python's built-in keyword "type" and "print". Then in the Birdee part of code, we apply the annotation "show_ast" on a function definition, a variable definition and a function call expression. Finally, after compiling the code, we can see the type names of these AST nodes.</p>
+<p>This annotation example only reads the AST nodes. Useful tools can be developed by using read-only annotations, like code safety checking. We can do more than that because annotations can modify the annotated AST! In the next example, we define and use an annotation which:</p>
+<ul>
+<li>Can be applied on variable definitions</li>
+<li>Checks if the variable is a string and is not initialized when defined</li>
+<li>If so, add an initializer to the variable definition, and initialize the string variable to string "(null)"</li>
+</ul>
+<pre><code class="vb">{@
+def add_initializer(node):
+    if isinstance(node,VariableSingleDefAST):
+        if node.value is None and node.resolved_type == resolve_type(&quot;string&quot;): 
+            #if node's initializer is null and its type is string
+            node.value = expr('&quot;(null)&quot;'')
+    elif isinstance(node,VariableMultiDefAST)): #VariableMultiDefAST is multiple variable definitions in one line
+        for sub_def in node.lst: 
+            #node.lst is the list of VariableSingleDefAST contained in VariableMultiDefAST
+            add_initializer(sub_def)   #apply the VariableSingleDefAST to the current function 
+@}
+
+@add_initializer
+dim a as string
+println(a)
+
+@add_initializer
+dim b as string, c as string=&quot;hi&quot;
+println(b)
+println(c)
+
+</code></pre>
+
+<p>We first define a python function. It accepts a single variable definition (VariableSingleDefAST) or multiple definitions (VariableMultiDefAST) in a line of code. Then for single variable definitions, the function check the initializer expression (node.value) and the variable type (node.resolved_type), and sets the initializer to string expression "(null)" if the variable has no initializer and the variable type is "string". For multiple definitions, the AST node (VariableMultiDefAST) contains a list of VariableSingleDefAST for each of the variable definitions. Our function iterates on the the list of contained VariableSingleDefAST to add the initializer. Once again, some fields of the AST node objects are used in this example. We will discuss about their details later. </p>
+<p>We apply the annotation on a single variable definition "a" and multiple definitions "b" and "c". Since variable "c" already has an initializer, the annotation has no effect on it. For variables "a" and "b", they will have an initial value "(null)" after the annotation has been applied.  </p>
+<p>If you apply an annotation on a template, the corresponding Python function will not be called with the template AST, but when each of the instance of the template is constructed, the Python function will be called on the instance AST.</p>
+<p>Please be careful on how Birdee compiler split the annotation from the annotated Birdee code. The annotation starts from "@" and ends at the first encountered space (" ") or newline. So if your annotation contains a space, the code will not work as expected. For example, the following code will not compile, because there is a space in "The prefix":</p>
+<pre><code>{@
+def show_ast2(prefix):
+   return lambda node: print(prefix + type(node))
+@}
+
+@show_ast2(&quot;The prefix&quot;)
+function func2()
+   println(&quot;hello&quot;)
+</code></pre>
+
+<h2 id="94-init-scripts-and-importing-as-modules">9.4 Init scripts and importing as modules</h2>
+<p>By default, Birdee will dispose all embeded Python scripts which are not in templates. So the following module will compile, but will not function:</p>
+<pre><code>{@
+def somefunction(ast):
+   pass
+@}
+
+@somefunction
+func hello[T](h as T)
+
+end
+</code></pre>
+
+<p>If we compile the above code in a Birdee module "hello" and we import "hello" in another module, a Python error will be thrown, saying that the name "somefunction" is not found. The cause is that the script in the top level that defines the function is lost. To preserve the script, you should add an annotation <code>init_script</code> on the embeded scripts. Note that <code>init_script</code> is a special annotation defined by Birdee compiler, so you cannot create a user-defined annotation with the same name. <code>init_script</code> can only be applied on top-level embeded scripts. Otherwise, the compiler will fail on the program.</p>
+<p>You can mark multiple top-level scripts as <code>init_script</code>, the scripts will be executed after it is imported by other modules. The multiple scriptts will be executed in the original order defined in the source code. The above code can be modified to work:</p>
+<pre><code>@init_script
+{@
+def somefunction(ast):
+   pass
+@}
+...
+</code></pre>
+
+<p>Remind that the different modules in Birdee have independent Python contexts. Even after importing a module, the init scripts will not affect the Python context in the current module. So in the above example, the function "somefunction" can only be used in the scripts in the module "hello". However, you can import the Python names defined in other modules' init scripts by importing them:</p>
+<pre><code>import hello
+
+{@from hello import somefunction@}
+
+@somefunction
+function a()
+end
+</code></pre>
+
+<p>In the above example, the init scipts of the module <code>hello</code> is imported as a Python module by the line <code>{@from hello import somefunction@}</code>. The module names of the Python modules can be derived from the names of Birdee modules where the scripts are defined. You just need to replace the "." in the Birdee module names with "_0". For example, for Birdee module "org.birdee.a", its corresponding Python module is <code>org_0birdee_0a</code>. </p>
+<h2 id="95-generative-script">9.5 Generative script</h2>
+<p>It is an interesting feature that the Birdee compiler itself can be used as an python library. Python programs can use Birdee to generate Birdee programs. We call these python programs "generative scripts". There are two ways to use Birdee in python generative scripts. The first way is to use Birdee compiler in Python interpreter mode. You need to add a switch "-s" to the command line parameter of Birdee compiler to activate this mode. When "-s" switch is given, the compiler will treat the input file as an Python program and run the input script with Python interpreter. The second way to run generative scripts is to simply run the standard python interpreter and import the module "birdeec" in the python code. Note that the Birdee binary library for python binding must be available in Python's library search path. And the library file must be named "birdeec.so" (on linux) or "birdeec.pyd" (on Windows). All APIs used in embedded scripts that are discussed above can also be used in generative scripts. Birdee compiler exposes some APIs that are only available for generative scripts. They are designed for compiler control. Here is an simple example of a generative script.</p>
+<pre><code class="python">from birdeec import *
+top_level('''
+dim str = &quot;hello world&quot;
+println(str)
+''')
+process_top_level()
+generate()
+clear_compile_unit()
+</code></pre>
+
+<p>To use Birdee as a python library, you must first import the module "birdeec". (Note that for embedded scripts, this module has been automatically imported.) You can compile the top level code by function "top_level". It accepts a python string of Birdee source code. The function returns nothing, but the top-level code will be stored in the compiler library after "top_level" is called. Then, you should use function "process_top_level" to build the AST of the program and check the potential errors in the source code. The next step is to call function "generate" to generate the target object file. Optionally, if you want to re-use the current python process to compile another Birdee program, you should call the function "clear_compile_unit" to clear the internal states of the Birdee compiler library. This function is useful when you need to compile multiple Birdee programs in one script for testing. </p>
+<p>Our Birdee compiler project has been using generative scripts to test the features and expected behaviors of the compiler.</p>
+<h2 id="94-error-handling">9.4 Error handling</h2>
+<p>We have already introduced several APIs for python to compile a string of Birdee code to Birdee programs, including "expr", "stmt", "top_level", "process_top_level". An erroneous Birdee program string will fail to compile and an Python exception will be raised when calling these functions. You can catch the exception in both embedded and generative scripts using python's exception handling mechanism. The basic example to catch compilation errors is shown as follows:</p>
+<pre><code class="python">try:
+    ...
+    may_throw(...)
+    ...
+except TokenizerException:
+    e=get_tokenizer_error()
+    print(e.linenumber,e.pos,e.msg)
+except CompileException:
+    e=get_compile_error()
+    print(e.linenumber,e.pos,e.msg)
+</code></pre>
+
+<p>Catching a TokenizerException means that the compiler meets an unrecognized token in the program. An CompileException means that the program is somewhat invalid.</p>
+<p>The function "may_throw" is any function that may raise an compiler exception, which include:</p>
+<ul>
+<li>expr - may throw TokenizerException and CompileException</li>
+<li>stmt - may throw TokenizerException and CompileException</li>
+<li>top_level - may throw TokenizerException</li>
+<li>process_top_level - may throw CompileException</li>
+</ul>
+<p>Note that the exception object in the "except" clause in python for Birdee does not contain detailed exception informantion. You can either use function "get_tokenizer_error" or "get_compile_error" to get detailed exception information like the position of the error and the explanation of the error.</p>
+<p>Important note: Once the compile raises an exception, the compiler is in an unrecoverable state. You must not continue to use the compiler instance and you must call "clear_compile_unit" to reset the state of the compiler before continue to use "birdeec" library.</p>
+<h2 id="95-memory-management-and-pointer-ownership">9.5 Memory management and pointer ownership</h2>
+<p>There are two memory management systems in Birdee's compiler. One is the core part of the compiler which is written in C++. It uses unique_ptr to manage the lifetime and the ownership of the AST nodes. The other is the python interpreter's memory management system which uses reference counting. It is challenging to combine these two memory systems. For example, after we allocate an AST in python (e.g. by "expr" function), how can we move the ownership of the AST object to the C++ unique_ptr? We address this problem by introducing "pointer ownership" in python binding of Birdee. Having ownership of an object means that the respective memory management system is responsible to free the space for the object. If a parent AST node has the ownership pointer to another children AST node, it means that when the parent node is destroyed, the children nodes of it must be destroyed by it. If a python variable has the ownership pointer to an AST node, you can transfer the ownership of the pointer by assigning the ownership pointer to an existing AST node's ownership pointer field. Or you can use some APIs like "set_ast" to transfer the ownership to the compiler.</p>
+<p>For most of the fields in AST nodes, getting the fields in python gives you a reference. In this section, we refer to the term "reference" as the pointer to an AST node without ownership. Note that reading an ownership pointer field of an AST node in python returns a reference to the object (not the ownership pointer!). For example, a Birdee variable definition is represented by the AST node class "VariableSingleDefAST" and the initializer of the variable can be accessed by the field "value" as an ownership pointer. You can get the reference to the initializer expression by:</p>
+<pre><code class="python">var_ast = some_variable_def_ast
+init_of_var = var_ast.value
+</code></pre>
+
+<p>The functions like "expr" and "stmt" returns an ownership pointer to the compiled AST. You cannot directly access the fields of the AST node by an ownership pointer. However, you can use the "get" method of an ownership pointer in python to get the reference to the AST object and then access the fields with the reference.</p>
+<pre><code class="python">exp=expr(&quot;123&quot;)
+print(type(exp)) #should be &quot;StatementAST_UniquePtr&quot;
+print(type(exp.get())) #should be &quot;NumberExprAST&quot;
+</code></pre>
+
+<p>Writing to an ownership pointer field of an AST node requires an ownership pointer in python. You cannot write to an ownership pointer field with a reference. After ownership transfer from a python ownership pointer, the python ownership pointer will point to null value. Take the class "VariableSingleDefAST" as an example:</p>
+<pre><code class="python">var_ast = some_variable_def_ast # it has type VariableSingleDefAST
+exp=expr(&quot;123&quot;) #an ownership pointer to an expression
+var_ast.value = exp.get() #fails to run here! It requires an ownership pointer, not a reference
+var_ast.value = exp   #okay, ownership transfer from exp
+assert(exp.get() is None) #exp is empty after transfering ownership
+</code></pre>
+
+<h2 id="96-detailed-api-specification">9.6 Detailed API specification</h2>
+<p>TBD</p>
+<h1 id="10-interoperability-with-cc">10. Interoperability with C/C++</h1>
+<h2 id="101-calling-cc-from-birdee">10.1 Calling C/C++ from Birdee</h2>
+<p>Birdee code can easily call C/C++ functions. You should first declare an external function in Birdee source code with the correct prototype. Then link the compiled Birdee object file with C/C++ object files or libraries. The syntax to declare an external function is </p>
+<pre><code class="vb">declare {function_name} [alias {&quot;function_alias&quot;}] ([parameters]) [as {return_type}]
+</code></pre>
+
+<p>For example, we can declare a C function "puts" which prints a string by:</p>
+<pre><code class="vb">declare function puts (str as pointer) as int
+</code></pre>
+
+<p>Note that the "puts" function in C takes an "char*" as argument. Here we use raw pointer type "pointer" as the type for this argument. We can then use this function to print the contents of a Birdee string:</p>
+<pre><code class="vb">puts(&quot;hello&quot;.getRaw())
+</code></pre>
+
+<p>The "getRaw" method of the string class of Birdee returns the raw pointer of the string data.</p>
+<p>In C/C++ or other languages, the compiler may mangle the name of the function, making the function name "strange". You can use the "alias" clause of when declaring a function. For example, the linking name of an external function is "_add0", and you want to simply use the function with name "add", you can declare it by:</p>
+<pre><code class="vb">declare function add alias &quot;_add0&quot; () as int
+</code></pre>
+
+<p>You may need to pass pointers of Birdee-managed data to an external function. To get the pointer to an Birdee variable, you can use "addressof" keyword:</p>
+<pre><code class="vb">addressof(lvalue)
+</code></pre>
+
+<p>You can apply "addressof" on any "LValues", which have an address in the run time. Basically, variables and fields of class objects are LValues. Note that you can apply addressof on fields of structs only when the struct object itself is an LValue.</p>
+<p>You can convert a reference to an object to raw pointer by "pointerof" keyword:</p>
+<pre><code class="vb">pointerof(reference)
+</code></pre>
+
+<p>The "reference" here is any valid reference expression (array or class objects).
+"addressof" and "pointerof" has different meanings. "addressof" gets the address of the variable itself. And "pointerof" gets the address of the object that the expression points to.</p>
+<pre><code class="vb">dim a as string = &quot;hi&quot;
+dim p_a = addressof(a) # &quot;p_a = &amp;a&quot; in C++
+dim p_hi = pointerof(a) # &quot;p_hi = (void*)a&quot; in C++
+</code></pre>
+
+<p>You can get the pointer to the "real" data buffer of some built-in data structures. Birdee "string" and arrays has "getRaw" method to get the pointer of the internal buffer. Using pointerof on string and arrays to get "char*" or "int*" may not work correctly as you have expected! </p>
+<h2 id="102-calling-birdee-from-cc">10.2 Calling Birdee from C/C++</h2>
+<p>Birdee variables and functions can be used in C/C++ or other languages. Each Birdee function or variable has a unique name which is composed of "module_name" + "." + "func/variable name". For example, for a module "com.menooker.lib", it has a variable "a" and a function "func_a". Then the unique name of the variable and the function will be "com.menooker.lib.a" and "com.menooker.lib.func_a". The unique names for template functions in Birdee are constructed by appending the template parameter to the template names, and using "[" and "]" to mark the start and the end of the template parameters, just like how template functions are used in the source code. For example, the unique name of an instance of the function template "add_2" can be "com.menooker.lib.add[int,float]". Unique name is used internally in Birdee compiler. However, in C++ or C, you cannot declare a function name with a dot in it. Birdee use name mangling to transform the unique name of a variable or function to a valid name for C/C++. Mangled unique names are the names of global top-level variables and functions generated in the object file in Birdee. Simple rules are used to mangle a unique name - Replace any:</p>
+<ul>
+<li>"_" with "__"</li>
+<li>"." with "_0"</li>
+<li>"!" with "_1"</li>
+<li>"[" with "_2"</li>
+<li>"]" with "_3"</li>
+<li>"," with "_4"</li>
+<li>" " with "_5"</li>
+<li>other characters that are not in [a-z] or [A-Z] with "_xHH", where HH is the hexadecimal representation of the ASCII code of the character, e.g. "_x2h".</li>
+</ul>
+<p>For example we have a Birdee module:</p>
+<pre><code class="vb">package com.menooker.lib
+
+function add_2[T1,T2](a as T1,b as T1) as T2
+    return a+b
+end
+
+add_2[int,float] # declare an instance of the function template
+
+dim g_value as int = 10
+</code></pre>
+
+<p>The unique name "com.menooker.lib.add_2[int,float]" will be transformed to "com_0menooker_0lib_0add__2_2int_4float_3". Similarly, the unique name "com.menooker.lib.g_value" will be transformed to "com_0menooker_0lib_0g__value".</p>
+<p>Then, in C++ code, you can declare the function and the global variable by:</p>
+<pre><code class="c++">extern &quot;C&quot; void com_0menooker_0lib_0_1main();
+extern &quot;C&quot; float com_0menooker_0lib_0add__2_2int_4float_3 (int,int);
+extern int com_0menooker_0lib_0g__value;
+</code></pre>
+
+<p>Note 1: If you want to use this C++ declaration in C code, replace extern "C" with "extern".</p>
+<p>Note 2: The function with unique name "{module_name}.!main" is the top-level "main function" code for the module. In the above example, we declare a function "com_0menooker_0lib_0_1main" for the top-level code. Remember to call the top-level "main function" code once before using the variables and the functions of the module. If the "main function" is not called, the module's global variables may not be correctly initialized. The top-level code of a Birdee module will call all top-level "main functions" of the modules it imports. So you don't need to manually call all module's top-level "main functions". Instead, you only need to call the "main functions" of several "root" modules. There is no effect to call a top-level "main function" multiple times after the first call to it - the "main function" will do nothing after it is called for the first time. </p>
+<h1 id="11-functional-programming">11. Functional Programming</h1>
+<h2 id="111-function-variables">11.1 Function variables</h2>
+<p>Functions of Birdee are expressions. You can assign a function to a variable and use the variable to call the function. For example,</p>
+<pre><code class="vb">dim func_var = function (a as int, b as int) as int =&gt; a+b
+println(int2str(func_var(1,2))) 
+</code></pre>
+
+<p>The first line defines a "one line" function, which returns the sum of the arguments. The function definition begins from the keyword "function". Note that we can define a function without naming it, which results in an anonymous function. The function definition itself is an expression, and we assign it to a variable "func_var". Then in the second line, we use this variable as if it is a function.</p>
+<p>The function variable is "mutable", which means you can re-assign another function to it.</p>
+<pre><code class="vb">dim func_var = function (a as int, b as int) as int =&gt; a+b
+println(int2str(func_var(1,2)))
+
+func_var = function (a as int, b as int) as int =&gt; a-b
+println(int2str(func_var(1,2)))
+</code></pre>
+
+<p>What's the type of a function variable (e.g. "func_var" in the example)? Birdee introduces a new type system called "functype". You can define a "functype" by:</p>
+<pre><code class="vb">functype {typename} ([arguments...]) [as {return_type}]
+</code></pre>
+
+<p>It looks like declaring a function, but it actually defines a type. A "functype" defines a type of functions, with the given prototype (the argument types and return type). After using "functype" definition, you can define a function variable without initializing it with an existing function. For example,</p>
+<pre><code class="vb">functype myfunctype (v1 as string, v2 as int)
+
+dim func1 as myfunctype, func2 as myfunctype
+func1 = func (str as string, i as int) =&gt; println(str + int2str(i))
+func2 = func1
+func2(&quot;My student id is &quot;, 23)
+</code></pre>
+
+<p>In the example, we define a functype called myfunctype. We define two function variables "func1" and "func2". We assign a function to func1 and assign func2 with the value of func1. Finally, we call the anonymous function with the variable func2.</p>
+<p>A function variable can be assigned with a function definition, a named function or another function variable, as long as the prototype of them are the same. Birdee considers two prototypes are the same if and only if the order and the types of the arguments are the same, and they have the same return type. Note that the functype name, the function name and the argument names are not considered when comparing the prototypes.</p>
+<pre><code class="vb">function add(a as int, b as int) as int
+    return a+b
+end
+
+functype thefunctype (v1 as int, v2 as int) as int
+
+dim foo as thefunctype
+foo = add #okay
+
+functype otherfunctype (fff as int, bbb as int) as int
+
+dim bar as otherfunctype = foo # okay
+
+foo = func (a as int,b as int) =&gt; a+b #fail to compile here!
+</code></pre>
+
+<p>In the above example, the functype "thefunctype" and "otherfunctype" are exactly the same. The last line of code will fail to compile, because the return type of the function (which returns nothing) and the return type of "foo" (which is int) are different.</p>
+<p>Sometimes for simplicity, you can use in-place definition of functype without defining it in advance. For example,</p>
+<pre><code class="vb">function callfunc(f as functype (v as int), b as int) 
+    f(b)
+end
+
+function print_int(a as int) =&gt; println(int2str(a))
+
+callfunc(print_int,32)
+</code></pre>
+
+<p>The function "callfunc" takes 2 arguments. The first one is a function variable, which has the type "functype (v as int) as int". The "callfunc" function simply calls the function variable "f" with the argument "b". We pass the function "print_int" as a parameter to the function "callfunc".</p>
+<h2 id="112-closures">11.2 Closures</h2>
+<p>Before talking about closures, we first introduce a feature of Birdee, that you can define functions in the body of other functions. For example,</p>
+<pre><code class="vb">function outer()
+    dim inner = function (str as string)
+        println(str)
+    end
+
+    for dim i = 1 to 10
+        inner(int2str(i))
+    end
+end
+</code></pre>
+
+<p>This example defines a "inner" function which can only be called within the "outer" function.</p>
+<p>In the inner nested function, you can access the local variables (and the arguments) of the parent or ancestor outer function. For example,</p>
+<pre><code class="vb">function outer()
+    dim prefix = &quot;i is &quot;
+    dim inner = function (str as string)
+        println(prefix + str)
+    end
+
+    for dim i = 1 to 10
+        inner(int2str(i))
+    end
+end
+</code></pre>
+
+<p>The "inner" function accesses the "outer" function's "prefix" variable. The "inner" function is called a closure, because it "captures" the variable of outer function.</p>
+<p>To explain what "closure" is, we first explore how local variables work in a function without being captured. The local variables (or maybe some arguments) of a function are stored on the stack of the program. Once the program enter the function, the variables will be allocated on the stack, and they will be destroyed after the function returns. Without capturing, the life time of local variables is controlled by the function. If a local variable is used in the inner function, the inner function "captures" the variable defined in the parent function. Now the captured variables are owned by both parent function and inner function. An inner function with captured variables is called a "closure".</p>
+<p>Closures can be viewed as functions with its internal states. Note that a function without capturing variables has no internal states, because it either uses global variables (not internal), or uses local variables which cannot persist after the function returns. In contrast, a closure uses captured variables to store its local states. Like functype, we can define a closure type by the syntax:</p>
+<pre><code class="vb">closure {typename} ([arguments...]) [as {return_type}]
+</code></pre>
+
+<p>The usage of closure type is almost the same as functype. For example, we define and use a closure:</p>
+<pre><code class="vb">closure counter_closure () as int
+function get_counter() as counter_closure
+    dim i as int = 0
+    dim f = func () as int
+        i = i + 1
+        return i
+    end
+    return f
+end
+
+dim counter as counter_closure = get_counter()
+println(int2str(counter()))
+println(int2str(counter()))
+println(int2str(counter()))
+
+counter = get_counter()
+println(int2str(counter()))
+</code></pre>
+
+<p>In this example, we define a closure type called "counter_closure". Then we construct a function that returns a "counter_closure". It builds a function "f", which captures a local variable "i" of "get_counter". In function "f", it increases "i" and return the value of "i". The closure function "f" is returned by function "get_counter". We then define a closure variable "counter" and use "get_counter" to assign a closure to it. We call "counter" three times. The magic happens here! The closure function "counter" outputs 1, 2, and 3 in three calls to it, which means it remembers its internal states. Then we re-assign a new closure instance to "counter", and it returns 1 after calling it. So the output of this example is "1", "2", "3" and "1". Why? Because when "get_counter" returns a new closure, it creates a new instance of the internal state (the variable "i"). The closure will bind the internal state with the internal function "f". Calling the closure will modify the captured variable "i" in the state. Another call to "get_counter" creates another instance of the state.</p>
+<p>Closure and functype are quite similar. Closure can be in-place defined too. The only difference is that functype only points to a function without state. You can assign to a closure variable with a functype variable (or a function without captured variable). However, you cannot assign to a functype variable with a closure variable or any function that captures parent variables. Note: using global variables in a function will not capture a global variable.</p>
+<p>How are closures implemented in Birdee? When a parent function finds that its local variable is captured by a inner function, it will put the variable in a "internal state object". When the parent function is called, it will allocate the internal state object on the heap. A closure variable contains two values, the first is the address of internal state object and the second is the function pointer. In contrast, a functype variable is just a function pointer in the low level of the compiler. The inner function that captures outer variables will have an additional hidden argument to get the internal state object from the closure variable. The parent function will assign its address of internal state object to the closure. When the program calls a closure, the compiler first fetch the internal state object address and the function address from the closure variable. It then call the function with the object address and some other arguments.</p>
+<p>As we can see, the default implementation of closure makes the parent function allocate the captured variables on the heap, which could be a performance concern. Sometimes the inner functions of a function are only used in the parent function, and the inner function closure is never used by any non-ancestor functions, we can allocate the the captured variables on the stack. Only if you are sure about it, you can use the "stack_capture" annotation on the parent function to make faster closures.</p>
+<h3 id="1121-binding-objects-with-methods-using-closures">11.2.1 Binding objects with methods using closures</h3>
+<p>Closures can be used to hold a reference to an object with a method. The expression </p>
+<pre><code class="vb">object_expression.member_function
+</code></pre>
+
+<p>can be automatically converted to a closure of the same prototype of the member function. For example, the "string" class has a member function "getRaw", you can bind a string with the function by:</p>
+<pre><code class="vb">dim str = &quot;hello&quot;
+dim funct as closure () as pointer = str.getRaw # note: no &quot;()&quot; here
+funct() # the same effect as &quot;str.getRaw()&quot;
+</code></pre>
+
+<h1 id="12-exception-handling">12. Exception handling</h1>
+<h2 id="121-exception-handling-basics">12.1 Exception handling basics</h2>
+<p>Exceptions means that the program enters an uncommon state at the run time. Exceptions may occur when the program has encountered some errors like dereferencing null or dividing by 0:</p>
+<pre><code class="vb">dim a as string = null, b as int = 0
+println(a) 
+dim c = 32/b
+</code></pre>
+
+<p>Birdee programmers can also manually generate an exception in their Birdee code. Let's first consider what the program will be like without exceptions. For example, if we need to write a program that checks the communication with a server. We are given a function "send_msg" that can send a message to the server. If sending message fails, "send_msg" returns false. If successful, it returns true. We are required to send 4 messages to the server. If any one of the message fails, we must print "Connection Down". The program will be:</p>
+<pre><code class="vb">if send_msg()==false then
+    println(&quot;Connection Down&quot;)
+else if send_msg()==false then
+    println(&quot;Connection Down&quot;)
+else if send_msg()==false then
+    println(&quot;Connection Down&quot;)
+end
+</code></pre>
+
+<p>There are three nested "if-else", making the program less readable. We will see later how exceptions can simplify the program.</p>
+<p>To throw an exception, you can create a class object and use the "throw" keyword to raise the exception.</p>
+<pre><code class="vb">throw {exception_object}
+</code></pre>
+
+<p>The class of "exception_object" must be annotated "enable_rtti" when defined. For example,</p>
+<pre><code class="vb">@enable_rtti
+class SomeException
+    public msg as string
+    public __init__(msg as string) =&gt; this.msg = msg
+end
+
+func sss()
+    throw new SomeException(&quot;hello&quot;)
+end
+</code></pre>
+
+<p>To handle an exception, you must put the code that may throw an exception in a "try" block, and put the code that handles the exception in "catch" blocks. The syntax of "try-catch" error handling is:</p>
+<pre><code class="vb">try
+    ...
+catch {exception_object_name} as {exception_type}
+    ...
+catch {exception_object_name} as {exception_type}
+    ...
+...
+end
+</code></pre>
+
+<p>The code between "try" and the first "catch" is the "try block". The one "try" should be followed by at least one "catch" block. Each catch block has a "exception_type". Once an exception is thrown in the try block, the type of the throw exception object will be checked against the "exception_type" of each of the catch blocks in the order of defined in the source code. If a catch block's "exception_type" is the same class or the super class of the throw exception object, this catch block will be executed. And you can access the thrown exception object with variable "{exception_object_name}". If multiple "catch" blocks can match the exception, only the first "catch" block will be executed.</p>
+<p>If no catch-block is matched with the thrown exception, the exception will be handled by the current function's caller's try-catch blocks (if there is any). If no match in the caller's function, the exception will be recursively passed to the related try-catch blocks of functions in the call stack, in the direction from the current function to the top-level code. If still no catch-block is matched, the program will be terminated. </p>
+<p>Note that if an exception is throw, the program will jump to the matched catch block, and will not execute the code after the execption. After a catch block is executed, the program will continue its execution at the end of the matched try-catch block.</p>
+<p>In the above example of checking server communications, we can improve the program by using exceptions. Now if it fails to send the message, the function "send_msg" will throw an exception of type "connect_error".</p>
+<pre><code class="vb">try
+    send_msg()
+    send_msg()
+    send_msg()
+catch e as connection_error
+    println(&quot;Connection Down&quot;)
+end
+</code></pre>
+
+<p>Here is an example that nested try-catch handles one exception:</p>
+<pre><code>@enable_rtti
+class E1
+   public dummy as int
+   public str as string
+   public func __init__(str as string) =&gt; this.str=str
+   public func print() =&gt; println(&quot;E1&quot;+str)
+end
+
+@enable_rtti
+class E2
+   public str as string
+   public dummy as int
+   public func __init__(str as string) =&gt; this.str=str
+   public func print() =&gt; println(&quot;E2&quot;+str)
+end
+
+@enable_rtti
+class E3
+   public dummy as int
+   public dummy2 as int
+   public str as string
+   public func __init__(str as string) =&gt; this.str=str
+   public func print() =&gt; println(&quot;E3&quot;+str)
+end
+
+function f1()
+
+   try
+      f2()
+      println(&quot;try conti&quot;)
+   catch e as E1
+      e.print()
+   catch e as E2
+      e.print()
+   catch e as E3
+      e.print()
+   end
+   println(&quot;Continue&quot;)
+end
+
+function f2()
+
+   try
+      throw new E3(&quot;yo&quot;)
+   catch e as E1
+      print(&quot;f2&quot;)
+      e.print()
+   catch e as E2
+      print(&quot;f2&quot;)
+      e.print()
+   end
+end
+
+f1()
+</code></pre>
+
+<p>This example throws an "E3" in f2 and the function f2 cannot handle the exception. The exception will finally be handled by function "f1". So the output of the program will be:</p>
+<pre><code>E3yo
+Continue
+</code></pre>
+
+<h2 id="122-hardware-generated-exceptions">12.2 Hardware generated exceptions</h2>
+<p>In the above section, we have shown two kinds of exceptions that can be thrown by the hardware: Memory access exception and Zero Division. You can catch these two exceptions with exception class "mem_access_exception" and "zero_div_exception", respectively.</p>
+<pre><code class="vb">func test()
+    dim a as string=null
+    println(a)
+end
+
+
+func wrapper1()
+    try
+        test()
+    catch e as mem_access_exception
+        println(&quot;Caught SEGV&quot;)
+    end
+end
+
+wrapper1()
+wrapper1()
+wrapper1()
+
+func test2[T]() as T
+    dim a as T = 0
+    return 2/a
+end
+
+
+func wrapper2[T,STR as string]()
+    try
+        test2[T]()
+    catch e as div_zero_exception
+        println(STR)
+    end
+end
+
+wrapper2[int,&quot;int&quot;]()
+wrapper2[int,&quot;int&quot;]()
+wrapper2[int,&quot;int&quot;]()
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../Birdee-playground-(REPL)/" class="btn btn-neutral float-right" title="Birdee playground">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href=".." class="btn btn-neutral" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href=".." style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../Birdee-playground-(REPL)/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

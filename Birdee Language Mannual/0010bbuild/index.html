@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>The automatic building tool for Birdee - bbuild - Birdee Language</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "The automatic building tool for Birdee - bbuild";
+    var mkdocs_page_input_path = "Birdee Language Mannual/0010bbuild.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Birdee Language</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../Birdee-Language-Mannual/">Birdee Language Mannual</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../Birdee-playground-(REPL)/">Birdee playground</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../Compiler-command-line-mannual/">Compiler command line mannual</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../bbuild/">The automatic building tool for Birdee - bbuild</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Birdee Language Mannual</span>
+    <ul class="subnav">
+                <li class=" current">
+                    
+    <a class="current" href="./">The automatic building tool for Birdee - bbuild</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#the-automatic-building-tool-for-birdee-bbuild">The automatic building tool for Birdee - bbuild</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#requirements">Requirements</a></li>
+        
+            <li><a class="toctree-l4" href="#what-does-bbuild-do">What does bbuild do?</a></li>
+        
+            <li><a class="toctree-l4" href="#how-to-use-bbuild">How to use bbuild?</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../0020Birdee-playground-(REPL)/">Birdee playground</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../0030index/">0030index</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Birdee Language</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Birdee Language Mannual &raquo;</li>
+        
+      
+    
+    <li>The automatic building tool for Birdee - bbuild</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="the-automatic-building-tool-for-birdee-bbuild">The automatic building tool for Birdee - bbuild</h1>
+<p>The Birdee compiler "birdeec" only generates object files from Birdee source code, but it does not help you to link it. In large projects, the dependencies among modules could be complicated. Without bbuild, users may resort to Makefile or other building tools to compile and link such projects, which involves manually writing Makefiles or other configuration files to tell the building tool about the dependencies. bbuild aims to free the users from manually managing the building configuration by automatically finding and compiling the dependencies. In addition, bbuild can optionally link the program with all dependencies.</p>
+<h2 id="requirements">Requirements</h2>
+<p>bbuild is a Python3 program. It depends on native compiler tool sets: On Linux, it depends on gcc; On Windows, it depends on MSVC. Make sure these dependencies are installed in your system before using bbuild. To use the linker of MSVC, you need to run bbuild in the Visual Studio x64 Commmand Prompt.</p>
+<h2 id="what-does-bbuild-do">What does bbuild do?</h2>
+<p>You should specify a "root" module to compile. Given a "root" module, bbuild will find all modules the root module directly or indirectly depends on. For all dependent Birdee modules, bbuild first finds any compiled object file of the dependent module. If no compiled object file is found, bbuild searches the Birdee source code using the module name and compiles the found module source code into object file. Finally, if the user requires to link the root module with all dependent modules, bbuild will call the native linker (linker.exe on Windows or gcc on Linux) to link all object files.</p>
+<p>Like building tools including Makefile, bbuild will check the timestamps of the source code files and the resulting binary files. It will only re-compile the modified source code files since the last build, and skip the unchanged source files. </p>
+<h2 id="how-to-use-bbuild">How to use bbuild?</h2>
+<pre><code class="bash">python $BIRDEE_HOME/pylib/bbuild.py -i {source_dir} -o {out_dir} [-bs {binary_file_search_path}] [-le {link_executable_target}] [-lc &quot;{link_command}&quot;] [-j {thread_num}] root_module1 [other_root_modules...]
+</code></pre>
+
+<ul>
+<li>-i: the source root dir</li>
+<li>-o: the output object file root dir</li>
+<li>-le: link to an executable. The path to the link target</li>
+<li>-bs: binary *.bmm and *.obj/*.o file search root dir. The out_dir specified by "-o" switch is automatically added to the binary search path</li>
+<li>-lc: The extra commands to pass to the linker. It is recommended to add a pair of "" around link_command</li>
+<li>-j: set the number of parallel compilers </li>
+<li>root_modules: a list of the module names, e.g. org.bird.quail. bbuild will find source from source_root_dir/org/bird/quail.{txt/bdm}. It will also resolve any direct or indirect dependencies of it.</li>
+</ul>
+<p>You can specify multiple search directories by adding multiple "-i", "-bs" switches. For any dependent module, bbuild will first search the paths given by "-bs" switch. e.g. Given "-o /home/menooker/bin -bs /home/menooker/birdee" and a module "org.bird.quail", bbuild will search for file "/home/menooker/birdee/org/bird/quail.bmm" or "/home/menooker/bin/org/bird/quail.bmm". If the binary file is not found, bbuild will try to compile it from the source code. Given "-i /home/menooker/project", it will search for source file "/home/menooker/project/org/bird/quail.{txt,bdm}". The compiled binary of module will be at "/home/menooker/bin/org/bird/quail.bmm".</p>
+<p>For example, let's compile the main module test_package.b.mod2 (The code can be found in "tests" of Birdee source code). The commands and outputs are shown below</p>
+<pre><code>menooker@DESKTOP:~/Birdee/tests$ cat test_package/b/mod2.txt
+package test_package.b
+
+import test_package.a.mod1:func
+import logic_obj_cmp:a
+
+func()
+println(a)
+menooker@DESKTOP:~/Birdee/tests$ find test_package/*
+test_package/a
+test_package/a/mod1.txt
+test_package/b
+test_package/b/functype_test_lib.txt
+test_package/b/mod2.txt
+menooker@DESKTOP:~/Birdee/tests$ ls logic_obj_cmp.txt
+logic_obj_cmp.txt
+menooker@DESKTOP:~/Birdee/tests$ python3 $BIRDEE_HOME/pylib/bbuild.py -i . -o linuxbin test_package.b.mod2 -le linuxbin/mod2 -lc &quot;-g -lpthead&quot;
+Running command /home/menooker/Birdee/BirdeeHome/bin/birdeec -i ./test_package/b/mod2.txt --print-import
+Running command /home/menooker/Birdee/BirdeeHome/bin/birdeec -i ./test_package/a/mod1.txt --print-import
+Running command /home/menooker/Birdee/BirdeeHome/bin/birdeec -i ./logic_obj_cmp.txt --print-import
+Running command /home/menooker/Birdee/BirdeeHome/bin/birdeec -i ./test_package/a/mod1.txt -o linuxbin/test_package/a/mod1.o -l /home/menooker/Birdee/BirdeeHome/blib -l . -l linuxbin
+Wrote linuxbin/test_package/a/mod1.o
+Running command /home/menooker/Birdee/BirdeeHome/bin/birdeec -i ./logic_obj_cmp.txt -o linuxbin/logic_obj_cmp.o -l /home/menooker/Birdee/BirdeeHome/blib -l . -l linuxbin
+Wrote linuxbin/logic_obj_cmp.o
+Running command /home/menooker/Birdee/BirdeeHome/bin/birdeec -i ./test_package/b/mod2.txt -o linuxbin/test_package/b/mod2.o -l /home/menooker/Birdee/BirdeeHome/blib -l . -l linuxbin -e
+Wrote linuxbin/test_package/b/mod2.o
+Running command gcc -o linuxbin/mod2 -Wl,--start-group /home/menooker/Birdee/BirdeeHome/lib/libBirdeeRuntime.a /home/menooker/Birdee/BirdeeHome/blib/birdee.o linuxbin/test_package/a/mod1.o linuxbin/logic_obj_cmp.o linuxbin/test_package/b/mod2.o -lgc -Wl,--end-group -g -lpthead
+menooker@DESKTOP:~/Birdee/tests$ find linuxbin/*
+linuxbin/logic_obj_cmp.bmm
+linuxbin/logic_obj_cmp.o
+linuxbin/mod2
+linuxbin/test_package
+linuxbin/test_package/a
+linuxbin/test_package/a/mod1.bmm
+linuxbin/test_package/a/mod1.o
+linuxbin/test_package/b
+linuxbin/test_package/b/mod2.bmm
+linuxbin/test_package/b/mod2.o
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../0020Birdee-playground-(REPL)/" class="btn btn-neutral float-right" title="Birdee playground">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../../bbuild/" class="btn btn-neutral" title="The automatic building tool for Birdee - bbuild"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../../bbuild/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../0020Birdee-playground-(REPL)/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>
