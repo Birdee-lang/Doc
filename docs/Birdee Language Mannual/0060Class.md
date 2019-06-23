@@ -448,7 +448,11 @@ The above code converts a variable "a" of superclass "B" to variable "c" of subc
 
 Enabling RTTI has some overhead in space. If a class has RTTI, all of its instance has one additional hidden member pointing to the `type_info` object of the class.
 
-## 6.9 Structs
+## 6.9 Abstract Class & Interface
+
+TODO
+
+## 6.10 Structs
 
 Struct is a similar but different concept as class. Structs can be similarly defined as classes. You just need to replace "class" keyword with "struct".
 
