@@ -151,6 +151,7 @@
             <li><a href="#73-all-symbols-import">7.3 All Symbols Import</a></li>
             <li><a href="#74-auto-import">7.4 Auto Import</a></li>
             <li><a href="#75-private-symbols">7.5 Private symbols</a></li>
+            <li><a href="#76-import-using-scripts">7.6 Import using scripts</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -205,7 +206,22 @@ end
 
 function foo() #by default, it is public
 end
-</code></pre></div>
+</code></pre>
+
+<h2 id="76-import-using-scripts">7.6 Import using scripts</h2>
+<p>You can use a Python expression to generate the module name and the symbol to import at the compile time by </p>
+<pre><code class="java">import {@PYTHONSCRIPT@}
+</code></pre>
+
+<p>or by </p>
+<pre><code class="java">import module_name:{@PYTHONSCRIPT@}
+</code></pre>
+
+<p>The code between "{@" and "@}" should be a Python string expression. Birdee compiler will execute the Python code to get the module name and the symbol name to import. This feature is useful when your code needs to support multiple platforms. The following example shows how to import a module on Windows and import another module on Linux.</p>
+<pre><code class="java">import {@&quot;system.specific.win32.file&quot; if get_os_name()==&quot;windows&quot; else &quot;system.specific.unistd.file&quot;@}:*
+</code></pre>
+
+<p>In this example, the modules <code>system.specific.win32.file</code> and <code>system.specific.unistd.file</code> contains operation system specific code, but they provide the same interfaces for the user of these two modules. The users of the modules do not need to modify their own code to make the code platform independent.</p></div>
         </div>
 
         <footer class="col-md-12">
