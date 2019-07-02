@@ -154,7 +154,8 @@
             <li><a href="#66-operator-overloading">6.6 Operator overloading</a></li>
             <li><a href="#67-class-inherit">6.7 Class inherit</a></li>
             <li><a href="#68-run-time-type-information-rtti">6.8 Run Time Type Information (RTTI)</a></li>
-            <li><a href="#69-structs">6.9 Structs</a></li>
+            <li><a href="#69-abstract-class-interface">6.9 Abstract Class &amp; Interface</a></li>
+            <li><a href="#610-structs">6.10 Structs</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -576,7 +577,9 @@ priintln(int2str(c.c))
 
 <p>The above code converts a variable "a" of superclass "B" to variable "c" of subclass "C", using <code>dyn_cast[C]</code>. The function <code>dyn_cast[C]</code> will convert the reference in the parameter to a reference of class "C". If the object pointered by the given parameter is not an instance of "C" or subclass of "C", <code>dyn_cast[C]</code> will return null. You can replace 'C' here with other classes with RTTI. <code>dyn_cast[...]</code> is a system provided function, which internally compares the RTTIs of the classes.</p>
 <p>Enabling RTTI has some overhead in space. If a class has RTTI, all of its instance has one additional hidden member pointing to the <code>type_info</code> object of the class.</p>
-<h2 id="69-structs">6.9 Structs</h2>
+<h2 id="69-abstract-class-interface">6.9 Abstract Class &amp; Interface</h2>
+<p>TODO</p>
+<h2 id="610-structs">6.10 Structs</h2>
 <p>Struct is a similar but different concept as class. Structs can be similarly defined as classes. You just need to replace "class" keyword with "struct".</p>
 <pre><code class="vb">struct {name}
 ...
@@ -602,7 +605,7 @@ end [struct]
         </footer>
         <script>
             var base_url = "../..",
-                shortcuts = {"search": 83, "next": 78, "help": 191, "previous": 80};
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
         <script src="../../js/base.js" defer></script>
         <script src="../../search/main.js" defer></script>
