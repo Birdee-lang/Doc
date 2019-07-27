@@ -376,7 +376,8 @@ dim d = c+b
 </code></pre>
 
 <p>The above program adds a byte (a) with a long (b). It will first convert the value of "a" to type long, and add with "b", resulting in a type long value. Similarly, when adding "c" with "b", it will convert "b" to type float and the result is in type float, making variable "d" a float variable.</p>
-<p>Important note: The assignment operator does not do auto conversion like above! It will try to convert the value on the right of "=" (we call it Rvalue) to the variable on the left of "=" (called Lvalue), disregarding the promotion values.</p>
+<p>A functype value can be automatically converted to closures (functype and closures will be discussed later). A value of a subclass can be automatically converted to a sub-class reference (classes will be discussed later).</p>
+<p>Important note: The assignment operator will always try to convert the value on the right of "=" (we call it Rvalue) to the variable on the left of "=" (called Lvalue). If type of Rvalue cannot be converted to Lvalue, an error will be raised. </p>
 <h3 id="216-string-literals">2.1.6 String literals</h3>
 <p>We have met string literals in above examples. Characters surrounded by a pair of quotation marks (") represents a string literal, Birdee also supports escape characters like "\n", "\\".</p>
 <p>Also, Birdee supports raw strings, which will disregard any escape characters. A raw string starts and ends with three quotation marks ('''). You can even have multiple lines in a raw string.</p>
@@ -450,7 +451,7 @@ dim result=add(3,4)
         </footer>
         <script>
             var base_url = "../..",
-                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+                shortcuts = {"search": 83, "next": 78, "help": 191, "previous": 80};
         </script>
         <script src="../../js/base.js" defer></script>
         <script src="../../search/main.js" defer></script>

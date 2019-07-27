@@ -273,10 +273,10 @@ println(int2str(counter()))
 <pre><code class="vb">object_expression.member_function
 </code></pre>
 
-<p>can be automatically converted to a closure of the same prototype of the member function. For example, the "string" class has a member function "getRaw", you can bind a string with the function by:</p>
+<p>can be automatically converted to a closure of the same prototype of the member function. For example, the "string" class has a member function "get_raw", you can bind a string with the function by:</p>
 <pre><code class="vb">dim str = &quot;hello&quot;
-dim funct as closure () as pointer = str.getRaw # note: no &quot;()&quot; here
-funct() # the same effect as &quot;str.getRaw()&quot;
+dim funct as closure () as pointer = str.get_raw # note: no &quot;()&quot; here
+funct() # the same effect as &quot;str.get_raw()&quot;
 </code></pre></div>
         </div>
 
@@ -286,7 +286,7 @@ funct() # the same effect as &quot;str.getRaw()&quot;
         </footer>
         <script>
             var base_url = "../..",
-                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+                shortcuts = {"search": 83, "next": 78, "help": 191, "previous": 80};
         </script>
         <script src="../../js/base.js" defer></script>
         <script src="../../search/main.js" defer></script>

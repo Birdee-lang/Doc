@@ -146,11 +146,14 @@
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
         <li class="main active"><a href="#5-array">5. Array</a></li>
+            <li><a href="#51-array-basics">5.1 Array basics</a></li>
+            <li><a href="#52-array-initializers">5.2 Array initializers</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
 <h1 id="5-array">5. Array</h1>
+<h2 id="51-array-basics">5.1 Array basics</h2>
 <p>An array is an sequential collection of values with the same type. To use an array type, you can append "[]" to other types and you will get a array of that type. See example:</p>
 <pre><code class="vb">dim arr1 as int[]
 </code></pre>
@@ -201,8 +204,22 @@ println(int2str(arr2[3])) # you will see &quot;123&quot;
 <p>You can access some properties of an array by:</p>
 <pre><code class="vb">dim arr as int[] = new int * 10
 println(&quot;The number of elements is &quot; + arr.length()) #arr.length() gets the # of elements
-dim ptr as pointer = arr.getRaw()                    #arr.getRaw() gets the native pointer of the array
-</code></pre></div>
+dim ptr as pointer = arr.get_raw()                   #arr.get_raw() gets the native pointer of the array
+</code></pre>
+
+<h2 id="52-array-initializers">5.2 Array initializers</h2>
+<p>You can create an array and assign inital values of the elements at the same time by array initializers. The syntax is</p>
+<pre><code class="vb">[expr1, ...]
+</code></pre>
+
+<p>An array initializer is composed of a pair of "[]", and between the brackets, there should be one or more expressions, sparated by commas. An array initializer itself is an expression of array type, and the contents of the resulting array is initialized by the expressions between the brackets. Here are some examples:</p>
+<pre><code class="vb">dim a as int[] = [1,2,3,4]
+dim b = [&quot;hi&quot;,&quot;hello&quot;]
+println(b[0]) #should be &quot;hi&quot;
+</code></pre>
+
+<p>The compiler will automatically infer the type of the array initializer by the expressions in the brackets. In the above example, the first line's array contains 4 integers, so it is a integer array. In the second line, the two elements of the array are strings, so the variable "b" is automatically infered as <code>string[]</code>.</p>
+<p>When the types of the expressions in the array initializer are not the same, the compiler will try to find the most "general" type by the expression types in the array. The rules to find a general type can be found in the "Auto type conversion" in "Basics" chapter. If the types of expressions are incompatable (or cannot be automatically converted), an error will be raised.</p></div>
         </div>
 
         <footer class="col-md-12">
@@ -211,7 +228,7 @@ dim ptr as pointer = arr.getRaw()                    #arr.getRaw() gets the nati
         </footer>
         <script>
             var base_url = "../..",
-                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+                shortcuts = {"search": 83, "next": 78, "help": 191, "previous": 80};
         </script>
         <script src="../../js/base.js" defer></script>
         <script src="../../search/main.js" defer></script>

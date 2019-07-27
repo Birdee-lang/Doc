@@ -163,10 +163,10 @@
 </code></pre>
 
 <p>Note that the "puts" function in C takes an "char*" as argument. Here we use raw pointer type "pointer" as the type for this argument. We can then use this function to print the contents of a Birdee string:</p>
-<pre><code class="vb">puts(&quot;hello&quot;.getRaw())
+<pre><code class="vb">puts(&quot;hello&quot;.get_raw())
 </code></pre>
 
-<p>The "getRaw" method of the string class of Birdee returns the raw pointer of the string data.</p>
+<p>The "get_raw" method of the string class of Birdee returns the raw pointer of the string data.</p>
 <p>In C/C++ or other languages, the compiler may mangle the name of the function, making the function name "strange". You can use the "alias" clause of when declaring a function. For example, the linking name of an external function is "_add0", and you want to simply use the function with name "add", you can declare it by:</p>
 <pre><code class="vb">declare function add alias &quot;_add0&quot; () as int
 </code></pre>
@@ -187,7 +187,7 @@ dim p_a = addressof(a) # &quot;p_a = &amp;a&quot; in C++
 dim p_hi = pointerof(a) # &quot;p_hi = (void*)a&quot; in C++
 </code></pre>
 
-<p>You can get the pointer to the "real" data buffer of some built-in data structures. Birdee "string" and arrays has "getRaw" method to get the pointer of the internal buffer. Using pointerof on string and arrays to get "char*" or "int*" may not work correctly as you have expected! </p>
+<p>You can get the pointer to the "real" data buffer of some built-in data structures. Birdee "string" and arrays has "get_raw" method to get the pointer of the internal buffer. Using pointerof on string and arrays to get "char*" or "int*" may not work correctly as you have expected! </p>
 <h2 id="102-calling-birdee-from-cc">10.2 Calling Birdee from C/C++</h2>
 <p>Birdee variables and functions can be used in C/C++ or other languages. Each Birdee function or variable has a unique name which is composed of "module_name" + "." + "func/variable name". For example, for a module "com.menooker.lib", it has a variable "a" and a function "func_a". Then the unique name of the variable and the function will be "com.menooker.lib.a" and "com.menooker.lib.func_a". The unique names for template functions in Birdee are constructed by appending the template parameter to the template names, and using "[" and "]" to mark the start and the end of the template parameters, just like how template functions are used in the source code. For example, the unique name of an instance of the function template "add_2" can be "com.menooker.lib.add[int,float]". Unique name is used internally in Birdee compiler. However, in C++ or C, you cannot declare a function name with a dot in it. Birdee use name mangling to transform the unique name of a variable or function to a valid name for C/C++. Mangled unique names are the names of global top-level variables and functions generated in the object file in Birdee. Simple rules are used to mangle a unique name - Replace any:</p>
 <ul>
@@ -229,7 +229,7 @@ extern int com_0menooker_0lib_0g__value;
         </footer>
         <script>
             var base_url = "../..",
-                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+                shortcuts = {"search": 83, "next": 78, "help": 191, "previous": 80};
         </script>
         <script src="../../js/base.js" defer></script>
         <script src="../../search/main.js" defer></script>
