@@ -145,6 +145,7 @@ add[int](1,2)
 ```
 
 Template type parameter deduction has some restrictions.
+
  * It only applies to function templates. 
  * The template parameters to be automatically inferred must be used in the function's parameters. The template parameters can be infered even it is in a complex type in the function parameter. For example, Birdee can infer the template parameter "T" in the following code:
 ```vb
@@ -154,6 +155,7 @@ end
 ```
 
  The function parameter "a" is declared as a complicated type "T\[\]". For the given function parameter `int[]`, the compiler can infer T as int. Besides the array type, the template parameter deduction on closure types and functypes are supported.
+
  * You can manually give some of the template arguments and leave other template arguments to be inferred by Birdee compiler. However, the template parameters to be automatically inferred must be the last several template parameters declared in the template's parameter list. For example, if we need a function template to add two values and convert the value to a specific type, the code can be:
 
 ```vb
@@ -180,6 +182,7 @@ add(1, 2.34)
 ```
 
  Because "T" is first inferred as "int" then "float".
+ 
  * All template parameters should either be manually specified by the caller (with \[...\]) or inferred with function's parameters.
 
 ## 8.4 Variadic template and function
@@ -280,6 +283,7 @@ For a tuple type "tuple\[int,float\]", the member function "set" will be expande
 ```
 
 Some rules for variadic functions should be followed:
+
  * Birdee creates an local varaible for each of the arguments of "..." in the function parameter, with names "\_\_\_vararg0", "\_\_\_vararg1", "\_\_\_vararg2", ... (starting with three underscores "\_"). 
  * Only template functions with variadic template parameters can have variadic function parameters.
  * The ellipsis should only appear in the end of function's parameter list.

@@ -156,10 +156,10 @@ Closures can be used to hold a reference to an object with a method. The express
 object_expression.member_function
 ```
 
-can be automatically converted to a closure of the same prototype of the member function. For example, the "string" class has a member function "getRaw", you can bind a string with the function by:
+can be automatically converted to a closure of the same prototype of the member function. For example, the "string" class has a member function "get\_raw", you can bind a string with the function by:
 
 ```vb
 dim str = "hello"
-dim funct as closure () as pointer = str.getRaw # note: no "()" here
-funct() # the same effect as "str.getRaw()"
+dim funct as closure () as pointer = str.get_raw # note: no "()" here
+funct() # the same effect as "str.get_raw()"
 ```

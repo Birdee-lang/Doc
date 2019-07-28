@@ -1,5 +1,7 @@
 # 5. Array
 
+## 5.1 Array basics
+
 An array is an sequential collection of values with the same type. To use an array type, you can append "[]" to other types and you will get a array of that type. See example:
 
 ```vb
@@ -73,5 +75,25 @@ You can access some properties of an array by:
 ```vb
 dim arr as int[] = new int * 10
 println("The number of elements is " + arr.length()) #arr.length() gets the # of elements
-dim ptr as pointer = arr.getRaw()                    #arr.getRaw() gets the native pointer of the array
+dim ptr as pointer = arr.get_raw()                   #arr.get_raw() gets the native pointer of the array
 ```
+
+## 5.2 Array initializers
+
+You can create an array and assign inital values of the elements at the same time by array initializers. The syntax is
+
+```vb
+[expr1, ...]
+```
+
+An array initializer is composed of a pair of "\[\]", and between the brackets, there should be one or more expressions, sparated by commas. An array initializer itself is an expression of array type, and the contents of the resulting array is initialized by the expressions between the brackets. Here are some examples:
+
+```vb
+dim a as int[] = [1,2,3,4]
+dim b = ["hi","hello"]
+println(b[0]) #should be "hi"
+```
+
+The compiler will automatically infer the type of the array initializer by the expressions in the brackets. In the above example, the first line's array contains 4 integers, so it is a integer array. In the second line, the two elements of the array are strings, so the variable "b" is automatically infered as `string[]`.
+
+When the types of the expressions in the array initializer are not the same, the compiler will try to find the most "general" type by the expression types in the array. The rules to find a general type can be found in the "Auto type conversion" in "Basics" chapter. If the types of expressions are incompatable (or cannot be automatically converted), an error will be raised.

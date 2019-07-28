@@ -152,7 +152,9 @@ dim d = c+b
 
 The above program adds a byte (a) with a long (b). It will first convert the value of "a" to type long, and add with "b", resulting in a type long value. Similarly, when adding "c" with "b", it will convert "b" to type float and the result is in type float, making variable "d" a float variable.
 
-Important note: The assignment operator does not do auto conversion like above! It will try to convert the value on the right of "=" (we call it Rvalue) to the variable on the left of "=" (called Lvalue), disregarding the promotion values.
+A functype value can be automatically converted to closures (functype and closures will be discussed later). A value of a subclass can be automatically converted to a sub-class reference (classes will be discussed later).
+
+Important note: The assignment operator will always try to convert the value on the right of "=" (we call it Rvalue) to the variable on the left of "=" (called Lvalue). If type of Rvalue cannot be converted to Lvalue, an error will be raised. 
 
 ### 2.1.6 String literals
 
