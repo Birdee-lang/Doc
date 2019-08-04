@@ -113,6 +113,14 @@
 <li class="active">
     <a href="./">Birdee binding Functions for Python</a>
 </li>
+                                    
+<li >
+    <a href="../0030.Classes/">Binding classes</a>
+</li>
+                                    
+<li >
+    <a href="../0040.HighLevelAPI/">0040.HighLevelAPI</a>
+</li>
                                 </ul>
                             </li>
                             <li class="dropdown">
@@ -146,7 +154,7 @@
                                 </a>
                             </li>
                             <li >
-                                <a rel="prev" href="../../Tools/Birdee-playground-(REPL)/">
+                                <a rel="prev" href="../0030.Classes/">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -326,16 +334,7 @@
 <pre><code class="python">def get_tokenizer_error() -&gt; TokenizerError
 </code></pre>
 
-<p>Get the current tokenizer error. You should call it when a <code>TokenizerException</code> occurs for more information on the error.</p>
-<pre><code class="C++">    py::class_ &lt; CompileError&gt;(m, &quot;CompileError&quot;)
-        .def_property_readonly(&quot;linenumber&quot;, [](CompileError&amp; ths) {return ths.pos.line; })
-        .def_property_readonly(&quot;pos&quot;, [](CompileError&amp; ths) {return ths.pos.pos; })
-        .def_readwrite(&quot;msg&quot;, &amp;CompileError::msg);
-    py::class_ &lt; TokenizerError&gt;(m, &quot;TokenizerError&quot;)
-        .def_readwrite(&quot;linenumber&quot;, &amp;TokenizerError::linenumber)
-        .def_readwrite(&quot;pos&quot;, &amp;TokenizerError::pos)
-        .def_readwrite(&quot;msg&quot;, &amp;TokenizerError::msg);
-</code></pre></div>
+<p>Get the current tokenizer error. You should call it when a <code>TokenizerException</code> occurs for more information on the error.</p></div>
         </div>
 
         <footer class="col-md-12">

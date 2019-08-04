@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>10. Interoperability with C/C++ - Birdee Language</title>
+        <title>0040.HighLevelAPI - Birdee Language</title>
         <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -49,77 +49,77 @@
                             <li >
                                 <a href="../..">Welcome</a>
                             </li>
-                            <li class="dropdown active">
+                            <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Birdee Language Mannual <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
 <li >
-    <a href="../0010HelloWorld/">1. Hello world!</a>
+    <a href="../../Birdee Language Mannual/0010HelloWorld/">1. Hello world!</a>
 </li>
                                     
 <li >
-    <a href="../0020Basics/">2. Language Basics</a>
+    <a href="../../Birdee Language Mannual/0020Basics/">2. Language Basics</a>
 </li>
                                     
 <li >
-    <a href="../0030FlowControl/">3. Flow Control</a>
+    <a href="../../Birdee Language Mannual/0030FlowControl/">3. Flow Control</a>
 </li>
                                     
 <li >
-    <a href="../0040ScopeAndName/">4. Scope and names</a>
+    <a href="../../Birdee Language Mannual/0040ScopeAndName/">4. Scope and names</a>
 </li>
                                     
 <li >
-    <a href="../0050Array/">5. Array</a>
+    <a href="../../Birdee Language Mannual/0050Array/">5. Array</a>
 </li>
                                     
 <li >
-    <a href="../0060Class/">6. Class</a>
+    <a href="../../Birdee Language Mannual/0060Class/">6. Class</a>
 </li>
                                     
 <li >
-    <a href="../0070Import/">7. Modules and Imports</a>
+    <a href="../../Birdee Language Mannual/0070Import/">7. Modules and Imports</a>
 </li>
                                     
 <li >
-    <a href="../0080Template/">8. Templates</a>
+    <a href="../../Birdee Language Mannual/0080Template/">8. Templates</a>
 </li>
                                     
 <li >
-    <a href="../0090Script/">9. Compile-time scripts</a>
-</li>
-                                    
-<li class="active">
-    <a href="./">10. Interoperability with C/C++</a>
+    <a href="../../Birdee Language Mannual/0090Script/">9. Compile-time scripts</a>
 </li>
                                     
 <li >
-    <a href="../0110Functional/">11. Functional Programming</a>
+    <a href="../../Birdee Language Mannual/0100Cpp/">10. Interoperability with C/C++</a>
 </li>
                                     
 <li >
-    <a href="../0120Exception/">12. Exception handling</a>
+    <a href="../../Birdee Language Mannual/0110Functional/">11. Functional Programming</a>
+</li>
+                                    
+<li >
+    <a href="../../Birdee Language Mannual/0120Exception/">12. Exception handling</a>
 </li>
                                 </ul>
                             </li>
-                            <li class="dropdown">
+                            <li class="dropdown active">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Python Binding <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
 <li >
-    <a href="../../Python Binding/0010.Overview/">Python binding for Birdee</a>
+    <a href="../0010.Overview/">Python binding for Birdee</a>
 </li>
                                     
 <li >
-    <a href="../../Python Binding/0020.Functions/">Birdee binding Functions for Python</a>
+    <a href="../0020.Functions/">Birdee binding Functions for Python</a>
 </li>
                                     
 <li >
-    <a href="../../Python Binding/0030.Classes/">Binding classes</a>
+    <a href="../0030.Classes/">Binding classes</a>
 </li>
                                     
-<li >
-    <a href="../../Python Binding/0040.HighLevelAPI/">0040.HighLevelAPI</a>
+<li class="active">
+    <a href="./">0040.HighLevelAPI</a>
 </li>
                                 </ul>
                             </li>
@@ -149,12 +149,12 @@
                             </a>
                         </li>
                             <li >
-                                <a rel="next" href="../0090Script/">
+                                <a rel="next" href="../0030.Classes/">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li >
-                                <a rel="prev" href="../0110Functional/">
+                                <a rel="prev" href="../../Tools/Birdee-playground-(REPL)/">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -166,82 +166,11 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#10-interoperability-with-cc">10. Interoperability with C/C++</a></li>
-            <li><a href="#101-calling-cc-from-birdee">10.1 Calling C/C++ from Birdee</a></li>
-            <li><a href="#102-calling-birdee-from-cc">10.2 Calling Birdee from C/C++</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="10-interoperability-with-cc">10. Interoperability with C/C++</h1>
-<h2 id="101-calling-cc-from-birdee">10.1 Calling C/C++ from Birdee</h2>
-<p>Birdee code can easily call C/C++ functions. You should first declare an external function in Birdee source code with the correct prototype. Then link the compiled Birdee object file with C/C++ object files or libraries. The syntax to declare an external function is </p>
-<pre><code class="vb">declare {function_name} [alias {&quot;function_alias&quot;}] ([parameters]) [as {return_type}]
-</code></pre>
-
-<p>For example, we can declare a C function "puts" which prints a string by:</p>
-<pre><code class="vb">declare function puts (str as pointer) as int
-</code></pre>
-
-<p>Note that the "puts" function in C takes an "char*" as argument. Here we use raw pointer type "pointer" as the type for this argument. We can then use this function to print the contents of a Birdee string:</p>
-<pre><code class="vb">puts(&quot;hello&quot;.get_raw())
-</code></pre>
-
-<p>The "get_raw" method of the string class of Birdee returns the raw pointer of the string data.</p>
-<p>In C/C++ or other languages, the compiler may mangle the name of the function, making the function name "strange". You can use the "alias" clause of when declaring a function. For example, the linking name of an external function is "_add0", and you want to simply use the function with name "add", you can declare it by:</p>
-<pre><code class="vb">declare function add alias &quot;_add0&quot; () as int
-</code></pre>
-
-<p>You may need to pass pointers of Birdee-managed data to an external function. To get the pointer to an Birdee variable, you can use "addressof" keyword:</p>
-<pre><code class="vb">addressof(lvalue)
-</code></pre>
-
-<p>You can apply "addressof" on any "LValues", which have an address in the run time. Basically, variables and fields of class objects are LValues. Note that you can apply addressof on fields of structs only when the struct object itself is an LValue.</p>
-<p>You can convert a reference to an object to raw pointer by "pointerof" keyword:</p>
-<pre><code class="vb">pointerof(reference)
-</code></pre>
-
-<p>The "reference" here is any valid reference expression (array or class objects).
-"addressof" and "pointerof" has different meanings. "addressof" gets the address of the variable itself. And "pointerof" gets the address of the object that the expression points to.</p>
-<pre><code class="vb">dim a as string = &quot;hi&quot;
-dim p_a = addressof(a) # &quot;p_a = &amp;a&quot; in C++
-dim p_hi = pointerof(a) # &quot;p_hi = (void*)a&quot; in C++
-</code></pre>
-
-<p>You can get the pointer to the "real" data buffer of some built-in data structures. Birdee "string" and arrays has "get_raw" method to get the pointer of the internal buffer. Using pointerof on string and arrays to get "char*" or "int*" may not work correctly as you have expected! </p>
-<h2 id="102-calling-birdee-from-cc">10.2 Calling Birdee from C/C++</h2>
-<p>Birdee variables and functions can be used in C/C++ or other languages. Each Birdee function or variable has a unique name which is composed of "module_name" + "." + "func/variable name". For example, for a module "com.menooker.lib", it has a variable "a" and a function "func_a". Then the unique name of the variable and the function will be "com.menooker.lib.a" and "com.menooker.lib.func_a". The unique names for template functions in Birdee are constructed by appending the template parameter to the template names, and using "[" and "]" to mark the start and the end of the template parameters, just like how template functions are used in the source code. For example, the unique name of an instance of the function template "add_2" can be "com.menooker.lib.add[int,float]". Unique name is used internally in Birdee compiler. However, in C++ or C, you cannot declare a function name with a dot in it. Birdee use name mangling to transform the unique name of a variable or function to a valid name for C/C++. Mangled unique names are the names of global top-level variables and functions generated in the object file in Birdee. Simple rules are used to mangle a unique name - Replace any:</p>
-<ul>
-<li>"_" with "__"</li>
-<li>"." with "_0"</li>
-<li>"!" with "_1"</li>
-<li>"[" with "_2"</li>
-<li>"]" with "_3"</li>
-<li>"," with "_4"</li>
-<li>" " with "_5"</li>
-<li>other characters that are not in [a-z] or [A-Z] with "_xHH", where HH is the hexadecimal representation of the ASCII code of the character, e.g. "_x2h".</li>
-</ul>
-<p>For example we have a Birdee module:</p>
-<pre><code class="vb">package com.menooker.lib
-
-function add_2[T1,T2](a as T1,b as T1) as T2
-    return a+b
-end
-
-add_2[int,float] # declare an instance of the function template
-
-dim g_value as int = 10
-</code></pre>
-
-<p>The unique name "com.menooker.lib.add_2[int,float]" will be transformed to "com_0menooker_0lib_0add__2_2int_4float_3". Similarly, the unique name "com.menooker.lib.g_value" will be transformed to "com_0menooker_0lib_0g__value".</p>
-<p>Then, in C++ code, you can declare the function and the global variable by:</p>
-<pre><code class="c++">extern &quot;C&quot; void com_0menooker_0lib_0_1main();
-extern &quot;C&quot; float com_0menooker_0lib_0add__2_2int_4float_3 (int,int);
-extern int com_0menooker_0lib_0g__value;
-</code></pre>
-
-<p>Note 1: If you want to use this C++ declaration in C code, replace extern "C" with "extern".</p>
-<p>Note 2: The function with unique name "{module_name}.!main" is the top-level "main function" code for the module. In the above example, we declare a function "com_0menooker_0lib_0_1main" for the top-level code. Remember to call the top-level "main function" code once before using the variables and the functions of the module. If the "main function" is not called, the module's global variables may not be correctly initialized. The top-level code of a Birdee module will call all top-level "main functions" of the modules it imports. So you don't need to manually call all module's top-level "main functions". Instead, you only need to call the "main functions" of several "root" modules. There is no effect to call a top-level "main function" multiple times after the first call to it - the "main function" will do nothing after it is called for the first time. </p></div>
+</div>
         </div>
 
         <footer class="col-md-12">
