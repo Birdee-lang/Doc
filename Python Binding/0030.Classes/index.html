@@ -119,7 +119,7 @@
 </li>
                                     
 <li >
-    <a href="../0040.HighLevelAPI/">0040.HighLevelAPI</a>
+    <a href="../0040.HighLevelAPI/">High level APIs</a>
 </li>
                                 </ul>
                             </li>
@@ -328,17 +328,361 @@ class ExprAST(StatementAST):
     template_param: TemplateParameters_FunctionAST # readonly, if is a template function, the template parameters; Otherwise, None
 </code></pre>
 
-<p>Work in progress.</p>
-<pre><code class="C++">        py::class_&lt;AnnotationStatementAST, StatementAST&gt;(m, &quot;AnnotationStatementAST&quot;)
-        .def_static(&quot;new&quot;, [](vector&lt;string&gt;&amp;&amp; anno, UniquePtrStatementAST&amp; impl) {
-            return new UniquePtrStatementAST(std::make_unique&lt; AnnotationStatementAST&gt;(std::move(anno), impl.move()));
-        })
-        .def_readwrite(&quot;is_expr&quot;, &amp;AnnotationStatementAST::is_expr)
-        .def_readwrite(&quot;anno&quot;,&amp;AnnotationStatementAST::anno)
-        .def_property(&quot;impl&quot;, [](AnnotationStatementAST&amp; ths) {return GetRef(ths.impl); },
-            [](AnnotationStatementAST&amp; ths, UniquePtrStatementAST&amp; impl) {ths.impl = impl.move(); })
-        .def(&quot;run&quot;, [](AnnotationStatementAST&amp; ths, py::object&amp; func) {func(GetRef(ths.impl)); });
+<h3 id="annotationstatementast">AnnotationStatementAST</h3>
+<p>An annotated statement is wrapped in an AnnotationStatementAST. For example, Birdee code</p>
+<pre><code class="vb">@some
+function f()
+end
+</code></pre>
 
+<p>has an AnnotationStatementAST which contains a FunctionAST.</p>
+<pre><code class="python">class AnnotationStatementAST(StatementAST):
+    @static
+    def new(annotations: list, impl: StatementASTUniquePtr): ... 
+    #static function, create a new AnnotationStatementAST node. &quot;annotations&quot; is a list of string that are for annotations
+    #&quot;impl&quot; is the annotated AST node. Will take the ownership of &quot;impl&quot;
+    is_expr: bool # readwrite, if this annotated statement is an expression
+    anno: list # readwrite, a list of annotations in string
+    impl: StatementASTUniquePtr # the ownership pointer of the annotated AST. Reading this field will yield a reference
+</code></pre>
+
+<h3 id="scriptast">ScriptAST</h3>
+<p>The AST for the embeded scripts, i.e., between <code>{@ @}</code>.</p>
+<pre><code class="python">class ScriptAST(ExprAST):
+    @static
+    def new(script: str, is_top_level:bool):... # creates a new ScriptAST. &quot;is_top_level&quot; specifies whether is script is in the top level.
+    stmt: StatementASTUniquePtr # readwrite, the generated statement AST by the script
+    script: str # readwrite, the script
+</code></pre>
+
+<h3 id="resolvedidentifierexprast">ResolvedIdentifierExprAST</h3>
+<pre><code class="python">class ResolvedIdentifierExprAST(ExprAST):
+    def is_mutable()-&gt; bool : ... # is this value mutable?
+</code></pre>
+
+<p>This class is an abstract class, which represents an simple primary expression (function name or variable), or a number literal, etc.</p>
+<h3 id="stringliteralast">StringLiteralAST</h3>
+<pre><code class="python">class StringLiteralAST(ResolvedIdentifierExprAST):
+    @static
+    def new(value: str): ... # create a new StringLiteralAST 
+    value: str  # the string value of the literal
+</code></pre>
+
+<p>This class of AST represents string literals, usually surrounded by a pair of <code>"</code>, like <code>"Hello"</code> in Birdee code.</p>
+<h3 id="numberexprast">NumberExprAST</h3>
+<p>The AST for number literals. e.g. <code>1.23</code>.</p>
+<pre><code class="python">class NumberExprAST(ResolvedIdentifierExprAST):
+    @static
+    def new(type: BasicType, value): ... # creates a new number with given type
+    value: ??? # readwrite, the value of the number literal
+    type: BasicType # readwrite, the type of the number literal
+    def __str__()-&gt;str : ... # convert the value to a Python string
+</code></pre>
+
+<h3 id="arrayinitializerexprast">ArrayInitializerExprAST</h3>
+<pre><code class="python">class ArrayInitializerExprAST(ExprAST):
+    @static
+    def new(impl: list): ... # create an array from a list of StatementASTUniquePtr 
+    values: ExprASTList # readonly, the list of expressions in the array
+</code></pre>
+
+<p>This class of AST represents array literals, like <code>[1,2,3,4]</code>.</p>
+<h3 id="returnast">ReturnAST</h3>
+<pre><code class="python">class ReturnAST(StatementAST):
+    @static
+    def new(retv: StatementASTUniquePtr): ... # create a return statement from an expression. Takes the ownership
+    expr: StatementASTUniquePtr # readwrite, the expression that is returned. Can be None if returns void.
+</code></pre>
+
+<p>This class of AST represents the return statements, like <code>return 0</code>.</p>
+<h3 id="identifierexprast">IdentifierExprAST</h3>
+<pre><code class="python">class IdentifierExprAST(ExprAST):
+    @static
+    def new(variable_name: str):... #create a new identifier expression. The variable name of the expression is given by the parameter
+    name: str # readwrite, the variable name
+    impl: StatementASTUniquePtr # readwrite, the resolved expression AST. The values of this field 
+    # should be a subclass of ResolvedIdentifierExprAST
+</code></pre>
+
+<p>This class represents an identifier expression. For example, </p>
+<pre><code class="vb">a = b
+</code></pre>
+
+<p>here <code>a</code> and <code>b</code> are two IdentifierExprASTs. If <code>b</code> is resolved as an variable, the <code>impl</code> field will be a LocalVarExprAST. If <code>b</code> is an function name, the <code>impl</code> field will be a ResolvedFuncExprAST.</p>
+<h3 id="resolvedfuncexprast">ResolvedFuncExprAST</h3>
+<pre><code class="python">class ResolvedFuncExprAST(ResolvedIdentifierExprAST):
+    funcdef: FunctionAST # readwrite, the referenced function 
+</code></pre>
+
+<p>This AST is used in IdentifierExprAST to represent a function.</p>
+<h3 id="thisexprast">ThisExprAST</h3>
+<pre><code class="python">class ThisExprAST(ExprAST):
+    @static
+    def new():... #create a new this expression
+</code></pre>
+
+<h3 id="boolliteralexprast">BoolLiteralExprAST</h3>
+<pre><code class="python">class BoolLiteralExprAST(ExprAST):
+    @static
+    def new(value: bool):... # create a new boolean literal expression
+    value: bool # readwrite, the value of the boolean literal
+</code></pre>
+
+<p>The AST for boolean literal, e.g. <code>true</code></p>
+<h3 id="ifblockast">IfBlockAST</h3>
+<pre><code class="python">class IfBlockAST(StatementAST):
+    cond: ExprAST # readonly, the expression to be tested in an &quot;if&quot;
+    if_true: StatementASTList # readonly, the list of statements for the &quot;true&quot; condition of the &quot;if&quot; statement
+    if_falue: StatementASTList # readonly, the list of statements for the &quot;else&quot; block
+</code></pre>
+
+<h3 id="forblockast">ForBlockAST</h3>
+<pre><code class="python">class ForBlockAST(StatementAST):
+    is_dim: bool # readwrite, if the for loop's loop variable is defined in the for-statement
+    init_value: StatementASTUniquePtr # readwrite, if is_dim, the variable definition (VariableSingleDefAST).
+    # Otherwise, the initial value of the for loop varaiable
+    loop_var: ExprAST # readwrite, if is_dim==false, the variable definition of the loop variable. Otherwise, None
+    till: StatementASTUniquePtr # readwrite, the expression that marks the end of the loop-variable
+    inclusive: bool # readwrite, if true, it is a &quot;for ... to ...&quot;. Otherwise, it is a &quot;for ... till ...&quot;
+    block: StatementASTList # readwrite, the for loop body
+</code></pre>
+
+<p>There are two kinds of for-loops in Birdee. One have the loop varaible defined in the "for" statement. The other does not have.</p>
+<pre><code class="vb">for dim i=0 to 3
+    ...
+end
+
+for j=0 to 3
+    ...
+end
+</code></pre>
+
+<p>The difference of these two kinds of for-loop is reflected in the <code>is_dim</code> field of the AST.</p>
+<h3 id="whileblockast">WhileBlockAST</h3>
+<pre><code class="python">class WhileBlockAST(StatementAST):
+    cond: StatementASTUniquePtr # readwrite, the contition expression of the while loop
+    block: StatementASTList # readonly, the body of the while loop
+</code></pre>
+
+<h3 id="loopcontrolast">LoopControlAST</h3>
+<pre><code class="python">class LoopControlType(Enum):
+    BREAK
+    CONTINUE
+
+class LoopControlAST(StatementAST):
+    @static
+    def new(type: LoopControlType):... # create a new &quot;break&quot; or &quot;continue&quot; statement
+    type: LoopControlType # readwrite, the kind of the loop control
+</code></pre>
+
+<p>This AST is either "break" or "continue"</p>
+<h3 id="binaryexprast">BinaryExprAST</h3>
+<p>The expressions that applies an operator on two expressions.</p>
+<pre><code class="python">class BinaryOp(Enum):
+    BIN_MUL              # *
+    BIN_DIV              # /
+    BIN_MOD              # %
+    BIN_ADD              # +
+    BIN_MINUS            # -
+    BIN_LT               # &lt;
+    BIN_GT               # &gt;
+    BIN_LE               # &lt;=
+    BIN_GE               # &gt;=
+    BIN_EQ               # ==
+    BIN_NE               # !=
+    BIN_CMP_EQ           # ===
+    BIN_CMP_NE           # !==  
+    BIN_AND              # &amp;
+    BIN_XOR              # ^
+    BIN_OR               # |
+    BIN_LOGIC_AND        # &amp;&amp;
+    BIN_LOGIC_OR         # ||
+    BIN_ASSIGN           # =
+
+class BinaryExprAST(ExprAST):
+    @static
+    def new(op: BinaryOp, lhs: StatementASTUniquePtr, rhs: StatementASTUniquePtr): ...
+    #create a new binary expression: lhs op rhs
+    is_overloaded: bool # readwrite, if this binary expression is an overloaded function call to a function
+    lhs: StatementASTUniquePtr # readwrite, the left hand side expression
+    rhs: StatementASTUniquePtr # readwrite, the right hand side expression
+    op: BinaryOp # readwrite the operation on the expressions
+</code></pre>
+
+<h3 id="unaryexprast">UnaryExprAST</h3>
+<p>The expressions that applies an operator on one expression.</p>
+<pre><code class="python">class UnaryOp(Enum):
+    UNA_NOT        # !
+    UNA_ADDRESSOF  # addressof
+    UNA_POINTEROF  # pointerof
+    UNA_TYPEOF     # typeof
+
+class UnaryExprAST(ExprAST):
+    func: FunctionAST # readwrite, if the expression is an overloaded function call, the function to be called.
+    # Otherise, None
+    arg: StatementASTUniquePtr # the expression that the operator applies to
+    op: UnaryOp # the operator
+</code></pre>
+
+<h3 id="functiontemplateinstanceexprast">FunctionTemplateInstanceExprAST</h3>
+<p>The function template instance expression. For example in the code:</p>
+<pre><code>add[int,long](1,2)
+</code></pre>
+
+<p>The expression <code>add[int,long]</code> is a function template instance.</p>
+<pre><code class="python">class FunctionTemplateInstanceExprAST(ExprAST):
+    expr: UniquePtrStatementAST # readwrite, the function template
+    instance: FunctionAST # readwrite, the function template instance
+</code></pre>
+
+<h3 id="indexexprast">IndexExprAST</h3>
+<p>The index expression or function template instance expression with only one template parameter.</p>
+<pre><code class="python">class IndexExprAST(ExprAST):
+    expr: UniquePtrStatementAST # readwrite, the indexed expression (before [...])
+    index: UniquePtrStatementAST # readwrite, the index (within [...])
+    template_inst: UniquePtrStatementAST # readwrite, if is a template, the template instance expression.
+    # otherwise, None
+    def is_template_instance()-&gt;bool: ... # returns if it is a function template instance
+
+</code></pre>
+
+<h3 id="callexprast">CallExprAST</h3>
+<p>The AST for function calls.</p>
+<pre><code class="python">class CallExprAST(ExprAST):
+    callee: UniquePtrStatementAST # readwrite, the callee expression (before (...) )
+    args: StatementASTList # readonly, arguments (within (...) )
+</code></pre>
+
+<h3 id="variablesingledefast">VariableSingleDefAST</h3>
+<p>The AST which defines a single variable. Corresponds to <code>dim</code> statements.</p>
+<pre><code class="python">class VariableSingleDefAST(StatementAST):
+    # the types of captures of a variable
+    class CaptureType(Enum):
+        CAPTURE_NONE   # not captured
+        CAPTURE_REF    # capturing reference to the parent capture object
+        CAPTURE_VAL    # capturing the values to the parent capture object
+    name: str # readwrite, the name of the variable
+    value: StatementASTUniquePtr # readwrite, the initial value of the variable. Can be None
+    resolved_type: ResolvedType # readwrite, the type of the variable
+    capture_import_type: CaptureType # readwrite, how the captured variable is imported from parent function
+    capture_import_idx: int # readwrite, the capture index within the parent function
+    capture_export_type: CaptureType # readwrite, how the captured variable is exported to child functions
+    capture_export_idx: int # readwrite, the capture index within capture object for the child functions
+</code></pre>
+
+<h3 id="variablemultidefast">VariableMultiDefAST</h3>
+<p>The AST that contains multiple variable definitions.</p>
+<pre><code class="python">class VariableMultiDefAST(StatementAST):
+    lst: VariableSingleDefASTList # readonly, the variable list
+</code></pre>
+
+<h3 id="localvarexprast">LocalVarExprAST</h3>
+<p>The AST used by IdentifierExprAST to reference variables.</p>
+<pre><code class="python">class LocalVarExprAST(ResolvedIdentifierExprAST):
+    @static
+    def new(v: VariableSingleDefAST):... # creates a new LocalVarExprAST
+    vardef: VariableSingleDefAST # readwrite, the variable definition
+</code></pre>
+
+<h3 id="functiontoclosureast">FunctionToClosureAST</h3>
+<p>The AST automatically generated by compiler to convert a function to a closure.</p>
+<pre><code class="python">class FunctionToClosureAST(ExprAST):
+    func: StatementASTUniquePtr # readwrite, the function/functype expression to be converted
+</code></pre>
+
+<h3 id="tryblockast">TryBlockAST</h3>
+<p>The AST for "try ... catch ..." block. A try block may contain several catch variables to catch different types of exception. There are also the same number of "catch" blocks in the AST.</p>
+<pre><code class="python">class TryBlockAST(StatementAST):
+    try_block: StatementASTList # readonly, try block
+    catch_variables: VariableSingleDefASTList # readonly, the definitions of the catch variables
+    def get_catch_block(idx: int) -&gt; StatementASTList : ... 
+    # get a catch block. The index is from 0 to len(catch_variables) - 1
+</code></pre>
+
+<h3 id="throwast">ThrowAST</h3>
+<pre><code class="python">class ThrowAST(StatementAST):
+    expr: StatementASTUniquePtr # readwrite, the throw expression
+</code></pre>
+
+<h3 id="class-asts">Class ASTs</h3>
+<pre><code class="python">class AccessModifier(Enum):
+    PUBLIC
+    PRIVATE
+
+class FieldDef:
+    @static
+    def new(index: int, access: AccessModifier, vdef: StatementASTUniquePtr) -&gt; FieldDefUniquePtr: ...
+    # creates a new field, with given index, modifier and the variable definition (given by vdef)
+    index: int # readwrite, the index of the field within the class
+    access: AccessModifier # readwrite, the access modifier
+    decl: StatementASTUniquePtr # readwrite, should be VarialeSingleDefAST. The variable definition
+
+class MemberFunctionDef:
+    @static
+    def new(access: AccessModifier, fdef: StatementASTUniquePtr) -&gt; MemberFunctionDef: ...
+    # creates a new field, with modifier and the FunctionAST (given by fdef)
+    access: AccessModifier # readwrite, the access modifier
+    decl: StatementASTUniquePtr # readwrite, should be FunctionAST. The function definition
+
+class ClassAST(StatementAST):
+    name: str # readwrite, the name of the class
+    fields: FieldDefList # readonly, the list of fields
+    funcs: MemberFunctionDefList # readonly, the list of member functions
+    template_instance_args: TemplateArgumentList # readonly, the list of the template arguement if it is a template instance
+    template_source_class: ClassAST # readonly, the template source AST if it is a template instance
+    template_param: TemplateParameters_ClassAST # readonly, the template parameters if it is a template
+    needs_rtti: bool # readwrite, if the class has RTTI enabled
+    is_struct: bool # readonly, if it is a struct instead of a class
+    parent_class: ClassAST # readonly, the parent class that this class inherits from
+    def is_template_instance() -&gt; bool: ... # returns if it is a template instance
+    def is_template() -&gt; bool: ... # returns if it is a template
+    def get_unique_name()-&gt; str: ... # returns the fully qualified name of the class
+    def find_field(name: str) -&gt; (int,FieldDef): ... # find a field by name from this class. 
+    # returns a tuple (int, FieldDef). The int is the number of levels of parents where the field is found.
+    # the returned FieldDef may not be in the current class
+</code></pre>
+
+<h3 id="newexprast">NewExprAST</h3>
+<p>The AST for <code>new</code> AST, including newing an array or an object. </p>
+<pre><code class="python">class NewExprAST(ExprAST):
+    args: StatementASTList # readonly, the list of arguments/dimensions to the new expression
+    func: FunctionAST # readwrite, the constructor function to be called
+</code></pre>
+
+<h3 id="memberexprast">MemberExprAST</h3>
+<p>The AST for referencing members of an object, or functions/variables imported from other modules.</p>
+<pre><code class="python">class MemberExprAST(ResolvedIdentifierExprAST):
+    class MemberType(Enum):
+        ERROR
+        PACKAGE           # if it is an package. e.g. in &quot;mod1.mod2.v1&quot;, &quot;mod1.mod2&quot; is of type &quot;PACKAGE&quot;
+        FIELD             # a field of an object
+        FUNCTION          # a member function of an object
+        IMPORTED_DIM      # an imported variable of other modules
+        VIRTUAL_FUNCTION  # a virtual function of an object, will read the vtable to generate the callee
+        IMPORTED_FUNCTION # a function of an imported module
+
+    @static
+    def new(obj: StatementASTUniquePtr, name: str): ... # creates a new member expr &quot;obj.name&quot;
+    @static
+    def new_func_member(obj: StatementASTUniquePtr, member: MemberFunctionDef): ... # creates a new member function expr
+
+    kind: MemberType # the kind of the member
+    obj: StatementASTUniquePtr # the object
+    # the following fields can only be read when this class actually stores that kind of value
+    # you can get the kind of the exact value by &quot;kind&quot; field
+    func: MemberFunctionDef
+    field: FieldDef
+    imported_func: FunctionAST
+    import_dim: VariableSingleDefAST
+    def to_string_array()-&gt;list: ... # convert the member expr chain to a list of python string
+</code></pre>
+
+<h3 id="number-cast-ast">Number Cast AST</h3>
+<p>This is a class of AST classes. Each converts a number type from another. The FROM and TO in the code below are two number types.</p>
+<pre><code class="python">class CastNumberExpr_FROM_TO(ExprAST):
+    @static
+    def new(expr: StatementASTUniquePtr):... # creates a new Number Cast AST
+    expr: StatementASTUniquePtr # the expression to be converted
 </code></pre></div>
         </div>
 
