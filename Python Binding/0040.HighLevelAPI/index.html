@@ -168,6 +168,8 @@
     <ul class="nav bs-sidenav">
         <li class="main active"><a href="#high-level-apis">High level APIs</a></li>
             <li><a href="#bdutils">bdutils</a></li>
+            <li><a href="#bdconst">bdconst</a></li>
+            <li><a href="#bdassert">bdassert</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -238,7 +240,44 @@ def get_func_expr_templ_at(idx, thefunc = None)-&gt; ExprASTUniquePtr: ...
 def func_templ_type_at(idx, thefunc = None):...
 #Get and set the template argument of a function at a specific index as a type (by default from the current function)
 def func_templ_expr_at(idx, thefunc = None):...
-</code></pre></div>
+</code></pre>
+
+<h2 id="bdconst">bdconst</h2>
+<p>This module enables developers to generate constant integers in Birdee code.</p>
+<pre><code class="python">def define(name, value):...
+</code></pre>
+
+<p>The <code>define</code> function takes two parameters, <code>name</code> is the name of the defined constant. <code>value</code> is the integer value of the constant. After you call this function, two Python variables are defined in the Python globals, which have the names <code>name</code> and <code>_name</code> ("name" has been specified by the parameter). The <code>name</code> variable is a function that will generate an constant integer AST node and set the current AST using the generated AST. The <code>_name</code> variable is a Python integer that has the same value of <code>value</code> parameter of the <code>define</code> function. Here we give an example of using <code>define</code> function:</p>
+<pre><code class="vb">{@
+from bdconst import define
+define(&quot;CONST1&quot;, 1)
+define(&quot;CONST2&quot;, 2)
+print(_CONST1)
+print(_CONST2)
+@}
+
+dim v1 = {@CONST1()@}
+dim v2 = {@CONST2()@}
+</code></pre>
+
+<p>After compiling the above example, the compiler will print the values of <code>_CONST1</code> and <code>_CONST2</code> which are 1 and 2. The Birdee variables v1 and v2 have the initial values of 1 and 2.</p>
+<h2 id="bdassert">bdassert</h2>
+<p>This module provides the code generator that can do runtime assertion. In Birdee programs, developers may have some assertions on the states of the program. The condition of the assertion will be checked at the run time. If the condition does not hold, a <code>runtime_exception</code> will be raised.</p>
+<pre><code class="python">def bdassert(expr: str):...
+</code></pre>
+
+<p>The <code>bdassert</code> function takes one parameter that is the Birdee source code string for the condition to check. This function will generate the input source code as an expression and also generate the code to check if the generated expression is <code>true</code>. The <code>expr</code> should be a <code>boolean</code> Birdee expression. Here is an example:</p>
+<pre><code class="vb">{@from bdassert import *@}
+function complicated() as int
+    ...
+end
+
+dim v as int = compilcated()
+{@bdassert(&quot;v!=0&quot;)@}
+println(int2str(32/v))
+</code></pre>
+
+<p>The above example uses <code>bdassert</code> to make sure that <code>v</code> is never 0. If it is zero, an exception will be throw. The <code>bdassert</code> function is useful for debugging and testing.</p></div>
         </div>
 
         <footer class="col-md-12">
