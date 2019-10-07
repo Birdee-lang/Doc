@@ -4,7 +4,7 @@ In this section, the basic syntax of Birdee will be explained, and building more
 
 ## 2.1 Variables and expressions
 
-Variables are holders of data. They have types specified when they are defined. There are basic types in Birdee, which include boolean (true/false), byte (8-bit signed integer), int (32-bit signed integer), long (64-bit signed integer), uint (32-bit unsigned integer), ulong (64-bit unsigned integer), float (32-bit float-point number), double (64-bit float-point number) and pointer (native pointer type). Complex types like array and class will be explained later. (Note: the class type "string" is one of the most commonly used class in Birdee, and we have already used it in our "hello world" example!)
+Variables are holders of data. They have types specified when they are defined. There are basic types in Birdee, which include boolean (true/false), byte (8-bit signed integer), short (16-bit signed integer), int (32-bit signed integer), long (64-bit signed integer), uint (32-bit unsigned integer), ulong (64-bit unsigned integer), float (32-bit float-point number), double (64-bit float-point number) and pointer (native pointer type). Complex types like array and class will be explained later. (Note: the class type "string" is one of the most commonly used class in Birdee, and we have already used it in our "hello world" example!)
 
 ### 2.1.1 Variables definitions 
 
@@ -133,7 +133,8 @@ If the types of the operands of an operator do not match, and the operands are b
 
 |  Type |  Promotion values |
 |---|---|
-|byte|-1|
+|byte|-2|
+|short|-2|
 |int|0|
 |uint|1|
 |long|2|
