@@ -177,7 +177,7 @@
 <h1 id="2-language-basics">2. Language Basics</h1>
 <p>In this section, the basic syntax of Birdee will be explained, and building more complex programs become possible.</p>
 <h2 id="21-variables-and-expressions">2.1 Variables and expressions</h2>
-<p>Variables are holders of data. They have types specified when they are defined. There are basic types in Birdee, which include boolean (true/false), byte (8-bit signed integer), int (32-bit signed integer), long (64-bit signed integer), uint (32-bit unsigned integer), ulong (64-bit unsigned integer), float (32-bit float-point number), double (64-bit float-point number) and pointer (native pointer type). Complex types like array and class will be explained later. (Note: the class type "string" is one of the most commonly used class in Birdee, and we have already used it in our "hello world" example!)</p>
+<p>Variables are holders of data. They have types specified when they are defined. There are basic types in Birdee, which include boolean (true/false), byte (8-bit signed integer), short (16-bit signed integer), int (32-bit signed integer), long (64-bit signed integer), uint (32-bit unsigned integer), ulong (64-bit unsigned integer), float (32-bit float-point number), double (64-bit float-point number) and pointer (native pointer type). Complex types like array and class will be explained later. (Note: the class type "string" is one of the most commonly used class in Birdee, and we have already used it in our "hello world" example!)</p>
 <h3 id="211-variables-definitions">2.1.1 Variables definitions</h3>
 <p>To define a variable, use the keyword "dim". The basic syntax is shown below. The variable_name can be any valid name composed by "_", numbers (0-9) and English characters (a-z and A-Z). In addition, the variable_name should not be one of the keywords of Birdee, such as "dim" and "as". The type can be a basic type, array type or class type.</p>
 <pre><code class="vb">dim {variable_name} as {type}
@@ -361,7 +361,11 @@ println(v2)
 <tbody>
 <tr>
 <td>byte</td>
-<td>-1</td>
+<td>-2</td>
+</tr>
+<tr>
+<td>short</td>
+<td>-2</td>
 </tr>
 <tr>
 <td>int</td>

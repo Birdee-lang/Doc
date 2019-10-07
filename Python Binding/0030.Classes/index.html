@@ -218,6 +218,7 @@
     FUNC
     VOID
     BYTE
+    SHORT
     INT
     LONG
     ULONG
@@ -518,7 +519,7 @@ class BinaryExprAST(ExprAST):
     UNA_TYPEOF     # typeof
 
 class UnaryExprAST(ExprAST):
-    func: FunctionAST # readwrite, if the expression is an overloaded function call, the function to be called.
+    is_overloaded: bool # readwrite, if the expression is an overloaded function call
     # Otherise, None
     arg: StatementASTUniquePtr # the expression that the operator applies to
     op: UnaryOp # the operator
