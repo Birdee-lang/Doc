@@ -278,7 +278,7 @@
 <pre><code class="python">def set_ast(ast: StatementAST_UniquePtr) 
 </code></pre>
 
-<p>Can only be called in embeded script for statements. Sets the current script AST with the given AST node. It will take the ownership of the input AST.</p>
+<p>Can only be called in embeded script for statements. Sets the current script AST with the given AST node. It will take the ownership of the input AST. You can call this function multiple times to combine multiple lines of Birdee code into in ScriptAST node. All of the Birdee code set into the ScriptAST will be generated and executed. The value of the resulting ScriptAST node will be the result of the first Birdee code set into the ast.</p>
 <ul>
 <li><code>resolve_type</code></li>
 </ul>
