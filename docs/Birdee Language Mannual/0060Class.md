@@ -260,6 +260,7 @@ There are other operators that can be overloaded. The operators and functions to
 |&|\_\_and\_\_|The other object|
 |^|\_\_xor\_\_|The other object|
 |!|\_\_not\_\_|None|
+|* (added before an expression)|\_\_deref\_\_|None|
 |Array read|\_\_getitem\_\_|The "index"|
 |Array write|\_\_setitem\_\_|The "index" and the object to "put" in|
 
