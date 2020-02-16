@@ -451,7 +451,98 @@ Enabling RTTI has some overhead in space. If a class has RTTI, all of its instan
 
 ## 6.9 Abstract Class & Interface
 
-TODO
+An abstrct class is a class that is declared abstract, through including abstract methods. Abstract method is a special kind of virtual method that have no implementation. Abstract classes cannot be instantiated, but they can be subclassed. Abstract methods can be declared as following:
+
+```vb
+class IamAbstractCls
+	public abstract func IamAbstractMethod()
+end
+```
+
+When an abstract class is subclassed, the subclass usually provides implementations for all of the abstract methods in its parent class. However, if it does not, then the subclass must also be declared abstract.
+
+An interface is a completely "abstract class" that is used to group related methods with empty bodies:
+
+```vb
+interface IamInterface
+	public abstract func a()
+	public abstract func b() as int
+end
+```
+
+Interfaces can only be 'subinterfaced' by interfaces, and classes cannot subclass them. To access the interface methods, the interface must be "implemented" (kinda like inherited) by another class with the `implements` keyword. The body of the interface method is provided by the "implement" class:
+
+```vb
+interface if
+	public abstract func a() as int
+end
+
+class implementer implements if
+	public func a() as int
+		return 0
+	end
+end
+```
+
+If a class implementing one interface does not override all of its methods, then the class automatically becomes an abstract class.
+
+Birdee does not support 'multiple inheritance', however, it can be achieved with interfaces, because the class can implement multiple interfaces:
+
+```vb
+interface foo
+	public abstract func a() as int
+end
+
+interface bar
+	public abstract func b() as int
+end
+
+class base
+	public A as int
+end
+
+class implementer : base implements foo, bar
+	public func a() as int
+		return 0
+	end
+	public func b() as int
+		return 1
+	end
+end
+```
+
+;The type of interfaces is implemented with 'fat pointer', containing one pointer to itable and one pointer to objects, hence its memory layout is different from classes. 
+
+Programmers can cast object with class type to interface type with simple assignment `=`, `static_cast[]` or `dyn_cast[]`:
+```vb
+interface foo
+	public abstract func a() as int
+end
+
+class implementer implements foo
+	public func a() as int
+		return 0
+	end
+end
+
+dim obj as implementer = new implementer
+
+dim if as foo = obj
+if = static_cast[foo](obj)
+if = dyn_cast[foo](obj)
+```
+
+For interfaces, using assignment `=` and `static_cast[]` are similar, while it's always safer to use `dyn_cast[]`.
+
+Comparing Abstract Classes and Interfaces, when should we use them? Here are so references:
+
+* Consider using abstract classes if any of these statements apply to your situation:
+	+ You want to share code among several closely related classes.
+	+ You expect that classes that inherit your abstract class have many common methods or fields.
+* Consider using interfaces if any of these statements apply to your situation:
+	+ You expect that unrelated classes would implement your interface. 
+	+ You want to specify the behavior of a particular data type, but not concerned about who implements its behavior.
+	+ You want to take advantage of multiple inheritance of type.
 
 ## 6.10 Structs
 
